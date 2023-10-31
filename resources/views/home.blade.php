@@ -20,37 +20,35 @@
 </head>
 
 <body class="container-fluid">
-    <div class="container-fluid">
-        <nav class="navbar">
-            <nav class="navbar">
-                <div class="container-fluid">
-                  <h1 class="navbar-brand" href="#">
-                    <img src="../image/logosmall.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-center">
-                    Cookware
-                  </h1>
-                </div>
-              </nav>
-            <div clas="d-flex">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+    <div class="row my-3">
+        <div class="col-4">
+            <a href="#">
+                <img src="../image/logosmall.png" alt="Logo" width="70" height="70">
+            </a>
+            <h1 class="d-inline-block align-text-center mx-3">Cookware</h1>
+        </div>
+        <div class="col-8 d-flex justify-content-center">
+            <div class="mx-3">
+                <input class="form-control" type="search" placeholder="Buscar receta" aria-label="Search">
             </div>
-        </nav>
+            <div>
+                <button class="btn btn-outline-success align-content-center" type="submit">Buscar</button>
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-3 bg-warning">
+        <div class="col-3 d-flex justify-content-center" style="height: 500px">
             <div>
                 <img src="../image/61205.png" alt="..." style="width: 200px">
                 <div>
-                    <h5 class="card-title d-flex justify-contrn-cerer">@Nickname</h5>
+                    <h5 class="text-center">@Nickname</h5>
                 </div>
-                <ul>
-                    <li class="list-group-item">Cantidad de Recetas</li>
-                    <li class="list-group-item">Seguidores</li>
-                    <li class="list-group-item">Calificacion</li>
-                </ul>
                 <div>
+                    <li class="list-group-item text-center">Cantidad Recetas</li>
+                    <li class="list-group-item text-center">Seguidores</li>
+                    <li class="list-group-item text-center">Calificacion</li>
+                </div>
+                <div class="flex-wrap align-items-end">
                     <a href="#">Actualizar Perfil</a>
                     <a href="#">Cerrar sesion</a>
                 </div>
