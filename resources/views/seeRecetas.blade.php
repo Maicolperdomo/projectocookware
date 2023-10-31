@@ -7,5 +7,6 @@
 </head>
 <body>
    <h1>Hola vista verRecetas</h1> 
+   <h1>hola</h1>
 </body>
 </html>

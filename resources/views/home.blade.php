@@ -24,10 +24,10 @@
         <nav class="navbar">
             <nav class="navbar">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">
+                  <h1 class="navbar-brand" href="#">
                     <img src="../image/logosmall.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-center">
                     Cookware
-                  </a>
+                  </h1>
                 </div>
               </nav>
             <div clas="d-flex">
