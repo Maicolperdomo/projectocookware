@@ -6,6 +6,9 @@ use App\Http\Controllers\VisitarPerfilController;
 use App\Http\Controllers\VisitarRecetaController;
 use App\Http\Controllers\PublicarRecetaController;
 use App\Http\Controllers\ActualizarPerfilController;
+use App\Http\Controllers\CambioController;
+use App\Http\Controllers\LoguinController;
+use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +28,6 @@ Route::resource('/visitarPerfil',VisitarPerfilController::class)->only(['index',
 Route::resource('/visitarReceta',VisitarRecetaController::class)->only(['index','store','update','destroy']);
 Route::resource('/publicarReceta',PublicarRecetaController::class)->only(['index','store','update','destroy']);
 Route::resource('/actualizarPerfil',ActualizarPerfilController::class)->only(['index','store','update','destroy']);
-
+Route::resource('/loguin',LoguinController::class)->only(['index','store','update','destroy']);
+Route::resource('/registro',RegistroController::class)->only(['index', 'store','update','destroy']);
+Route::resource('/cambio',CambioController::class)->only(['index','store','update','destroy']);
