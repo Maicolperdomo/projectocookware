@@ -12,15 +12,14 @@ class LoguinController extends Controller
      */
     public function index()
     {
+      
         return view('loguin');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
+        loguin::create($request->all());
     }
 
     /**

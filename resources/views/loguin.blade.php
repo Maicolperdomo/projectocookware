@@ -14,36 +14,39 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body style="background-color: rgb(188, 237, 116)" class="container-fluid">
+<body style="background-color: rgb(188, 237, 116); border-radius: 50px 50px 50px 50px; " class="container-fluid">
 
-    <div class="row" style="border-radius: 35px;  ">
-        <div class="col-6 d-flex flex-wrap justify-content-lg-center align-content-center">
+    <div class="row" style="border-radius: 50px 50px 50px 50px; padding: 40px; text-align: center; margin-bottom: 80px;  ">
+        <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
             <img src="/resources/img/Captura de pantalla (140).png" class="col-6 d-flex justify-content-center mt-5" alt="">
         </div>
-        <div class="col-3 d-flex justify-content-center mt-5 " style="background: white;">
+        <div class="col-4 d-flex justify-content-center mt-5 " style="background: white;border-radius: 30px 30px 30px 30px;">
             <div>
                 <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
-                <div class="row">
-                    <label class="form-label" for="">NickName</label>
-                    <input class="form-control" type="nickname" name="txtnickname" id="txtnickname">
-                </div>
-
-                <div class="row">
-                    <label class="form-label" for="">Password</label>
-                    <input class="form-control" type="password" name="txtPassword" id="txtPassword">
-                </div>
+                <div class="input-group flex-nowrap">
+  <span class="input-group-text" id="nickname">NickName</span>
+  <input type="text" class="form-control" placeholder="@" aria-label="nickname" aria-describedby="addon-wrapping">
+</div>
+<br>
+<div class="input-group flex-nowrap ">
+  <span class="input-group-text" id="password">Contraseña</span>
+  <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
+</div>
 
                 <div class="row mt-3">
-                    <button type="button" class="btn btn-primary">iniciar sesion</button>
+                    <button type="button" class="btn btn-success">iniciar sesion</button>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
                 </div>
-                <div class="row mt-3">
+               -<!-- <div class="row mt-3">
                     <button type="button" class="btn btn-danger">Registrarse</button>
-                </div>
+                </div>!-->
+                
+                <div class="text-center mt-3">
+                        <a href="registro.blade.php" >Registrarse</a>
                 <div class="row mt-3">
-                    <a href="#"> ¿OLVIDO SU CONTRASEÑA? </a>
+                    <a href="cambio.blade.php"> ¿OLVIDO SU CONTRASEÑA? </a>
                 </div>
             </div>
 
