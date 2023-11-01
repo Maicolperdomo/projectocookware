@@ -18,7 +18,7 @@
 <div class="pagina container-fluid" style="display: flex; justify-content: center; margin-top: 70px;">
 <div class=" row carta" style="background-color: white; border-radius: 50px; width: 80%;">
 
- <h1 >REGISTRARSE</h1>
+ <h1 class="text-center">REGISTRARSE</h1>
  
  <form>
  <div class="input-group mb-3">
@@ -44,7 +44,7 @@
   <span class="input-group-text" id="txtEmail">@example.com</span>
 </div>
 <br>
-<div class="input-group mb-3">
+<div class="input-group mb-3 ">
   <span class="input-group-text" id="txtContrasena">Contraseña</span>
   <input type="text" class="form-control" placeholder="" aria-label="txtContrasena" aria-describedby="basic-addon1">
 </div>
@@ -55,7 +55,7 @@
   <input type="text" class="form-control" placeholder="" aria-label="txtconfpassword" aria-describedby="addon-wrapping">
 </div>
 <br>
-    <div class="botonRegistrarse"  >
+    <div class="botonRegistrarse "  >
 <button style="margin-top: 30px; border: none; border-radius: 50px 50px 50px 50px;
     align-items: center; background-color: green; width: 150px; height: 50px; ">Registrarse</button>
 </div>  
