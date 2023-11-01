@@ -17,21 +17,24 @@
 <body style="background-color: rgb(188, 237, 116); border-radius: 50px 50px 50px 50px; " class="container-fluid">
 
     <div class="row" style="border-radius: 50px 50px 50px 50px; padding: 40px; text-align: center; margin-bottom: 80px;  ">
+        <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="/resources/img/Captura de pantalla (140).png" class="col-6 d-flex justify-content-center mt-5" alt="">
-        </div>
+            <img src="/public/image/Captura de pantalla (140).png" alt="i">
+            </div>
+
+        <!-- 2 -->
         <div class="col-4 d-flex justify-content-center mt-5 " style="background: white;border-radius: 30px 30px 30px 30px;">
             <div>
                 <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
                 <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="nickname">NickName</span>
-  <input type="text" class="form-control" placeholder="@" aria-label="nickname" aria-describedby="addon-wrapping">
-</div>
-<br>
-<div class="input-group flex-nowrap ">
-  <span class="input-group-text" id="password">Contraseña</span>
-  <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
-</div>
+                    <span class="input-group-text" id="nickname">NickName</span>
+                    <input type="text" class="form-control" placeholder="@" aria-label="nickname" aria-describedby="addon-wrapping">
+                </div>
+                <br>
+                <div class="input-group flex-nowrap ">
+                    <span class="input-group-text" id="password">Contraseña</span>
+                    <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
+                </div>
 
                 <div class="row mt-3">
                     <button type="button" class="btn btn-success">iniciar sesion</button>
@@ -39,17 +42,18 @@
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
                 </div>
-               -<!-- <div class="row mt-3">
-                    <button type="button" class="btn btn-danger">Registrarse</button>
-                </div>!-->
-                
-                <div class="text-center mt-3">
-                        <a href="registro.blade.php" >Registrarse</a>
                 <div class="row mt-3">
-                    <a href="cambio.blade.php"> ¿OLVIDO SU CONTRASEÑA? </a>
+                    <button type="button" class="btn btn-danger">Registrarse</button>
                 </div>
-            </div>
 
+                <div class="text-center mt-3">
+                    <a href="registro.blade.php">Registrarse</a>
+                    <div class="row mt-3">
+                        <a href="cambio.blade.php"> ¿OLVIDO SU CONTRASEÑA? </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </body>

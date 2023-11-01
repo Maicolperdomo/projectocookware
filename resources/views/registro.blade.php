@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -22,14 +22,14 @@
  
  <form>
  <div class="input-group mb-3">
-  <span class="input-group-text" id="name">Nombre</span>
-  <input type="text" class="form-control" placeholder="" aria-label="name" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="txtNombre">Nombre</span>
+  <input type="text" class="form-control" placeholder="" aria-label="txtNombre" aria-describedby="basic-addon1">
 </div>
 <br>
 
 <div class="input-group mb-3">
-  <span class="input-group-text" id="lastname">Apellido</span>
-  <input type="text" class="form-control" placeholder="" aria-label="name" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="txtApellido">Apellido</span>
+  <input type="text" class="form-control" placeholder="" aria-label="txtApellido" aria-describedby="basic-addon1">
 </div>
 <br>
 
@@ -40,19 +40,19 @@
 <br>
 
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Email" aria-label="email" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="email">@example.com</span>
+  <input type="text" class="form-control" placeholder="Email" aria-label="txtEmail" aria-describedby="basic-addon2">
+  <span class="input-group-text" id="txtEmail">@example.com</span>
 </div>
 <br>
 <div class="input-group mb-3">
-  <span class="input-group-text" id="password">Contraseña</span>
-  <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="txtContrasena">Contraseña</span>
+  <input type="text" class="form-control" placeholder="" aria-label="txtContrasena" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group mb-3">
 <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="confpassword">Confirmar Contraseña</span>
-  <input type="text" class="form-control" placeholder="" aria-label="confpassword" aria-describedby="addon-wrapping">
+  <span class="input-group-text" id="txtconfpassword">Confirmar Contraseña</span>
+  <input type="text" class="form-control" placeholder="" aria-label="txtconfpassword" aria-describedby="addon-wrapping">
 </div>
 <br>
     <div class="botonRegistrarse"  >
@@ -65,3 +65,4 @@
 </body>
 
 </html>
+<script src="../js/registro.js"></script>
