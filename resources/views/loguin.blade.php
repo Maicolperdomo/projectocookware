@@ -19,7 +19,7 @@
     <div class="row" style="border-radius: 50px 50px 50px 50px; padding: 40px; text-align: center; margin-bottom: 80px;  ">
         <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="/public/image/Captura de pantalla (140).png" alt="i">
+            <img src="" alt="">
             </div>
 
         <!-- 2 -->
