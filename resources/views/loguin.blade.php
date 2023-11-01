@@ -19,7 +19,7 @@
     <div class="row" style="border-radius: 50px 50px 50px 50px; padding: 40px; text-align: center; margin-bottom: 80px;  ">
         <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="" alt="">
+            <img src="../image/logoG.png" alt="">
             </div>
 
         <!-- 2 -->
@@ -47,7 +47,7 @@
                 </div> -->
 
                 <div class="text-center mt-3">
-                    <a href="registro">Registrarse</a>
+                    <a href="registro">REGISTRARSE</a>
                     <div class="row mt-3">
                         <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
                     </div>
