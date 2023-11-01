@@ -18,9 +18,9 @@
 
     <div class="row" style="border-radius: 35px;  ">
         <div class="col-6 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="/resources/img/Captura de pantalla (140).png" class="col-6 d-flex justify-content-center mt-5" alt="">
+            <img src="../image/logoG.png" alt="">
         </div>
-        <div class="col-3 d-flex justify-content-center mt-5 " style="background: white;">
+        <div class="col-3 d-flex justify-content-center mt-5" style="background: white;">
             <div>
                 <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
                 <div class="row">
@@ -52,3 +52,6 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
