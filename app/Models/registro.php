@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class registro extends Model
 {
-    use HasFactory;
+  //  use HasFactory;
+  protected $fillable = [
+    'name',
+    'nickname',
+    'email',
+    'password',
+];
+protected $hidden = [
+    'password',
+    'remember_token',
+];
+protected $casts = [
+    'email_verified_at' => 'datetime',
+];
 }

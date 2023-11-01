@@ -12,6 +12,7 @@ class RegistroController extends Controller
      */
     public function index()
     {
+        
         return view('registro');
     }
 
@@ -22,7 +23,13 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        registro::create([
+            'name'=>$request->input('name'),
+            'nickname'=> $request-> input('nickname')
+        ]);
+           
+            $registrar = registro::create($request->validated());
+        auth()->login($registrar);
     }
 
 
