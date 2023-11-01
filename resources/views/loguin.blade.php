@@ -16,17 +16,10 @@
 
 <body style="background-color: rgb(188, 237, 116); border-radius: 50px 50px 50px 50px; " class="container-fluid">
 
-<<<<<<< HEAD
-    <div class="row" style="border-radius: 35px;  ">
-        <div class="col-6 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="../image/logoG.png" alt="">
-        </div>
-        <div class="col-3 d-flex justify-content-center mt-5" style="background: white;">
-=======
     <div class="row" style="border-radius: 50px 50px 50px 50px; padding: 40px; text-align: center; margin-bottom: 80px;  ">
         <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
-            <img src="/public/image/Captura de pantalla (140).png" alt="i">
+            <img src="../image/logoG.png" alt="">
             </div>
 
         <!-- 2 -->
@@ -66,14 +59,7 @@
 </body>
 
 </html>
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-</script>
-=======
 <script>
-    document.getElementById('registro.blade.php').addEventListener('click', function() {
-        window.history.back();
-    });
+    document.getElementById('registro').addEventListener('click', function() {
+        window.history.back();});
 </script>
->>>>>>> 795b3a37883c7c3da2cabd1cb226516e2336d03f
