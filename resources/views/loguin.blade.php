@@ -42,14 +42,14 @@
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
                 </div>
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <button type="button" class="btn btn-danger">Registrarse</button>
-                </div>
+                </div> -->
 
                 <div class="text-center mt-3">
-                    <a href="registro.blade.php">Registrarse</a>
+                    <a href="registro">Registrarse</a>
                     <div class="row mt-3">
-                        <a href="cambio.blade.php"> ¿OLVIDO SU CONTRASEÑA? </a>
+                        <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
                     </div>
                 </div>
 
@@ -59,3 +59,8 @@
 </body>
 
 </html>
+<script>
+    document.getElementById('registro.blade.php').addEventListener('click', function() {
+        window.history.back();
+    });
+</script>

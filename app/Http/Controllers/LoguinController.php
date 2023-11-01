@@ -14,6 +14,8 @@ class LoguinController extends Controller
     {
       
         return view('loguin');
+        return redirect('/registro');
+
     }
 
     public function store(Request $request)
