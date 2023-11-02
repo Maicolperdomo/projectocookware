@@ -47,7 +47,7 @@
                 </div> -->
 
                 <div class="text-center mt-3">
-                    <a href="registro">Registrarse</a>
+                    <a href="registro">REGISTRARSE</a>
                     <div class="row mt-3">
                         <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
                     </div>
