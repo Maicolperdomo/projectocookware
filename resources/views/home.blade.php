@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COOKWARE/Home</title>
+    <link rel="shortcut icon" href="../image/logosmall.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -14,8 +15,8 @@
 </head>
 
 <body class="container-fluid">
-    <div class="row" style="height: 606px;">
-        <div class="col-3">
+    <div class="row">
+        <div class="col-3" style="height: 606px;">
             <img src="../image/logo.png" alt="Logo" width="300" height="100">
             <div class="d-flex justify-content-center">
                 <img src="../image/61205.png" alt="..." style="width: 200px">
@@ -29,11 +30,21 @@
                     <li class="list-group-item">Seguidores: </li>
                     <li class="list-group-item">Calificacion: </li>
                 </ul>
-            </div>
-            <div class="d-flex align-items-end" style="height: 178px;">
-                <div class="mx-3">
-                    <a href="actualizarPerfil" class="btn btn-primary">Actualizar Perfil</a>
-                    <a href="loguin" class="btn btn-warning">Cerrar Sesion</a>
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn-primary" href="visitarPerfil">Visitar Perfil</a>
+                    <a class="btn btn-primary" href="publicarReceta">Publicar Receta</a>
+                </div>
+                <div class="d-flex align-items-end justify-content-center" style="height: 140px">
+                    <div class="btn-group dropup" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Configuracion
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
+                            <li><a class="dropdown-item" href="loguin">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
