@@ -31,13 +31,13 @@
                     <input type="text" class="form-control" placeholder="@" aria-label="nickname" aria-describedby="addon-wrapping">
                 </div>
                 <br>
-                <div class="input-group flex-nowrap ">
+                <div class="input-group flex-nowrap  ">
                     <span class="input-group-text" id="password">Contraseña</span>
-                    <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
+                    <input type="password" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="row mt-3">
-                    <button type="button"  class="btn btn-success">iniciar sesion</button>
+                <a class="btn btn-success" href="vistaPrincipal">Iniciar sesion</a>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
@@ -62,7 +62,7 @@
     document.getElementById('registro').addEventListener('click', function() {
         window.history.back();
     });
-    document.getElementById('home').addEventListener('click', function() {
+    document.getElementById('vistaPrincipal').addEventListener('click', function() {
         window.history.back();
     });
 </script>
