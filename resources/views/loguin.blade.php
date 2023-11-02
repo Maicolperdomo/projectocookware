@@ -37,8 +37,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <a href="home" style="text-decoration: none; color: white; 
-                padding: 10px 20px; background-color: green; border-radius: 5px;">Iniciar Sesion</a>
+                    <button type="button"  class="btn btn-success">iniciar sesion</button>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
