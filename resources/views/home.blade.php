@@ -16,11 +16,11 @@
 <body class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <img src="../image/logo.png" alt="Logo" width="80" height="80">
+            <img src="../image/logo.png" alt="Logo" width="300" height="100">
             <div>
-                <img src="../image/61205.png" alt="..." style="width: 200px">
+                <img src="../image/61205.png" alt="..." style="width: 200px" class="d-flex justify-content-center">
                 <div>
-                    <h5 class="card-title d-flex justify-contrn-cerer">@Nickname</h5>
+                    <h5 class="card-title d-flex justify-contrn-center">@Nickname</h5>
                 </div>
                 <ul>
                     <li class="list-group-item">Cantidad de Recetas</li>
