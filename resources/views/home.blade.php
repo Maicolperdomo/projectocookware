@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="d-flex align-items-end" style="height: 178px;">
-                <div>
+                <div class="mx-3">
                     <a href="actualizarPerfil" class="btn btn-primary">Actualizar Perfil</a>
                     <a href="loguin" class="btn btn-warning">Cerrar Sesion</a>
                 </div>
