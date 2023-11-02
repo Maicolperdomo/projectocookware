@@ -5,18 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        .vl {
-            border-left: 6px solid green;
-            height: 500px;
-            position: absolute;
-            left: 25%;
-            margin-left: -3px;
-            top: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="./assets/Js/bootstrap.js"></script>
+    <script src="./assets/Js/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="container-fluid">
