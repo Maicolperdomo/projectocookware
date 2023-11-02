@@ -25,7 +25,10 @@ class RegistroController extends Controller
     {
         registro::create([
             'name'=>$request->input('name'),
-            'nickname'=> $request-> input('nickname')
+            'nickname'=> $request-> input('nickname'),
+            'correo'=>$request->input('correo'),
+            'contrasena'=>$request->input('contrasena'),
+           ' confirmarcontrasena'=>$request->input('confirmarcontrasena')
         ]);
            
             $registrar = registro::create($request->validated());

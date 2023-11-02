@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGISTRO</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="./assets/Js/bootstrap.js"></script>
     <script src="./assets/Js/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="./assets/css/bootstrap.css">
     </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,8 +50,8 @@
 <br>
 <div class="input-group mb-3">
 <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="txtconfpassword">Confirmar Contraseña</span>
-  <input type="text" class="form-control" placeholder="" aria-label="txtconfpassword" aria-describedby="addon-wrapping">
+  <span class="input-group-text" id="txtconfcontrasena">Confirmar Contraseña</span>
+  <input type="text" class="form-control" placeholder="" aria-label="txtconfcontrasena" aria-describedby="addon-wrapping">
 </div>
 <br>
     <div class="botonRegistrarse "  >

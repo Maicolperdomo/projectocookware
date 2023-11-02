@@ -3,9 +3,13 @@ function registrarUsuario(){
     var nickname = document.getElementById("nickname");
     var txtEmail = document.getElementById("txtEmail");
     var txtContrasena = document.getElementById("txtContrasena");
+    var txtconfcontrasena = document.getElementById("txtconfcontrasena")
     axios.post("UsuarioRegistrar", {
                 nombre: txtNombre.value,
-                nickname: nickname.value
+                nickname: nickname.value,
+                correo : txtEmail.value,
+                contrasena: txtContrasena.value,
+                confirmarcontrasena : txtconfcontrasena
              })
     .then(function (response) {
                    console.log(response);

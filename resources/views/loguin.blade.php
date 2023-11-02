@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <button type="button" class="btn btn-success">iniciar sesion</button>
+                    <button type="button"  class="btn btn-success">iniciar sesion</button>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>

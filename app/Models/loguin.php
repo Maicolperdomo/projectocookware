@@ -11,7 +11,7 @@ class loguin extends Model
    protected $fillable =[
     'id',
     'nickname',
-    'password'
+    'contrasena'
 ];
 protected $hidden = [
     'created_at',
