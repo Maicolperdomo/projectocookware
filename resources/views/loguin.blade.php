@@ -20,7 +20,7 @@
         <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
             <img src="../image/logoG.png" alt="">
-            </div>
+        </div>
 
         <!-- 2 -->
         <div class="col-4 d-flex justify-content-center mt-5 " style="background: white;border-radius: 30px 30px 30px 30px;">
@@ -37,29 +37,33 @@
                 </div>
 
                 <div class="row mt-3">
-                    <button type="button"  class="btn btn-success">iniciar sesion</button>
+                    <a href="home" style="text-decoration: none; color: white; 
+                padding: 10px 20px; background-color: green; border-radius: 5px;">Iniciar Sesion</a>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
                 </div>
-                <!-- <div class="row mt-3">
-                    <button type="button" class="btn btn-danger">Registrarse</button>
-                </div> -->
+                <div class="row mt-3">
+                    <a href="registro" style="text-decoration: none; color: white; 
+                padding: 10px 5px; border-radius: 5px;" class="btn btn-danger">Registrarse</a>
 
-                <div class="text-center mt-3">
-                    <a href="registro">REGISTRARSE</a>
-                    <div class="row mt-3">
-                        <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
-                    </div>
                 </div>
-
+                <div class="row mt-3">
+                    <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
+                </div>
             </div>
+
         </div>
+    </div>
     </div>
 </body>
 
 </html>
 <script>
     document.getElementById('registro').addEventListener('click', function() {
-        window.history.back();});
+        window.history.back();
+    });
+    document.getElementById('home').addEventListener('click', function() {
+        window.history.back();
+    });
 </script>
