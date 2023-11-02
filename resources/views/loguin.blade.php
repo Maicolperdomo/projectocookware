@@ -37,7 +37,11 @@
                 </div>
 
                 <div class="row mt-3">
+<<<<<<< HEAD
                     <a href="vistaPrincipal" class="btn btn-success">iniciar sesion</a>
+=======
+                    <button type="button"  class="btn btn-success">iniciar sesion</button>
+>>>>>>> 9ffc92cea8aa0b106b9a76dafe3682117fc15696
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>

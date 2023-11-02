@@ -12,7 +12,7 @@ class registro extends Model
     'name',
     'nickname',
     'email',
-    'password',
+    'contrasena',
 ];
 protected $hidden = [
     'password',
