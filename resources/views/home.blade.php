@@ -5,41 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        .vl {
-            border-left: 6px solid green;
-            height: 500px;
-            position: absolute;
-            left: 25%;
-            margin-left: -3px;
-            top: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="./assets/Js/bootstrap.js"></script>
+    <script src="./assets/Js/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="container-fluid">
-    <div class="container-fluid">
-        <nav class="navbar">
-            <nav class="navbar">
-                <div class="container-fluid">
-                  <h1 class="navbar-brand" href="#">
-                    <img src="../image/logosmall.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-center">
-                    Cookware
-                  </h1>
-                </div>
-              </nav>
-            <div clas="d-flex">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-            </div>
-        </nav>
-    </div>
     <div class="row">
-        <div class="col-3 bg-warning">
+        <div class="col-3">
+            <img src="../image/logo.png" alt="Logo" width="80" height="80">
             <div>
                 <img src="../image/61205.png" alt="..." style="width: 200px">
                 <div>
@@ -56,11 +33,12 @@
                 </div>
             </div>
         </div>
+
         <div class="col-9 right bg-primary">
             <h1>hola</h1>
         </div>
     </div>
-</body> 
+</body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
