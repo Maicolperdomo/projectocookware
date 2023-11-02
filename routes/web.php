@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/',VistaPrincipalController::class)->only(['index','store','update','destroy']);
+Route::resource('/vistaPrincipal',VistaPrincipalController::class)->only(['index','store','update','destroy']);
 Route::resource('/verRecetas',VerRecetasController::class)->only(['index','store','update','destroy']);
 Route::resource('/visitarPerfil',VisitarPerfilController::class)->only(['index','store','update','destroy']);
 Route::resource('/visitarReceta',VisitarRecetaController::class)->only(['index','store','update','destroy']);
