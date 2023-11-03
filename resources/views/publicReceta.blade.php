@@ -16,36 +16,40 @@
 
 <body class="container-fluid">
     <div class="row">
-        <div class="col-3" style="height: 606px;">
-            <img src="../image/logo.png" alt="Logo" width="300" height="100">
-            <div class="d-flex justify-content-center">
-                <img src="../image/61205.png" alt="..." style="width: 200px">
+        <div class="col-12 d-flex justify-content-around align-items-center">
+            <div class="col-3">
+                <img src="../image/logo.png" alt="Logo" width="300" height="100">
             </div>
-            <div class="my-3">
+            <div class="col-3">
                 <div class="d-flex justify-content-center">
-                    <h5 class="card-title">@Nickname</h5>
+                    <img src="../image/61205.png" alt="..." style="width: 100px">
                 </div>
-                <ul class="text-left">
-                    <li class="list-group-item">Cantidad de Recetas: </li>
-                    <li class="list-group-item">Seguidores: </li>
-                    <li class="list-group-item">Calificacion: </li>
-                </ul>
-                <div class="d-flex align-items-end justify-content-center" style="height: 170px">
-                    <div class="btn-group dropup" role="group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Configuracion
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
-                            <li><a class="dropdown-item" href="loguin">Cerrar Sesion</a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-3">
+                <div class="d-flex justify-content-between">
+                    <ul>
+                        <h5 class="card-title">@Nickname</h5>
+                        <li class="list-group-item">Cantidad de Recetas: </li>
+                        <li class="list-group-item">Seguidores: </li>
+                        <li class="list-group-item">Calificacion: </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Configuracion
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
+                        <li><a class="dropdown-item" href="loguin">Cerrar Sesion</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="col-9 right" style="background-color: #c0dd8d">
+        <div style="background-color: #c0dd8d">
             <form class="my-5">
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la Receta</label>
@@ -62,7 +66,8 @@
                 <div class="row mb-3">
                     <label for="inputState" class="col-sm-2 col-form-label">Unidad</label>
                     <div class="col-sm-10 d-flex justify-content-center">
-                        <input type="text" class="form-control me-4" id="" placeholder="Nombre del Ingrediente">
+                        <input type="text" class="form-control me-4" id=""
+                            placeholder="Nombre del Ingrediente">
                         <select id="inputState" class="form-select form-control">
                             <option selected>unidades</option>
                         </select>
@@ -71,10 +76,36 @@
                         <a href="" class="btn btn-primary">Agregar campo</a>
                     </div>
                 </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Publicar Receta</button>
-                </div>
             </form>
+            <div class="container-fluid">
+                <div class="col-row">
+                    <div class="col-6 d-flex justify-content-around">
+                        <div class="col-3">
+                            <label for="" class="col-sm-2 col-form-label">Nivel</label>
+                            <div class="col-sm-8">
+                                <select id="" class="form-select form-control">
+                                    <option selected>unidades</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tiempo</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputEmail3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 justify-content-center">
+                        <a type="submit" class="btn btn-primary">Subir Foto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center">
+                <div>
+                    <a type="submit" class="btn btn-primary">Publicar Receta</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
