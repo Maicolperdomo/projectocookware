@@ -86,7 +86,7 @@
     </div>
     <div class="ventana" id="vent">
         <h1 class="text-center">ESCRIBE AQUI TU RECETA</h1>
-        <form class="my-1">
+        <!--<form class="my-1">
             <div class="row mb-2">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la Receta</label>
                 <div class="col-sm-5">
@@ -112,7 +112,7 @@
                     <a href="" class="btn btn-primary">Agregar campo</a>
                 </div>
             </div>
-        </form>
+        </form>!-->
         <div class="col-12 d-flex justify-content-center">
             <div>
                 <a class="btn btn-primary" id="btnRegistrar" onclick="registrar()">Publicar Receta</a>
