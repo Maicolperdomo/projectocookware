@@ -9,16 +9,17 @@ class registro extends Model
 {
   //  use HasFactory;
   protected $fillable = [
-    'name',
+    'nombre',
     'nickname',
-    'email',
+    'correo',
     'contrasena',
 ];
 protected $hidden = [
-    'password',
+    'contrasena',
     'remember_token',
 ];
 protected $casts = [
-    'email_verified_at' => 'datetime',
+    'confirmarcontrasena' => 'datetime',
+    'contrasena' => 'hashed',
 ];
 }

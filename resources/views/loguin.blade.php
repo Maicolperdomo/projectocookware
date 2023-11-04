@@ -20,7 +20,7 @@
         <!-- 1 -->
         <div class="col-7 d-flex flex-wrap justify-content-lg-center align-content-center">
             <img src="../image/logoG.png" alt="">
-            </div>
+        </div>
 
         <!-- 2 -->
         <div class="col-4 d-flex justify-content-center mt-5 " style="background: white;border-radius: 30px 30px 30px 30px;">
@@ -31,39 +31,38 @@
                     <input type="text" class="form-control" placeholder="@" aria-label="nickname" aria-describedby="addon-wrapping">
                 </div>
                 <br>
-                <div class="input-group flex-nowrap ">
+                <div class="input-group flex-nowrap  ">
                     <span class="input-group-text" id="password">Contraseña</span>
-                    <input type="text" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
+                    <input type="password" class="form-control" placeholder="" aria-label="password" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="row mt-3">
-<<<<<<< HEAD
-                    <a href="vistaPrincipal" class="btn btn-success">iniciar sesion</a>
-=======
-                    <button type="button"  class="btn btn-success">iniciar sesion</button>
->>>>>>> 9ffc92cea8aa0b106b9a76dafe3682117fc15696
+                <a class="btn btn-success" href="vistaPrincipal">Iniciar sesion</a>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-primary ">Continuar con Google</button>
                 </div>
-                <!-- <div class="row mt-3">
-                    <button type="button" class="btn btn-danger">Registrarse</button>
-                </div> -->
+                <div class="row mt-3">
+                    <a href="registro" style="text-decoration: none; color: white; 
+                padding: 10px 5px; border-radius: 5px;" class="btn btn-danger">Registrarse</a>
 
-                <div class="text-center mt-3">
-                    <a href="registro">REGISTRARSE</a>
-                    <div class="row mt-3">
-                        <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
-                    </div>
                 </div>
-
+                <div class="row mt-3">
+                    <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
+                </div>
             </div>
+
         </div>
+    </div>
     </div>
 </body>
 
 </html>
 <script>
     document.getElementById('registro').addEventListener('click', function() {
-        window.history.back();});
+        window.history.back();
+    });
+    document.getElementById('vistaPrincipal').addEventListener('click', function() {
+        window.history.back();
+    });
 </script>

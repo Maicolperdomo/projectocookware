@@ -15,6 +15,7 @@ class LoguinController extends Controller
       
         return view('loguin');
         return redirect('/registro');
+        return redirect('/vistaPrincipal');
 
     }
 

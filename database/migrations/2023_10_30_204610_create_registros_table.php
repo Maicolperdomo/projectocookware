@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('nickname');
+            $table->string('correo')->unique();
+            $table->timestamp('confirmarcontrasena')->nullable();
+            $table->string('contrasena');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
