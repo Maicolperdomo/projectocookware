@@ -1,24 +1,25 @@
-function registrarUsuario(){
+function registrarUsuario() {
     var txtNombre = document.getElementById("txtNombre");
-    var nickname = document.getElementById("nickname");
-    var txtEmail = document.getElementById("txtEmail");
-    var txtContrasena = document.getElementById("txtContrasena");
-    var txtconfcontrasena = document.getElementById("txtconfcontrasena")
-    axios.post("UsuarioRegistrar", {
-                nombre: txtNombre.value,
-                nickname: nickname.value,
-                correo : txtEmail.value,
-                contrasena: txtContrasena.value,
-                confirmarcontrasena : txtconfcontrasena
-             })
-    .then(function (response) {
-                   console.log(response);
-        
-         read();
-         clear();
-        
-                 })
-                 .catch(function (error) {
-                     console.table(error);
-                 });
+    var txtApellido = document.getElementById("txtApellido");
+    var txtNickname = document.getElementById("txtNickname");
+    var txtCorreo = document.getElementById("txtCorreo");
+    var txtPassword = document.getElementById("txtPassword");
+    var txtCpassword = document.getElementById("txtCpassword")
+
+    axios.post("registros", {
+        nombre: txtNombre.value,
+        apellido: txtApellido.value,
+        nickname: txtNickname.value,
+        correo: txtCorreo.value,
+        contrasena: txtPassword.value,
+        confirmarcontrasena: txtCpassword
+    })
+        .then(function (response) {
+            console.log(response);
+
+
+        })
+        .catch(function (error) {
+            console.table(error);
+        });
 }
