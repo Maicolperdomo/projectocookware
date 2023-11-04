@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
+<html lang="es"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COOKWARE/Home</title>
     <link rel="shortcut icon" href="../image/logosmall.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="../Js/axios.min.js"></script>
     <style>
         .ventana {
@@ -47,8 +43,7 @@
                 </div>
                 <div class="d-flex align-items-end justify-content-center" style="height: 140px">
                     <div class="btn-group dropup" role="group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Configuracion
                         </button>
                         <ul class="dropdown-menu">
@@ -63,15 +58,13 @@
         <div class="col-9 right my-3" style="background-color: white">
             <div>
                 <form class="d-flex justify-content-end" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        style="width: 25%;">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 25%;">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
             <div class="row d-flex justify-content-around mt-4" style="background-color: #c0dd8d">
                 <div class="card" style="width: 18rem;">
-                    <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
-                            width="200" height="200"></div>
+                    <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..." width="200" height="200"></div>
                     <div class="card-body">
                         <h5 class="card-title">Nombre Receta</h5>
                         <p class="card-text">Descrpción</p>
@@ -125,10 +118,6 @@
         }
     </script>
 
-</body>
-
-</html>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>
+</body></html>
