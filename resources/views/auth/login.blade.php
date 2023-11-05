@@ -1,71 +1,69 @@
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<!doctype html>
+<html lang="en">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+<head>
+    <title>INICIO DE SESIÓN</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="../image/logosmall.png" type="image/x-icon">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body class="container-fluid" style="background-color: #c0dd8d;">
+    <div class="row">
+        <div class="col-7 d-flex justify-content-center">
+            <img src="../image/logoG.png" alt="" style="width: 600px;">
+        </div>
+        <div class="col-5 d-flex justify-content-center">
+            <div class="col-10 d-flex justify-content-center my-5"
+                style="background: white; border-radius: 30px 30px 30px 30px;">
+                <div>
+                    <form action="{{route('login')}}" method="post">
                         @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div>
+                            <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="nickname">NickName</span>
+                            <input type="text" class="form-control" placeholder="@" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="nickname">
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
+                        <br>
+                        <div class="input-group flex-nowrap  ">
+                            <span class="input-group-text" id="password">Contraseña</span>
+                            <input type="password" class="form-control" placeholder="" aria-label="password"
+                                aria-describedby="addon-wrapping" name="password">
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="row mt-3">
+                            <a class="btn btn-success" href="vistaPrincipal">Iniciar sesion</a>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-primary ">Continuar con Google</button>
+                        </div>
+                        <div class="row mt-3">
+                            <a href="{{route('register')}}" class="btn btn-danger">Registrarse</a>
+                        </div>
+                        <div class="row mt-3">
+                            <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
