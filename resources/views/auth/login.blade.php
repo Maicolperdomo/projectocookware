@@ -22,11 +22,12 @@
             <div class="col-10 d-flex justify-content-center my-5"
                 style="background: white; border-radius: 30px 30px 30px 30px;">
                 <div>
-                    <form action="{{route('login')}}" method="post">
+                    <form action="/login" method="POST">
                         @csrf
                         <div>
                             <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
                         </div>
+                        @include('layouts.messages')
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text" id="nickname">NickName</span>
                             <input type="text" class="form-control" placeholder="@" aria-label="nickname"
@@ -39,15 +40,12 @@
                                 aria-describedby="addon-wrapping" name="password">
                         </div>
                         <div class="row mt-3">
-                            <a class="btn btn-success" href="vistaPrincipal">Iniciar sesion</a>
-                        </div>
-                        <div class="text-center mt-3">
-                            <button type="button" class="btn btn-primary ">Continuar con Google</button>
+                            <input type="submit" class="btn btn-success" value="Iniciar Sesion">
                         </div>
                         <div class="row mt-3">
-                            <a href="{{route('register')}}" class="btn btn-danger">Registrarse</a>
+                            <a class="btn btn-danger" href="/register">Registrarse</a>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-3 text-center">
                             <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
                         </div>
                     </form>

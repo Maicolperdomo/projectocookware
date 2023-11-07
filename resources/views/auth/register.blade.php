@@ -14,56 +14,58 @@
 </head>
 
 <body class="container-fluid" style="background-color: #c0dd8d;">
-    <div class="row my-3">
+    <div class="row">
         <div class="col-5 d-flex justify-content-end">
-            <div class="col-11 d-flex justify-content-center"
+            <div class="col-11 d-flex justify-content-center align-items-center my-5"
                 style="background: white; border-radius: 30px 30px 30px 30px;">
-                <form action="{{route('register')}}" method="post" novalidate></form>
-                @csrf
-                <div class="my-5">
+                <form action="/register" method="POST">
+                    @csrf
                     <div>
-                        <h2 class="text-center my-3">REGISTRARSE</h2>
+                        <div>
+                            <h2 class="text-center">REGISTRARSE</h2>
+                        </div>
+                        @include('layouts.messages')
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNombre">Nombre</span>
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="name">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNombre">Apellido</span>
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="lastname">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNickname">NickName</span>
+                            <input type="text" class="form-control" placeholder="@" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="nickname">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtCorreo">Correo</span>
+                            <input type="text" class="form-control" placeholder="Correo" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="email">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap  ">
+                            <span class="input-group-text" id="txtPassword">Contraseña</span>
+                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
+                                aria-describedby="addon-wrapping" name="password">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtCpassword">Confirmar Contraseña</span>
+                            <input type="password" class="form-control" placeholder="Confirmar Contraseña"
+                                aria-label="nickname" aria-describedby="addon-wrapping" name="password_confirmation">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <input type="submit" class="btn btn-success" value="Registrarse">
+                        </div>
                     </div>
-                    <div class="input-group flex-nowrap">
-                        <span  class="input-group-text" id="txtNombre">Nombre</span>
-                        <input type="text" class="form-control"  placeholder="Nombre" aria-label="nickname"
-                            aria-describedby="addon-wrapping" name="name">
-                    </div>
-                    <br>
-                    <div class="input-group flex-nowrap">
-                        <span  class="input-group-text" id="txtApellido">Apellido</span>
-                        <input type="text" class="form-control"  placeholder="Apellido" aria-label="nickname"
-                            aria-describedby="addon-wrapping" name="lastname">
-                    </div>
-                    <br>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="txtNickname">NickName</span>
-                        <input type="text" class="form-control" placeholder="@" aria-label="nickname"
-                            aria-describedby="addon-wrapping" name="nic">
-                    </div>
-                    <br>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="txtCorreo">Correo</span>
-                        <input type="email" class="form-control" placeholder="Correo" aria-label="nickname"
-                            aria-describedby="addon-wrapping" name="email">
-                    </div>
-                    <br>
-                    <div class="input-group flex-nowrap  ">
-                        <span class="input-group-text" id="txtPassword">Contraseña</span>
-                        <input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
-                            aria-describedby="addon-wrapping" name="password">
-                    </div>
-                    <br>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="txtCpassword">Confirmar Contraseña</span>
-                        <input type="text" class="form-control" placeholder="Confirmar Contraseña"
-                            aria-label="nickname" aria-describedby="addon-wrapping" name="password_confirmar">
-                    </div>
-                    <br>
-                    <div class="row mt-3">
-                        <a class="btn btn-success" href="" type="submit">Registrarse</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="col-7 d-flex justify-content-center">
@@ -80,4 +82,3 @@
 </body>
 
 </html>
-
