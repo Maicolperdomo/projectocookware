@@ -27,6 +27,7 @@
                         <div>
                             <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
                         </div>
+                        @include('layouts.messages')
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text" id="nickname">NickName</span>
                             <input type="text" class="form-control" placeholder="@" aria-label="nickname"
