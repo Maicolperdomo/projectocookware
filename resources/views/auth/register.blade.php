@@ -1,77 +1,84 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="es">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <title>REGISTRO</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="../image/logosmall.png" type="image/x-icon">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+</head>
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+<body class="container-fluid" style="background-color: #c0dd8d;">
+    <div class="row">
+        <div class="col-5 d-flex justify-content-end">
+            <div class="col-11 d-flex justify-content-center align-items-center my-5"
+                style="background: white; border-radius: 30px 30px 30px 30px;">
+                <form action="/register" method="POST">
+                    @csrf
+                    <div>
+                        <div>
+                            <h2 class="text-center">REGISTRARSE</h2>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        @include('layouts.messages')
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNombre">Nombre</span>
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="name">
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNombre">Apellido</span>
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="lastname">
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtNickname">NickName</span>
+                            <input type="text" class="form-control" placeholder="@" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="nickname">
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtCorreo">Correo</span>
+                            <input type="text" class="form-control" placeholder="Correo" aria-label="nickname"
+                                aria-describedby="addon-wrapping" name="email">
                         </div>
-                    </form>
-                </div>
+                        <br>
+                        <div class="input-group flex-nowrap  ">
+                            <span class="input-group-text" id="txtPassword">Contraseña</span>
+                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
+                                aria-describedby="addon-wrapping" name="password">
+                        </div>
+                        <br>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="txtCpassword">Confirmar Contraseña</span>
+                            <input type="password" class="form-control" placeholder="Confirmar Contraseña"
+                                aria-label="nickname" aria-describedby="addon-wrapping" name="password_confirmation">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <input type="submit" class="btn btn-success" value="Registrarse">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="col-7 d-flex justify-content-center">
+            <img src="../image/logoG.png" alt="" style="width: 600px;">
+        </div>
     </div>
-</div>
-@endsection
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
