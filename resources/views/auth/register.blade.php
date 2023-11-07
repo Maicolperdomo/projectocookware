@@ -24,6 +24,7 @@
                         <div>
                             <h2 class="text-center">REGISTRARSE</h2>
                         </div>
+                        @include('layouts.messages')
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text" id="txtNombre">Nombre</span>
                             <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"

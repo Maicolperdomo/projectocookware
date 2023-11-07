@@ -19,7 +19,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)){
-        return redirect()->to('/login')->withErrors('Usuario no REGISTRADO/ Nickname o Password incorrectos');
+        return redirect()->to('/login')->withErrors('Nickname o Password incorrectos');
     }
     $user = Auth::getProvider()->retrieveByCredentials($credentials);
 

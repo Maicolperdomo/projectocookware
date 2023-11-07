@@ -43,7 +43,7 @@
                             <input type="submit" class="btn btn-success" value="Iniciar Sesion">
                         </div>
                         <div class="row mt-3">
-                            <a class="btn btn-danger">Registrarse</a>
+                            <a class="btn btn-danger" href="/register">Registrarse</a>
                         </div>
                         <div class="row mt-3 text-center">
                             <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
