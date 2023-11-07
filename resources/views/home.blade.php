@@ -23,6 +23,7 @@
         }
     </style>
 </head>
+
 @auth
 
     <body class="container-fluid">
@@ -87,32 +88,32 @@
         <div class="ventana" id="vent">
             <h1 class="text-center">ESCRIBE AQUI TU RECETA</h1>
             <!--<form class="my-1">
-                                                    <div class="row mb-2">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la Receta</label>
-                                                        <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="txtNombre">
+                                                        <div class="row mb-2">
+                                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la Receta</label>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control" id="txtNombre">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Descripcion</label>
-                                                        <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="txtDescripcion">
+                                                        <div class="row mb-2">
+                                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Descripcion</label>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control" id="txtDescripcion">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <label for="inputState" class="col-sm-2 col-form-label">Ingredientes</label>
-                                                        <div class="col-sm-10 d-flex justify-content-center">
-                                                            <input type="text" class="form-control me-4" id="txtIngredientes"
-                                                                placeholder="Nombre del Ingrediente">
-                                                            <select class="form-select form-control">
-                                                                <option selected>unidades</option>
-                                                            </select>
+                                                        <div class="row mb-3">
+                                                            <label for="inputState" class="col-sm-2 col-form-label">Ingredientes</label>
+                                                            <div class="col-sm-10 d-flex justify-content-center">
+                                                                <input type="text" class="form-control me-4" id="txtIngredientes"
+                                                                    placeholder="Nombre del Ingrediente">
+                                                                <select class="form-select form-control">
+                                                                    <option selected>unidades</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="d-flex flex-row-reverse my-4">
+                                                                <a href="" class="btn btn-primary">Agregar campo</a>
+                                                            </div>
                                                         </div>
-                                                        <div class="d-flex flex-row-reverse my-4">
-                                                            <a href="" class="btn btn-primary">Agregar campo</a>
-                                                        </div>
-                                                    </div>
-                                                </form>!-->
+                                                    </form>!-->
             <div class="col-12 d-flex justify-content-center">
                 <div>
                     <a class="btn btn-primary" id="btnRegistrar" onclick="registrar()">Publicar Receta</a>

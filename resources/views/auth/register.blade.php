@@ -61,7 +61,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <input type="submit" value="Registrarse">
+                            <input type="submit" class="btn btn-success" value="Registrarse">
                         </div>
                     </div>
                 </form>
