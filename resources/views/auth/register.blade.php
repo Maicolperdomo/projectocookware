@@ -18,21 +18,21 @@
         <div class="col-5 d-flex justify-content-end">
             <div class="col-11 d-flex justify-content-center"
                 style="background: white; border-radius: 30px 30px 30px 30px;">
-                <form action="{{route('register')}}" method="post"></form>
+                <form action="{{route('register')}}" method="post" novalidate></form>
                 @csrf
                 <div class="my-5">
                     <div>
                         <h2 class="text-center my-3">REGISTRARSE</h2>
                     </div>
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="txtNombre">Nombre</span>
-                        <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                        <span  class="input-group-text" id="txtNombre">Nombre</span>
+                        <input type="text" class="form-control"  placeholder="Nombre" aria-label="nickname"
                             aria-describedby="addon-wrapping" name="name">
                     </div>
                     <br>
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="txtApellido">Apellido</span>
-                        <input type="text" class="form-control" placeholder="Apellido" aria-label="nickname"
+                        <span  class="input-group-text" id="txtApellido">Apellido</span>
+                        <input type="text" class="form-control"  placeholder="Apellido" aria-label="nickname"
                             aria-describedby="addon-wrapping" name="lastname">
                     </div>
                     <br>
@@ -44,7 +44,7 @@
                     <br>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="txtCorreo">Correo</span>
-                        <input type="text" class="form-control" placeholder="Correo" aria-label="nickname"
+                        <input type="email" class="form-control" placeholder="Correo" aria-label="nickname"
                             aria-describedby="addon-wrapping" name="email">
                     </div>
                     <br>
