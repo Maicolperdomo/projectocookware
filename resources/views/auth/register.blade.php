@@ -68,6 +68,7 @@
                 </form>
             </div>
         </div>
+        
         <div class="col-7 d-flex justify-content-center">
             <img src="../image/logoG.png" alt="" style="width: 600px;">
         </div>

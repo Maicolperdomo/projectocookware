@@ -17,7 +17,7 @@
             min-height: 250px;
             border-radius: 22px;
             position: absolute;
-            top: 5%;
+            top: 12%;
             left: 25%;
             display: none;
         }

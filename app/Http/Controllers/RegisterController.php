@@ -30,6 +30,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request){
         $user = User::create($request->validated());
         return redirect('/login')->with('succes', 'Account created successfully');
+        
     }
 
 }
