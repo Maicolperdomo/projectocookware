@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Hola vista visitarPerfil</h1> 
+    <h1> Inicio </h1>
+<a href="home.blade.php">Visitar Perfil</a>
 </body>
 </html>
