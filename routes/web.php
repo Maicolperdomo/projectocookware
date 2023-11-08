@@ -36,3 +36,5 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
+
+Route::get('/profile-button', [VisitPerfilController::class, 'show']);
