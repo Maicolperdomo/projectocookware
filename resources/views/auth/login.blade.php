@@ -21,11 +21,11 @@
         <div class="col-5 d-flex justify-content-center">
             <div class="col-10 d-flex justify-content-center my-5"
                 style="background: white; border-radius: 30px 30px 30px 30px;">
-                <div>
+                <div class="d-flex align-items-center">
                     <form action="/login" method="POST">
                         @csrf
                         <div>
-                            <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
+                            <h2 class="text-center mt-1 mb-4">Inicio de sesion</h2>
                         </div>
                         @include('layouts.messages')
                         <div class="input-group flex-nowrap">

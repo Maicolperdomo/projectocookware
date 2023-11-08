@@ -85,35 +85,42 @@
                 </div>
             </div>
         </div>
-        <div class="ventana" id="vent">
-            <h1 class="text-center">ESCRIBE AQUI TU RECETA</h1>
-            <!--<form class="my-1">
-                                                        <div class="row mb-2">
-                                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de la Receta</label>
-                                                            <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="txtNombre">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-2">
-                                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Descripcion</label>
-                                                            <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="txtDescripcion">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label for="inputState" class="col-sm-2 col-form-label">Ingredientes</label>
-                                                            <div class="col-sm-10 d-flex justify-content-center">
-                                                                <input type="text" class="form-control me-4" id="txtIngredientes"
-                                                                    placeholder="Nombre del Ingrediente">
-                                                                <select class="form-select form-control">
-                                                                    <option selected>unidades</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="d-flex flex-row-reverse my-4">
-                                                                <a href="" class="btn btn-primary">Agregar campo</a>
-                                                            </div>
-                                                        </div>
-                                                    </form>!-->
+        <div class="ventana mb-3" id="vent">
+            <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
+            <form class="my-3">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Cómo se llama tu receta?">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="Describe tu receta brevemente">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Ingredientes</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingredientes">
+                    <a href="">Agregar Ingrediente</a>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="Se coherente en tu paso a paso">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
+                    <input type="file" class="form-control" id="formGroupExampleInput">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Nivel</label>
+                    <select name="niveles">
+                        @foreach ($enumValues as $valor)
+                            <option value="{{ $valor }}">{{ $valor }}</option>
+                        @endforeach
+                    </select>                    
+                </div>
+            </form>
             <div class="col-12 d-flex justify-content-center">
                 <div>
                     <a class="btn btn-primary" id="btnRegistrar" onclick="registrar()">Publicar Receta</a>
