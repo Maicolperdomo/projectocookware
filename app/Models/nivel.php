@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class nivel extends Model
 {
     use HasFactory;
+
+    public static function obtenerNivelesPredeterminados()
+    {
+        return [
+            'Fácil' => 'Fácil',
+            'Medio' => 'Medio',
+            'Difícil' => 'Difícil',
+        ];
+    }
 }

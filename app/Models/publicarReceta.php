@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class publicarReceta extends Model
 {
     use HasFactory;
+    protected $table = 'recetas'; // Nombre de la tabla en la base de datos
+
     protected $fillable = [
-        'tituloReceta',
+        'nombre',
         'descripcion',
         'ingredientes',
-        'pasoPaso',
-        'tiempo'
-    ];
-
-    protected $hidden = [
-        'created_at',
-        'updated_at',
+        'unidad',
+        'pasos',
+        'foto',
+        'nivel',
+        'tiempo_estimado',
     ];
 
 }

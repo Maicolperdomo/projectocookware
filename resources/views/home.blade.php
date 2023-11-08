@@ -11,14 +11,13 @@
     <style>
         .ventana {
             background: #FD8C7E;
-            width: 70%;
+            width: 50%;
             height: 80%;
-            padding: 5px;
             min-height: 250px;
             border-radius: 22px;
             position: absolute;
-            top: 5%;
-            left: 25%;
+            top: 12%;
+            left: 35%;
             display: none;
         }
     </style>
@@ -85,45 +84,69 @@
                 </div>
             </div>
         </div>
-        <div class="ventana mb-3" id="vent">
-            <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
-            <form class="my-3">
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="Cómo se llama tu receta?">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2"
-                        placeholder="Describe tu receta brevemente">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Ingredientes</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingredientes">
-                    <a href="">Agregar Ingrediente</a>
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2"
-                        placeholder="Se coherente en tu paso a paso">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
-                    <input type="file" class="form-control" id="formGroupExampleInput">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Nivel</label>
-                    <select name="niveles">
-                        @foreach ($enumValues as $valor)
-                            <option value="{{ $valor }}">{{ $valor }}</option>
-                        @endforeach
-                    </select>                    
-                </div>
-            </form>
-            <div class="col-12 d-flex justify-content-center">
-                <div>
-                    <a class="btn btn-primary" id="btnRegistrar" onclick="registrar()">Publicar Receta</a>
+        <div class="ventana overflow-auto" id="vent">
+            <div class="my-4">
+                <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
+                <div class="d-flex justify-content-center my-2">
+                    <form action="/home" method="POST">
+                        @csrf
+                        <div>
+                            <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
+                            <input type="text" name="nombre" class="form-control" id="formGroupExampleInput"
+                                placeholder="Cómo se llama tu receta?">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Descripción</label>
+                            <input type="text" name="descripcion" class="form-control" placeholder="Describe tu receta brevemente">
+                        </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-6">
+                                <label class="form-label">Ingredientes</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="ingredientes" class="form-control" aria-label="Text input with dropdown button"
+                                        placeholder="Ingrediente">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="unidad">Unidad:</label>
+                                <div>
+                                    <select name="unidad" id="unidad">
+                                        @foreach ($unidades as $valor)
+                                            <option value="{{ $valor }}">{{ $valor }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <a class="d-flex justify-content-end" href="">Agregar Ingrediente</a>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
+                            <input type="text" name="pasos" class="form-control" id="formGroupExampleInput2"
+                                placeholder="Se coherente en tu paso a paso">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
+                            <input type="file" name="foto" class="form-control" id="formGroupExampleInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nivel">Nivel:</label>
+                            <select name="nivel" id="nivel">
+                                @foreach ($niveles as $valor)
+                                    <option value="{{ $valor }}">{{ $valor }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="formGroupExampleInput" class="form-label">Tiempo estimado</label>
+                            <input type="text" name="tiempo_estimado" class="form-control" id="formGroupExampleInput"
+                                placeholder="Cuánto dura tu preparación?">
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            <div>
+                                <input type="submit" class="btn btn-success" value="Publicar Recetas">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
