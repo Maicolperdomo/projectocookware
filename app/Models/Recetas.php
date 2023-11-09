@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Recetas extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'ingredientes',
+        'unidad_id',
+        'pasos',
+        'foto',
+        'nivel_id',
+        'tiempo_estimado',
+        'created_at',
+    ];
+
+    protected $hidden = [
+        'updated_at'
+    ];
 }

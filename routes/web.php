@@ -4,8 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\NivelController;
-use App\Http\Controllers\PrecetaController;
+use App\Http\Controllers\RecetasController;
+use App\Http\Controllers\NivelesController;
+use App\Http\Controllers\UnidadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,9 +40,9 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/home', [NivelController::class, 'mostrarFormulario']);
+Route::resource('/receta', RecetasController::class)->only(['index','store','update','destroy']);
 
-Route::post('/home', [HomeController::class, 'guardarReceta']);
+Route::resource('/nivel', NivelesController::class)->only(['index','store','update','destroy']);
 
-
+Route::resource('/unidad', UnidadController::class)->only(['index','store','update','destroy']);
 
