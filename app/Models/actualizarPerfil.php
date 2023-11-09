@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class actualizarPerfil extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'lastname',
+        'nickname',
+        'email',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }

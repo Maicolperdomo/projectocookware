@@ -75,7 +75,7 @@
                                 width="200" height="200"></div>
                         <div class="card-body">
                             <h5 class="card-title">Nombre Receta</h5>
-                            <p class="card-text">Descrpción</p>
+                            <p class="card-text">Descripción</p>
                         </div>
                         <div class="card-body">
                             <a href="visitarPerfil" class="card-link">Visitar Perfil</a>
