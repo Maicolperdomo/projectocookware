@@ -97,23 +97,31 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Descripción</label>
-                            <input type="text" name="descripcion" class="form-control" placeholder="Describe tu receta brevemente">
+                            <input type="text" name="descripcion" class="form-control"
+                                placeholder="Describe tu receta brevemente">
                         </div>
                         <div class="row d-flex align-items-center">
                             <div class="col-6">
                                 <label class="form-label">Ingredientes</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" name="ingredientes" class="form-control" aria-label="Text input with dropdown button"
-                                        placeholder="Ingrediente">
+                                    <input type="text" name="ingredientes" class="form-control"
+                                        aria-label="Text input with dropdown button" placeholder="Ingrediente">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label for="unidad">Unidad:</label>
                                 <div>
                                     <select name="unidad" id="unidad">
-                                        @foreach ($unidades as $valor)
-                                            <option value="{{ $valor }}">{{ $valor }}</option>
-                                        @endforeach
+                                        <option>Gramo (gr)</option>
+                                            <option>Libra (lb)</option>
+                                            <option>Kilogramo (kg)</option>
+                                            <option>Mililitro (ml)</option>
+                                            <option>Litro (l)</option>
+                                            <option>Onza (oz)</option>
+                                            <option>Cucharada sopera (c/s)</option>
+                                            <option>Cucharada (c/c)</option>
+                                            <option>Taza (tz)</option>
+                                            <option>Centimetro cubico (cm3)</option>
                                     </select>
                                 </div>
                             </div>
@@ -131,9 +139,9 @@
                         <div class="mb-3">
                             <label for="nivel">Nivel:</label>
                             <select name="nivel" id="nivel">
-                                @foreach ($niveles as $valor)
-                                    <option value="{{ $valor }}">{{ $valor }}</option>
-                                @endforeach
+                                    <option>Fácil</option>
+                                    <option>Medio</option>
+                                    <option>Difícil</option>
                             </select>
                         </div>
                         <div>
