@@ -1,0 +1,45 @@
+.container-so {
+    padding: 6vh;
+    /* background:  #C0DD8D; */
+    background:  #FD8C7E;
+}
+
+.container {
+    background: white;
+    padding: 5vh;
+}
+
+.content-s {
+    padding: 0;
+}
+.img_view_receta {
+    width: 300px;
+}
+
+.img-user {
+    width: 200px;
+    border: 50%;
+} 
+
+.img-star {
+    width: 20px;
+}
+
+.scrollable-right {
+    overflow-y: scroll;
+    height: 100vh; /* Ajusta esto según tus necesidades. */
+}
+
+.btn-down {
+    padding-top: 100px;
+}
+
+.img-logo {
+    width: 300px;
+    height: 100px;
+}
+
+.def-low {
+    background-color: #c0dd8d;
+    padding: 20px 0;
+}
