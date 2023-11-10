@@ -22,22 +22,38 @@ function mostrar() {
         .catch(err => {
             console.error(err);
         })
-}
 
-mostrar();
-
-function Traeunidad() {
     axios.get("/unidad")
         .then(res => {
+            console.log(res)
             const select = document.getElementById('txtUnidad');
             const unid = res.data;
 
             select.innerHTML = `<option selected disabled>Seleccionar</option>`;
 
-            unid.forEach(unidades => {
+            unid.forEach(uni => {
                 const option = document.createElement('option');
-                option.value = unidades.id;
-                option.text = unidades.Nombre;
+                option.value = uni.id;
+                option.text = uni.nombre;
+                select.appendChild(option);
+            })
+        })
+        .catch(err => {
+            console.error(err);
+        })
+
+    axios.get("/nivel")
+        .then(res => {
+            console.log(res)
+            const select = document.getElementById('txtNivel');
+            const niveles = res.data;
+
+            select.innerHTML = `<option selected disabled>Seleccionar</option>`;
+
+            niveles.forEach(niv => {
+                const option = document.createElement('option');
+                option.value = niv.id;
+                option.text = niv.nivel;
                 select.appendChild(option);
             })
         })
@@ -46,4 +62,4 @@ function Traeunidad() {
         })
 }
 
-Traeunidad();
+mostrar();

@@ -110,19 +110,10 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="unidad">Unidad:</label>
+                                <label for="txtUnidad">Unidad:</label>
                                 <div>
-                                    <select name="unidad" id="unidad">
-                                        <option>Gramo (gr)</option>
-                                        <option>Libra (lb)</option>
-                                        <option>Kilogramo (kg)</option>
-                                        <option>Mililitro (ml)</option>
-                                        <option>Litro (l)</option>
-                                        <option>Onza (oz)</option>
-                                        <option>Cucharada sopera (c/s)</option>
-                                        <option>Cucharada (c/c)</option>
-                                        <option>Taza (tz)</option>
-                                        <option>Centimetro cubico (cm3)</option>
+                                    <select id="txtUnidad" class="form-control w-auto">
+                                        <option selected disabled>Seleccionar</option>
                                     </select>
                                 </div>
                             </div>
@@ -138,11 +129,9 @@
                             <input type="file" name="foto" class="form-control" id="formGroupExampleInput">
                         </div>
                         <div class="mb-3">
-                            <label for="nivel">Nivel:</label>
-                            <select name="nivel" id="nivel">
-                                <option>Fácil</option>
-                                <option>Medio</option>
-                                <option>Difícil</option>
+                            <label for="txtNivel">Nivel:</label>
+                            <select id="txtNivel" class="form-control w-auto">
+                                <option selected disabled>Seleccionar</option>
                             </select>
                         </div>
                         <div>
@@ -179,14 +168,6 @@
 
                 </tbody>
             </table>
-            <div class="row mt-3">
-                <label for="txtUnidad">Unidad:</label>
-                <div>
-                    <select id="txtUnidad" class="form-control w-auto">
-                        <option selected disabled>Seleccionar</option>
-                    </select>
-                </div>
-            </div>
         </div>
 
         <script>
