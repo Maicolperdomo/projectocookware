@@ -32,5 +32,7 @@ class RegisterController extends Controller
         return redirect('/login')->with('succes', 'Account created successfully');
         
     }
-
+    public function edit(User $user){
+        return view('updatePerfil', compact('user'));
+    }
 }
