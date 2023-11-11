@@ -7,6 +7,8 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RecetasController;
 use App\Http\Controllers\NivelesController;
 use App\Http\Controllers\UnidadController;
+use App\Http\Controllers\VisitarPerController;
+use App\Http\Controllers\VisitarRecController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +48,6 @@ Route::resource('/nivel', NivelesController::class)->only(['index','store','upda
 
 Route::resource('/unidad', UnidadController::class)->only(['index','store','update','destroy']);
 
+Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
+
+Route::resource('/visper', VisitarPerController::class)->only(['index','store','update','destroy']);
