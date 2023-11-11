@@ -31,20 +31,21 @@
                 </div>
             </div>
     </div>
-    <div class="col-9 right my-3" style="background-color: white">
-         <div>
-            <form class="d-flex justify-content-end" role="search">
-            <input class="form-control me-2" type="search" aria-label="Search" style="width: 25%;">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-            </div>
+    <div class="col-9 right my-3" style="background-color: #dc3545">
+    <div class="container">
+        <div class="form-container">
+            <label for="uname">Buscar</label>
+            <input type="text" name="uname" required>
+
+
                 <div class="row d-flex justify-content-around mt-4" style="background-color: #dc3545"> 
                     <div class="card" style="width: 18rem;">
-                        <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..." width="200" height="200">
+                        <div class="d-flex justify-content-center">
+                        <img src="../image/61205.png" alt="..." width="200" height="200">
                     </div>
                         <div class="card-body">
-                            <h5 class="card-title">Nombre Receta</h5>
-                            <p class="card-text">Descripción</p>
+                            <h5 class="card-title">NOMBRE RECETA</h5>
+                            <p class="card-text">DESCRIPCION</p>
                         </div>
                         <div class="card-body">
                             <a href="visitPerfil" class="card-link">Visitar Perfil</a>
