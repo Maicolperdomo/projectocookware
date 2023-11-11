@@ -36,6 +36,37 @@
         <div class="form-container">
             <label for="uname">Buscar</label>
             <input type="text" name="uname" required>
+            <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Visitar perfil</h1>
+
+            <form action="{{ route('perfil.update') }}" method="POST" onsubmit="return validar()">
+                @csrf
+
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" id="boton-visitar-perfil">Visitar perfil</button>
+                </div>
+            </form>
+            </div>
+    </div>
+</body>
+
+</html>
+>>>>>>> 3ffb2fd4b8296bc22c0cbe66497ac2b5a6e5fe07
 
 
                 <div class="row d-flex justify-content-around mt-4" style="background-color: #dc3545"> 
