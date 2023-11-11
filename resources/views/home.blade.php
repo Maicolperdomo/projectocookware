@@ -78,7 +78,7 @@
                             <p class="card-text">Descrpción</p>
                         </div>
                         <div class="card-body">
-                            <a href="visitarPerfil" class="card-link">Visitar Perfil</a>
+                            <a href="visitPerfil" class="card-link">Visitar Perfil</a>
                             <a href="visitarReceta" class="card-link">Visitar Receta</a>
                         </div>
                     </div>
