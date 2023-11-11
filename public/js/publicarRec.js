@@ -17,6 +17,11 @@ function mostrar() {
                 <ul><li>${element.ingredientes}</li></ul>
             </div>
             <div>
+            <div>
+                <h3>Ingredientes</h3>
+                <ul><li>${element.cantidad}</li></ul>
+            </div>
+            <div>
                 <h3>Unidad</h3>
                 <p>${element.unidad}</p>
             </div>
@@ -87,4 +92,26 @@ function mostrar() {
 }
 
 mostrar();
+
+function guardar(){
+    axios.post("/visper",{
+        nombre : nomb.value,
+        descripcion : descrip.value,
+        ingredientes : ingred.value,
+        cantidad : cant.value,
+        unidad_id : txtUnidad.value,
+        pasos : pasosa.value,
+        foto : subirf.value,
+        nivel_id : txtNivel.value,
+        tiempo_estimado : tiempoe.value,
+    })
+    .then(res => {
+        mostrar()
+        alert ("Receta publicada CORRECTAMENTE")
+        console.log(res)
+    })
+    .catch(err => {
+        console.error(err); 
+    })
+}
 

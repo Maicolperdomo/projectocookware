@@ -13,6 +13,7 @@ class Recetas extends Model
         'nombre',
         'descripcion',
         'ingredientes',
+        'cantidad',
         'unidad_id',
         'pasos',
         'foto',

@@ -13,7 +13,7 @@
         .ventana {
             background: #FD8C7E;
             width: 50%;
-            height: 80%;
+            height: 85%;
             min-height: 250px;
             border-radius: 22px;
             position: absolute;
@@ -85,9 +85,9 @@
             </div>
         </div>
         <div class="ventana overflow-auto" id="vent">
-            <div class="my-4">
+            <div class="mt-3">
                 <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
-                <div class="d-flex justify-content-center my-2">
+                <div class="d-flex justify-content-center">
                     <form>
                         @csrf
                         <div>
@@ -100,24 +100,34 @@
                             <input type="text" name="descripcion" class="form-control"
                                 placeholder="Describe tu receta brevemente" id="descrip">
                         </div>
-                        <div class="row d-flex align-items-center">
-                            <div class="col-6">
+                        <div class="col d-flex justify-content-evenly align-items-center">
+                            <div class="me-2">
                                 <label class="form-label">Ingredientes</label>
-                                <div class="input-group mb-3">
+                                <div>
                                     <input type="text" name="ingredientes" class="form-control"
                                         aria-label="Text input with dropdown button" placeholder="Ingrediente"
                                         id="ingred">
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <label for="txtUnidad">Unidad:</label>
+                            <div class="me-2">
+                                <label class="form-label">Cantidad</label>
                                 <div>
-                                    <select id="txtUnidad" class="form-control w-auto">
+                                    <input type="number" name="cantidad" class="form-control"
+                                        aria-label="Text input with dropdown button" placeholder="cantidad"
+                                        id="cant">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="form-label" for="txtUnidad">Unidad:</label>
+                                <div>
+                                    <select id="txtUnidad" class="form-control">
                                         <option selected disabled>Seleccionar</option>
                                     </select>
                                 </div>
                             </div>
-                            <a class="d-flex justify-content-end" href="">Agregar Ingrediente</a>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="">Agregar Ingrediente</a>
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
@@ -139,7 +149,7 @@
                             <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe"
                                 placeholder="Cuánto dura tu preparación?">
                         </div>
-                        <div class="col-12 d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center my-3">
                             <div>
                                 <a type="submit" class="btn btn-success" onclick="guardar()">Publicar Receta</a>
                             </div>

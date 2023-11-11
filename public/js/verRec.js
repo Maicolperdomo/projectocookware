@@ -17,6 +17,10 @@ function mostrar() {
                 <ul><li>${element.ingredientes}</li></ul>
             </div>
             <div>
+                <h3>Ingredientes</h3>
+                <ul><li>${element.cantidad}</li></ul>
+            </div>
+            <div>
                 <h3>Unidad</h3>
                 <p>${element.unidad}</p>
             </div>
@@ -87,3 +91,24 @@ function mostrar() {
 }
 
 mostrar();
+
+function guardar(){
+    axios.post("/recetas",{
+        nombre : nomb.value,
+        descripcion : descrip.value,
+        ingresiente : ingred.value,
+        cantidad : cant.value,
+        unidad : txtUnidad.value,
+        pasos : pasosa.value,
+        foto : subirf.value,
+        nivel : txtNivel.value,
+    })
+    .then(res => {
+        mostrar()
+        alert ("Receta publicada CORRECTAMENTE")
+        console.log(res)
+    })
+    .catch(err => {
+        console.error(err); 
+    })
+}
