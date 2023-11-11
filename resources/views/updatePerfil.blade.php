@@ -18,20 +18,19 @@
                             <form>
                                 <div class="mb-3">
                                   <label for="txtNombre" class="form-label">Nombre</label>
-                                  <input type="email" class="form-control" value="{{$user->name}}" id="txtNombre" aria-describedby="emailHelp">
-                                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                  <input type="text" class="form-control" value="{{ $name }}" id="txtNombre" >
                                 </div>
                                 <div class="mb-3">
                                   <label for="txtApellido" class="form-label">Apellido</label>
-                                  <input type="password" class="form-control"  value="{{$user->lastname}}" id="txtApellido">
+                                  <input type="password" class="form-control"  value="{{ $lastname }}" id="txtApellido">
                                 </div>
                                 <div class="mb-3">
                                     <label for="txtNickname" class="form-label">Nickname</label>
-                                    <input type="password" class="form-control"value="{{$user->nickname}}" id="txtNickname">
+                                    <input type="password" class="form-control"value="{{ $nickname }}" id="txtNickname">
                                   </div>
                                   <div class="mb-3">
                                     <label for="txtCorreo" class="form-label">Correo</label>
-                                    <input type="password" class="form-control"  value="{{$user->email}}" id="txtCorreo">
+                                    <input type="password" class="form-control"  value="{{ $email }}" id="txtCorreo">
                                   </div>
 
                                 <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
