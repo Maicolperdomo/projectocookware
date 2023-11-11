@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class RecetasController extends Controller
 {
@@ -12,7 +14,14 @@ class RecetasController extends Controller
      */
     public function index()
     {
-        return Recetas::all();
+        $recetas = DB::table('recetas')
+        ->join('unidads', 'recetas.unidad_id', '=', 'unidads.id')
+        ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+        ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel')
+        ->get(); 
+        
+        return response()->json($recetas);
+
     }
 
     /**

@@ -89,24 +89,24 @@
             <div class="my-4">
                 <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
                 <div class="d-flex justify-content-center my-2">
-                    <form action="/home" method="POST">
+                    <form>
                         @csrf
                         <div>
                             <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
-                            <input type="text" name="nombre" class="form-control" id="formGroupExampleInput"
+                            <input type="text" name="nombre" class="form-control" id="nomb"
                                 placeholder="Cómo se llama tu receta?">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Descripción</label>
                             <input type="text" name="descripcion" class="form-control"
-                                placeholder="Describe tu receta brevemente">
+                                placeholder="Describe tu receta brevemente" id="descrip">
                         </div>
                         <div class="row d-flex align-items-center">
                             <div class="col-6">
                                 <label class="form-label">Ingredientes</label>
                                 <div class="input-group mb-3">
                                     <input type="text" name="ingredientes" class="form-control"
-                                        aria-label="Text input with dropdown button" placeholder="Ingrediente">
+                                        aria-label="Text input with dropdown button" placeholder="Ingrediente" id="ingred">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -121,12 +121,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
-                            <input type="text" name="pasos" class="form-control" id="formGroupExampleInput2"
+                            <input type="text" name="pasos" class="form-control" id="pasosa"
                                 placeholder="Se coherente en tu paso a paso">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
-                            <input type="file" name="foto" class="form-control" id="formGroupExampleInput">
+                            <input type="file" name="foto" class="form-control" id="subirf">
                         </div>
                         <div class="mb-3">
                             <label for="txtNivel">Nivel:</label>
@@ -136,12 +136,12 @@
                         </div>
                         <div>
                             <label for="formGroupExampleInput" class="form-label">Tiempo estimado</label>
-                            <input type="text" name="tiempo_estimado" class="form-control" id="formGroupExampleInput"
+                            <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe"
                                 placeholder="Cuánto dura tu preparación?">
                         </div>
                         <div class="col-12 d-flex justify-content-center">
                             <div>
-                                <input type="submit" class="btn btn-success" value="Publicar Recetas">
+                                <a type="submit" class="btn btn-success" onclick="guardar()">Pusblicar Receta</a>
                             </div>
                         </div>
                     </form>

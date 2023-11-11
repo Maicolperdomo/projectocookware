@@ -9,10 +9,10 @@ function mostrar() {
             <td>${element.nombre}</td>
             <td>${element.descripcion}</td>
             <td>${element.ingredientes}</td>
-            <td>${element.unidad_id}</td>
+            <td>${element.unidad}</td>
             <td>${element.pasos}</td>
             <td>${element.foto}</td>
-            <td>${element.nivel_id}</td>
+            <td>${element.nivel}</td>
             <td>${element.tiempo_estimado}</td>
             <td>${element.created_at}</td>
         </tr>`
@@ -63,3 +63,23 @@ function mostrar() {
 }
 
 mostrar();
+
+function guardar(){
+    axios.post("/receta",{
+        nombre: nomb.value,
+        descripcion: descrip.value,
+        ingredientes: ingred.value,
+        unidad_id: txtUnidad.value,
+        pasos: pasosa.value,
+        foto: subirf.value,
+        nivel_id: txtNivel.value,
+    })
+    .then(res => {
+        console.log(res),
+        mostrar();
+        alert ("Receta publicada CORRECTAMENTE")        
+    })
+    .catch(err => {
+        console.error(err); 
+    })
+}
