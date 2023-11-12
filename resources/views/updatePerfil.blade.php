@@ -39,6 +39,51 @@
             </div>
         </div>
    </div>
+  
+   <div class="row col-6  justify-content-center">
+        @csrf
+        <div class="card text-dark">
+            <div class="card-body col-8">
+                @if ($errors->Any() && session('pass'))
+                    <div class="alert alert-danger m-3">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (session('status-password'))
+                    <div class="alert alert-success m-3">
+                        {{ session('status-password') }}
+                    </div>
+                @endif
+
+                <div class="form-group">
+                    <label>Contraseña actual</label>
+                    <input type="password" class="form-control" name="password_vieja">
+                </div>
+                <div class="form-group">
+                    <label>Nueva contraseña</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label>Confirmar contraseña</label>
+                    <input type="password" class="form-control" name="password_confirmation">
+                </div>
+
+            </div>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</div>
+
 
 </body>
 
