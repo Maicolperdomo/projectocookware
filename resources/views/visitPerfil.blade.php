@@ -27,29 +27,29 @@
 @auth
 
     <body class="container-fluid">
-        <div class="row">
-            <div class="col-3" style="height: 606px;">
-                <img src="../image/logo.png" alt="Logo" width="300" height="100">
-                <div class="d-flex justify-content-center">
-                    <img src="../image/61205.png" alt="..." style="width: 200px">
+        <div class="col-12 bg-white">
+            <div class="col-12 d-flex align-items-center">
+                <div class="col-4">
+                    <img src="../image/logo.png" alt="Logo" width="300" height="100">
                 </div>
-                <div class="my-3">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="card-title">@ {{ auth()->user()->nickname }}</h5>
+                <div class="col-8 d-flex justify-content-around">
+                    <div>
+                        <form class="d-flex justify-content-center" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                style="width: 55%;">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </div>
-                    <ul class="text-left">
-                        <li class="list-group-item">Cantidad de Recetas: </li>
-                        <li class="list-group-item">Seguidores: </li>
-                        <li class="list-group-item">Calificacion: </li>
-                    </ul>
-                    <div class="d-flex justify-content-around">
-                        <a class="btn btn-primary" onclick="abrir()">Publicar Receta</a>
+                    <div>
+                        <select id="txtNivel" class="form-control w-auto">
+                            <option selected disabled>Filtrar</option>
+                        </select>
                     </div>
-                    <div class="d-flex align-items-end justify-content-center" style="height: 140px">
-                        <div class="btn-group dropup" role="group">
+                    <div>
+                        <div class="btn-group dropdown" role="group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Configuracion
+                                <i class="fa-regular fa-user-gear"></i>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
@@ -59,111 +59,129 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-9 right my-3" style="background-color: white">
-                <div>
-                    <form class="d-flex justify-content-end" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            style="width: 25%;">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-                <div class="row d-flex justify-content-around mt-4" style="background-color: #c0dd8d">
-                    <div class="card" style="width: 18rem;">
+            <div class="row">
+                <div class="col-3">
+                    <div class="my-3">
                         <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
-                                width="200" height="200"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre Receta</h5>
-                            <p class="card-text">Descrpción</p>
+                            width="200" height="200"></div>
+                        <div class="d-flex justify-content-center">
+                            <h5 class="card-title">@ {{ auth()->user()->nickname }}</h5>
                         </div>
-                        <div class="card-body d-flex justify-content-center">
-                            <!--<a href="visitarPerfil" class="card-link">Visitar Perfil</a>!-->
-                            <a href="visrec" class="card-link">Visitar Receta</a>
+                        <ul class="text-left">
+                            <li class="list-group-item">Cantidad de Recetas: </li>
+                            <li class="list-group-item">Seguidores: </li>
+                            <li class="list-group-item">Calificacion: </li>
+                        </ul>
+                        <div class="d-flex justify-content-around">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Publicar Receta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9 right my-3" style="background-color: #c0dd8d">
+                    <div>
+                        <div class="row d-flex justify-content-around mt-4">
+                            <div class="card" style="width: 18rem;">
+                                <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
+                                        width="200" height="200"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre Receta</h5>
+                                    <p class="card-text">Descrpción</p>
+                                </div>
+                                <div class="card-body d-flex justify-content-center">
+                                    <!--<a href="visitarPerfil" class="card-link">Visitar Perfil</a>!-->
+                                    <a href="visrec" class="card-link">Visitar Receta</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ventana overflow-auto" id="vent">
-            <div class="mt-3">
-                <h1 class="text-center">ESCRIBE AQUÍ TU RECETA</h1>
-                <div class="d-flex justify-content-center">
-                    <form>
-                        @csrf
-                        <div>
-                            <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
-                            <input type="text" name="nombre" class="form-control" id="nomb"
-                                placeholder="Cómo se llama tu receta?">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Descripción</label>
-                            <input type="text" name="descripcion" class="form-control"
-                                placeholder="Describe tu receta brevemente" id="descrip">
-                        </div>
-                        <div class="col d-flex justify-content-evenly align-items-center">
-                            <div class="me-2">
-                                <label class="form-label">Ingredientes</label>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">ESCRIBE AQUÍ TU RECETA</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            @csrf
+                            <div>
+                                <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
+                                <input type="text" name="nombre" class="form-control" id="nomb"
+                                    placeholder="Cómo se llama tu receta?">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Descripción</label>
+                                <input type="text" name="descripcion" class="form-control"
+                                    placeholder="Describe tu receta brevemente" id="descrip">
+                            </div>
+                            <div class="col d-flex justify-content-evenly align-items-center">
+                                <div class="me-2">
+                                    <label class="form-label">Ingredientes</label>
+                                    <div>
+                                        <input type="text" name="ingredientes" class="form-control"
+                                            aria-label="Text input with dropdown button" placeholder="Ingrediente"
+                                            id="ingred">
+                                    </div>
+                                </div>
+                                <div class="me-2">
+                                    <label class="form-label">Cantidad</label>
+                                    <div>
+                                        <input type="number" name="cantidad" class="form-control"
+                                            aria-label="Text input with dropdown button" placeholder="cantidad"
+                                            id="cant">
+                                    </div>
+                                </div>
                                 <div>
-                                    <input type="text" name="ingredientes" class="form-control"
-                                        aria-label="Text input with dropdown button" placeholder="Ingrediente"
-                                        id="ingred">
+                                    <label class="form-label" for="txtUnidad">Unidad:</label>
+                                    <div>
+                                        <select id="txtUnidad" class="form-control">
+                                            <option selected disabled>Seleccionar</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="me-2">
-                                <label class="form-label">Cantidad</label>
-                                <div>
-                                    <input type="number" name="cantidad" class="form-control"
-                                        aria-label="Text input with dropdown button" placeholder="cantidad"
-                                        id="cant">
-                                </div>
+                            <div class="d-flex justify-content-end">
+                                <a href="">Agregar Ingrediente</a>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
+                                <input type="text" name="pasos" class="form-control" id="pasosa"
+                                    placeholder="Se coherente en tu paso a paso">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
+                                <input type="file" name="file" class="form-control" id="subirf">
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtNivel">Nivel:</label>
+                                <select id="txtNivel" class="form-control w-auto">
+                                    <option selected disabled>Seleccionar</option>
+                                </select>
                             </div>
                             <div>
-                                <label class="form-label" for="txtUnidad">Unidad:</label>
-                                <div>
-                                    <select id="txtUnidad" class="form-control">
-                                        <option selected disabled>Seleccionar</option>
-                                    </select>
-                                </div>
+                                <label for="formGroupExampleInput" class="form-label">Tiempo estimado</label>
+                                <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe"
+                                    placeholder="Cuánto dura tu preparación?">
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <a href="">Agregar Ingrediente</a>
-                        </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
-                            <input type="text" name="pasos" class="form-control" id="pasosa"
-                                placeholder="Se coherente en tu paso a paso">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
-                            <input type="file" name="file" class="form-control" id="subirf">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtNivel">Nivel:</label>
-                            <select id="txtNivel" class="form-control w-auto">
-                                <option selected disabled>Seleccionar</option>
-                            </select>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
                         <div>
-                            <label for="formGroupExampleInput" class="form-label">Tiempo estimado</label>
-                            <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe"
-                                placeholder="Cuánto dura tu preparación?">
+                            <a type="submit" class="btn btn-success" onclick="guardar()">Publicar Receta</a>
                         </div>
-                        <div class="col-12 d-flex justify-content-center my-3">
-                            <div>
-                                <a type="submit" class="btn btn-success" onclick="guardar()">Publicar Receta</a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <script>
-            function abrir() {
-                document.getElementById("vent").style.display = "block";
-            }
-        </script>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
