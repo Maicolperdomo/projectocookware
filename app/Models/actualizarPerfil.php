@@ -11,9 +11,7 @@ class actualizarPerfil extends Model
 
 
     public $fillable = [
-    'password_actual',
-    'password',
-    'confirm_password',
+
     'name',
     'lastname',
     'nickname',
