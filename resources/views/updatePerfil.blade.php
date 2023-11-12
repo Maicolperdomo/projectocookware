@@ -33,7 +33,7 @@
                                     <input type="text" class="form-control"  value=" {{ auth()->user()->email }}" id="txtCorreo">
                                   </div>
 
-                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                                  <a class="btn btn-success" href="/home">Actualizar Perfil</a>
                               </form>
                         </div>
             </div>
