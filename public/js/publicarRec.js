@@ -77,7 +77,7 @@ function mostrar() {
             const select = document.getElementById('txtNivel');
             const niveles = res.data;
 
-            select.innerHTML = `<option selected disabled>Filtrar</option>`;
+            select.innerHTML = `<option selected disabled>Seleccionar</option>`;
 
             niveles.forEach(niv => {
                 const option = document.createElement('option');

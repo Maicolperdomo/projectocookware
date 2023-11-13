@@ -40,10 +40,10 @@
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <div>
+                    <!-- <div>
                         <select id="txtNivel" class="form-control w-auto">
                             <option selected disabled>Filtrar</option>
-                        </select>
+                        </select> -->
                     </div>
                     <div>
                         <div class="btn-group dropdown" role="group">
