@@ -39,3 +39,10 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'edit']);
+
+Route::get('forgot-password',[LoginController::class, 'forgot']);
+
+Route::post('forgot-password',[LoginController::class, 'forgot_password']);
+
+Route::get('reset/{token}',[LoginController::class, 'reset']);
+Route::post('reset/{token}',[LoginController::class, 'post_reset']);
