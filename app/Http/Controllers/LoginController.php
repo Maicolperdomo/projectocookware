@@ -55,7 +55,7 @@ class LoginController extends Controller
     {
         return view('auth.forgot');
     }
-    public function reset($token)
+   public function reset($token)
     {
         $user = User::where('email', '=', $token)->first();
         if(!empty($user))
@@ -71,7 +71,7 @@ class LoginController extends Controller
         $user = User::where('email', '=', $token)->first();
         if(!empty($user))
         {
-            if($request->password == $request->password)
+            if($request->password == $request->password)//para verificar q la contraseña sea igual
             {
                 $user->password = Hash::make($request->password);
                 if(empty($user->email_verified_at))

@@ -46,7 +46,7 @@
                             <a class="btn btn-danger" href="/register">Registrarse</a>
                         </div>
                         <div class="row mt-3 text-center">
-                            <a href="cambio"> ¿OLVIDO SU CONTRASEÑA? </a>
+                            <a href="forgotpassword"> ¿OLVIDO SU CONTRASEÑA? </a>
                         </div>
                     </form>
                 </div>

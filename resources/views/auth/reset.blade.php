@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>cambiar contraseña</title>
 </head>
-<body>
-    
+<body style="background-color: #c0dd8d;">
+    <div class="container">
+        <section class="section register d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class=" col-lg-4 col-md-6 d-flex flex-column align-items-center w-auto">
+                        <img src="../image/logoG.png" alt="">
+                     
+                    </div><!--img-->
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">CAMBIAR CONTRASEÑA</h5>
+            
+                            </div>
+                          <!--  @include('layouts.messages')-->
+                            <form class="row g-3" action="" method="post">
+                                {{ csrf_field() }}
+                                <div class="col-12">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" name="password" class="form-control" id="txtPassword" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password" class="form-label"> Confirmar contraseña</label>
+                                    <input type="password" name="email" class="form-control" id="txtCpassword" required>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-success " type="submit">enviar</button>
+                                </div>
+                                <div class="col-12">
+                                    <p class="small mb-0">¿NO TIENES UNA CUENTA? <a href="/register"> crear una cuenta</a></p>
+                                   
+                                </div>
+                            </form>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
