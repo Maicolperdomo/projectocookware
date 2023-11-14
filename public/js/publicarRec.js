@@ -52,25 +52,6 @@ function mostrar() {
             console.error(err);
         })
 
-    axios.get("/unidad")
-        .then(res => {
-            console.log(res)
-            const select = document.getElementById('txtUnidad');
-            const unid = res.data;
-
-            select.innerHTML = `<option selected disabled>Seleccionar</option>`;
-
-            unid.forEach(uni => {
-                const option = document.createElement('option');
-                option.value = uni.id;
-                option.text = uni.nombre;
-                select.appendChild(option);
-            })
-        })
-        .catch(err => {
-            console.error(err);
-        })
-
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -93,25 +74,115 @@ function mostrar() {
 
 mostrar();
 
-function guardar(){
-    axios.post("/visper",{
-        nombre : nomb.value,
-        descripcion : descrip.value,
-        ingredientes : ingred.value,
-        cantidad : cant.value,
-        unidad_id : txtUnidad.value,
-        pasos : pasosa.value,
-        foto : subirf.value,
-        nivel_id : txtNivel.value,
-        tiempo_estimado : tiempoe.value,
+function guardar() {
+    // Obtén la referencia a los campos originales
+    const nombre = document.getElementById('nomb').value;
+    const descripcion = document.getElementById('descrip').value;
+    const pasos = document.getElementById('pasosa').value;
+    const subirf = document.getElementById('subirf').value;
+    const tiempoe = document.getElementById('tiempoe').value;
+
+    // Crea un array para almacenar los datos de los nuevos ingredientes
+    const nuevosIngredientes = [];
+
+    // Itera sobre los nuevos conjuntos de campos generados dinámicamente
+    const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
+    ingredientesContainers.forEach(container => {
+        const ingrediente = {
+            nombre: container.querySelector('[name="ingredientes"]').value,
+            cantidad: container.querySelector('[name="cantidad"]').value,
+            unidad_id: container.querySelector('[id^="txtUnidad_"]').value,
+        };
+        nuevosIngredientes.push(ingrediente);
+    });
+
+    // Realiza la solicitud POST con todos los datos
+    axios.post("/visper", {
+        nombre: nombre,
+        descripcion: descripcion,
+        pasos: pasos,
+        foto: subirf,
+        nivel_id: txtNivel.value,
+        tiempo_estimado: tiempoe,
+        ingredientes: JSON.stringify(nuevosIngredientes), // Convierte el array a una cadena JSON
     })
-    .then(res => {
-        mostrar()
-        alert ("Receta publicada CORRECTAMENTE")
-        console.log(res)
-    })
-    .catch(err => {
-        console.error(err); 
-    })
+        .then(res => {
+            mostrar();
+            alert("Receta publicada CORRECTAMENTE");
+            console.log(res);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
+
+function actualizarUnidades(selectId) {
+    axios.get("/unidad")
+        .then(res => {
+            console.log(res);
+            const select = document.getElementById(selectId);
+            const unid = res.data;
+
+            select.innerHTML = `<option selected disabled>Seleccionar</option>`;
+
+            unid.forEach(uni => {
+                const option = document.createElement('option');
+                option.value = uni.id;
+                option.text = uni.nombre;
+                select.appendChild(option);
+            });
+        })
+        .catch(err => {
+            console.error("Error al actualizar unidades:", err);
+            // Aquí podrías manejar el error de una manera más amigable para el usuario
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    actualizarUnidades('txtUnidad');
+});
+
+function agregarIngrediente() {
+    // Crea un nuevo conjunto de campos
+    var nuevoIngrediente = document.createElement('div');
+    var nuevoIdSelect = 'txtUnidad_' + Date.now();  // Genera un ID único
+    nuevoIngrediente.innerHTML = `
+        <div class="col-12 d-flex justify-content-evenly">
+            <div class="me-2">
+                <label class="form-label">Ingredientes</label>
+                <div>
+                    <input type="text" name="ingredientes" class="form-control"
+                        aria-label="Text input with dropdown button" placeholder="Ingrediente">
+                </div>
+            </div>
+            <div class="me-2">
+                <label class="form-label">Cantidad</label>
+                <div>
+                    <input type="number" name="cantidad" class="form-control"
+                        aria-label="Text input with dropdown button" placeholder="cantidad">
+                </div>
+            </div>
+            <div>
+                <label class="form-label" for="${nuevoIdSelect}">Unidad:</label>
+                <div>
+                    <select id="${nuevoIdSelect}" class="form-control">
+                        <option selected disabled>Seleccionar</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Agrega el nuevo conjunto de campos al contenedor
+    document.getElementById('ingredientesContainer').appendChild(nuevoIngrediente);
+
+    console.log("Agregando ingrediente...");
+
+    // Llama a la función para actualizar las unidades después de un breve retraso
+    setTimeout(() => {
+        actualizarUnidades(nuevoIdSelect);
+    }, 100);
+}
+
+
 

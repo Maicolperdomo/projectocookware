@@ -27,9 +27,30 @@ class RecetasController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        Recetas::create($request->all());
-    }
+{
+    // Decodifica el campo 'ingredientes' como un array antes de insertarlo en la base de datos
+    $ingredientes = json_decode($request->input('ingredientes'), true);
+
+    // Asegúrate de que tienes los datos necesarios, incluido 'cantidad'
+    // Ajusta esto según tu estructura de datos
+    $datosReceta = [
+        'nombre' => $request->input('nombre'),
+        'descripcion' => $request->input('descripcion'),
+        'pasos' => $request->input('pasos'),
+        'foto' => $request->input('foto'),
+        'nivel_id' => $request->input('nivel_id'),
+        'tiempo_estimado' => $request->input('tiempo_estimado'),
+    ];
+
+    // Inserta la receta en la tabla 'recetas'
+    $receta = Recetas::create($datosReceta);
+
+    // Asocia los ingredientes a la receta recién creada
+    $receta->ingredientes()->createMany($ingredientes);
+
+    // Puedes devolver una respuesta adecuada, por ejemplo, el ID de la receta creada
+    return response()->json(['id' => $receta->id], 201);
+}
 
     /**
      * Update the specified resource in storage.

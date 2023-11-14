@@ -9,25 +9,12 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/publicarRec.js"></script>
-    <style>
-        .ventana {
-            background: #FD8C7E;
-            width: 50%;
-            height: 85%;
-            min-height: 250px;
-            border-radius: 22px;
-            position: absolute;
-            top: 12%;
-            left: 35%;
-            display: none;
-        }
-    </style>
 </head>
 
 @auth
 
     <body class="container-fluid">
-        <div class="col-12 bg-white">
+        <div class="row bg-white">
             <div class="col-12 d-flex align-items-center">
                 <div class="col-4">
                     <img src="../image/logo.png" alt="Logo" width="300" height="100">
@@ -40,16 +27,16 @@
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <!-- <div>
-                        <select id="txtNivel" class="form-control w-auto">
+                    <div>
+                        <select id="Nivel" class="form-control w-auto">
                             <option selected disabled>Filtrar</option>
-                        </select> -->
+                        </select>
                     </div>
                     <div>
                         <div class="btn-group dropdown" role="group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fa-regular fa-user-gear"></i>
+                                {{ auth()->user()->nickname }}
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
@@ -63,7 +50,7 @@
                 <div class="col-3">
                     <div class="my-3">
                         <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
-                            width="200" height="200"></div>
+                                width="200" height="200"></div>
                         <div class="d-flex justify-content-center">
                             <h5 class="card-title">@ {{ auth()->user()->nickname }}</h5>
                         </div>
@@ -111,7 +98,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="miFormulario" enctype="multipart/form-data">
                             @csrf
                             <div>
                                 <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
@@ -123,34 +110,34 @@
                                 <input type="text" name="descripcion" class="form-control"
                                     placeholder="Describe tu receta brevemente" id="descrip">
                             </div>
-                            <div class="col d-flex justify-content-evenly align-items-center">
-                                <div class="me-2">
-                                    <label class="form-label">Ingredientes</label>
-                                    <div>
-                                        <input type="text" name="ingredientes" class="form-control"
-                                            aria-label="Text input with dropdown button" placeholder="Ingrediente"
-                                            id="ingred">
+                            <div id="ingredientesContainer">
+                                <!--<div class="me-2">
+                                        <label class="form-label">Ingredientes</label>
+                                        <div>
+                                            <input type="text" name="ingredientes" class="form-control"
+                                                aria-label="Text input with dropdown button" placeholder="Ingrediente"
+                                                id="ingred">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="me-2">
-                                    <label class="form-label">Cantidad</label>
-                                    <div>
-                                        <input type="number" name="cantidad" class="form-control"
-                                            aria-label="Text input with dropdown button" placeholder="cantidad"
-                                            id="cant">
+                                    <div class="me-2">
+                                        <label class="form-label">Cantidad</label>
+                                        <div>
+                                            <input type="number" name="cantidad" class="form-control"
+                                                aria-label="Text input with dropdown button" placeholder="cantidad"
+                                                id="cant">
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <label class="form-label" for="txtUnidad">Unidad:</label>
                                     <div>
-                                        <select id="txtUnidad" class="form-control">
-                                            <option selected disabled>Seleccionar</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                        <label class="form-label" for="txtUnidad">Unidad:</label>
+                                        <div>
+                                            <select id="txtUnidad" class="form-control">
+                                                <option selected disabled>Seleccionar</option>
+                                            </select>
+                                        </div>
+                                    </div>-->
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="">Agregar Ingrediente</a>
+                                <a href="javascript:void(0);" onclick="agregarIngrediente()">Agregar Ingrediente</a>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
