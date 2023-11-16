@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use App\Models\Ingredientes;
 use Illuminate\Support\Facades\DB;
 
 class RecetasController extends Controller
@@ -16,9 +17,9 @@ class RecetasController extends Controller
         $recetas = DB::table('recetas')
         ->join('unidads', 'recetas.unidad_id', '=', 'unidads.id')
         ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
-        ->join('cantidad', 'recetas.cantidad_id', '=', 'cantidad.id')
+        ->join('cantidads', 'recetas.cantidad_id', '=', 'cantidads.id')
 
-        ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel', 'cantidad.numero as numero')
+        ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel', 'cantidads.numero as numero')
         ->get(); 
         
         return response()->json($recetas);
@@ -30,11 +31,7 @@ class RecetasController extends Controller
      */
     public function store(Request $request)
 {
-    // Decodifica el campo 'ingredientes' como un array antes de insertarlo en la base de datos
-    $ingredientes = json_decode($request->input('ingredientes'), true);
-
-    // Asegúrate de que tienes los datos necesarios, incluido 'cantidad'
-    // Ajusta esto según tu estructura de datos
+    // Asegúrate de tener todos los datos necesarios, ajusta según tu estructura de datos
     $datosReceta = [
         'nombre' => $request->input('nombre'),
         'descripcion' => $request->input('descripcion'),
@@ -47,12 +44,22 @@ class RecetasController extends Controller
     // Inserta la receta en la tabla 'recetas'
     $receta = Recetas::create($datosReceta);
 
+    // Decodifica el campo 'ingredientes' como un array antes de insertarlo en la base de datos
+    $ingredientes = $request->input('ingredientes');
+
     // Asocia los ingredientes a la receta recién creada
-    $receta->ingredientes()->createMany($ingredientes);
+    foreach ($ingredientes as $ingrediente) {
+        $receta->ingredientes()->create([
+            'nombre' => $ingrediente['nombre'],
+        ]);
+    }
 
     // Puedes devolver una respuesta adecuada, por ejemplo, el ID de la receta creada
     return response()->json(['id' => $receta->id], 201);
 }
+
+
+
 
     /**
      * Update the specified resource in storage.

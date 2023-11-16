@@ -11,5 +11,15 @@ class Cantidad extends Model
 
     protected $fillable = [
         'numero',
+        // ... otros campos ...
     ];
+
+    // Relación inversa, pertenece a un ingrediente
+    public function ingrediente()
+    {
+        return $this->belongsTo(Ingredientes::class);
+    }
 }
+
+
+

@@ -11,5 +11,14 @@ class Unidad extends Model
 
     protected $fillable = [
         'nombre',
+        // ... otros campos ...
     ];
+
+    // Relación inversa, pertenece a un ingrediente
+    public function ingrediente()
+    {
+        return $this->belongsTo(Ingredientes::class);
+    }
 }
+
+

@@ -1,5 +1,5 @@
 function mostrar() {
-    axios.get("/receta")
+    /*axios.get("/receta")
         .then(res => {
             console.log(res)
             rec = "";
@@ -50,7 +50,7 @@ function mostrar() {
         })
         .catch(err => {
             console.error(err);
-        })
+        })*/
 
     axios.get("/nivel")
         .then(res => {
@@ -70,52 +70,10 @@ function mostrar() {
         .catch(err => {
             console.error(err);
         })
-        
+
 }
 
 mostrar();
-
-function guardar() {
-    // Obtén la referencia a los campos originales
-    const nombre = document.getElementById('nomb').value;
-    const descripcion = document.getElementById('descrip').value;
-    const pasos = document.getElementById('pasosa').value;
-    const subirf = document.getElementById('subirf').value;
-    const tiempoe = document.getElementById('tiempoe').value;
-
-    // Crea un array para almacenar los datos de los nuevos ingredientes
-    const nuevosIngredientes = [];
-
-    // Itera sobre los nuevos conjuntos de campos generados dinámicamente
-    const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
-    ingredientesContainers.forEach(container => {
-        const ingrediente = {
-            nombre: container.querySelector('[name="ingredientes"]').value,
-            cantidad: container.querySelector('[id^="txtCantidad_"]').value,
-            unidad_id: container.querySelector('[id^="txtUnidad_"]').value,
-        };
-        nuevosIngredientes.push(ingrediente);
-    });
-
-    // Realiza la solicitud POST con todos los datos
-    axios.post("/visper", {
-        nombre: nombre,
-        descripcion: descripcion,
-        pasos: pasos,
-        foto: subirf,
-        nivel_id: txtNivel.value,
-        tiempo_estimado: tiempoe,
-        ingredientes: JSON.stringify(nuevosIngredientes), // Convierte el array a una cadena JSON
-    })
-        .then(res => {
-            mostrar();
-            alert("Receta publicada CORRECTAMENTE");
-            console.log(res);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-}
 
 function actualizarUnidades(selectId) {
     axios.get("/unidad")
@@ -134,7 +92,7 @@ function actualizarUnidades(selectId) {
             });
         })
         .catch(err => {
-            console.error("Error al actualizar unidades:", err);
+            console.error(err);
             // Aquí podrías manejar el error de una manera más amigable para el usuario
         });
 }
@@ -145,22 +103,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function actualizarCantidad(selectIdC) {
     axios.get("/cantidad")
-    .then(res => {
-        console.log(res)
-        const select = document.getElementById(selectIdC);
-        const cantidades = res.data;
+        .then(res => {
+            console.log(res)
+            const select = document.getElementById(selectIdC);
+            const cantidades = res.data;
 
-        select.innerHTML = `<option selected disabled>Seleccionar</option>`;
+            select.innerHTML = `<option selected disabled>Seleccionar</option>`;
 
-        cantidades.forEach(cant => {
-            const option = document.createElement('option');
-            option.value = cant.id;
-            option.text = cant.numero;
-            select.appendChild(option);
+            cantidades.forEach(cant => {
+                const option = document.createElement('option');
+                option.value = cant.id;
+                option.text = cant.numero;
+                select.appendChild(option);
+            })
         })
-    })
         .catch(err => {
-            console.error("Error al actualizar cantidades:", err);
+            console.error(err);
             // Aquí podrías manejar el error de una manera más amigable para el usuario
         });
 }
@@ -186,9 +144,9 @@ function agregarIngrediente() {
             <div class="me-2">
                 <label class="form-label" for="${nuevoIdCantidad}">Cantidad:</label>
                 <div>
-                <select id="${nuevoIdCantidad}" class="form-control">
-                <option selected disabled>Seleccionar</option>
-            </select>
+                    <select id="${nuevoIdCantidad}" class="form-control">
+                        <option selected disabled>Seleccionar</option>
+                    </select>
                 </div>
             </div>
             <div>
@@ -206,12 +164,53 @@ function agregarIngrediente() {
     document.getElementById('ingredientesContainer').appendChild(nuevoIngrediente);
     console.log("Agregando ingrediente...");
 
-    // Llama a la función para actualizar las unidades después de un breve retraso
-    setTimeout(() => {
-        actualizarCantidad(nuevoIdCantidad);
-        actualizarUnidades(nuevoIdSelect);
-    }, 100);
+    // Llama a las funciones de actualización de unidades y cantidades
+    actualizarCantidad(nuevoIdCantidad);
+    actualizarUnidades(nuevoIdSelect);
 }
+
+function guardar() {
+    // Obtén la referencia a los campos originales
+    const nombre = document.getElementById('nomb').value;
+    const descripcion = document.getElementById('descrip').value;
+    const pasos = document.getElementById('pasosa').value;
+    const subirf = document.getElementById('subirf').value;
+    const tiempoe = document.getElementById('tiempoe').value;
+
+    // Crea un array para almacenar los datos de los nuevos ingredientes
+    const nuevosIngredientes = [];
+
+    // Itera sobre los nuevos conjuntos de campos generados dinámicamente
+    const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
+    ingredientesContainers.forEach(container => {
+        const ingrediente = {
+            nombre: container.querySelector('[name="ingredientes"]').value,
+        };
+        nuevosIngredientes.push(ingrediente);
+    });
+
+    // Realiza la solicitud POST con todos los datos
+    axios.post("/visper", {
+        nombre: nombre,
+        descripcion: descripcion,
+        pasos: pasos,
+        foto: subirf,
+        nivel_id: txtNivel.value,
+        tiempo_estimado: tiempoe,
+        ingredientes: nuevosIngredientes, // No es necesario convertir a cadena JSON
+    })
+    .then(res => {
+        mostrar();
+        alert("Receta publicada CORRECTAMENTE");
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
+
+
 
 
 

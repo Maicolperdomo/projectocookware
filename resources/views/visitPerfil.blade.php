@@ -8,7 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
     <script src="js/publicarRec.js"></script>
+
 </head>
 
 @auth
@@ -111,33 +115,10 @@
                                     placeholder="Describe tu receta brevemente" id="descrip">
                             </div>
                             <div id="ingredientesContainer">
-                                <!--<div class="me-2">
-                                        <label class="form-label">Ingredientes</label>
-                                        <div>
-                                            <input type="text" name="ingredientes" class="form-control"
-                                                aria-label="Text input with dropdown button" placeholder="Ingrediente"
-                                                id="ingred">
-                                        </div>
-                                    </div>
-                                    <div class="me-2">
-                                        <label class="form-label">Cantidad</label>
-                                        <div>
-                                            <input type="number" name="cantidad" class="form-control"
-                                                aria-label="Text input with dropdown button" placeholder="cantidad"
-                                                id="cant">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="form-label" for="txtUnidad">Unidad:</label>
-                                        <div>
-                                            <select id="txtUnidad" class="form-control">
-                                                <option selected disabled>Seleccionar</option>
-                                            </select>
-                                        </div>
-                                    </div>-->
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="javascript:void(0);" onclick="agregarIngrediente()">Agregar Ingrediente</a>
+                                <button type="button" class="btn btn-link" onclick="agregarIngrediente()">Agregar
+                                    Ingrediente</button>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
@@ -163,15 +144,22 @@
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <a type="submit" class="btn btn-success" onclick="guardar()">Publicar Receta</a>
+                            <!-- Cambia el tipo de botón a "button" para evitar enviar el formulario directamente -->
+                            <button type="button" class="btn btn-success" id="btnPublicarReceta">Publicar
+                                Receta</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        <script>
+            // Agrega un evento de clic al botón con el ID 'btnPublicarReceta'
+            document.getElementById('btnPublicarReceta').addEventListener('click', function() {
+                // Llama a la función guardar
+                guardar();
+            });
         </script>
+
     </body>
 
 @endauth
