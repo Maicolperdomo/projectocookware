@@ -171,20 +171,42 @@ function agregarIngrediente() {
 
 function guardar() {
     // Obtén la referencia a los campos originales
-    const nombre = document.getElementById('nomb').value;
-    const descripcion = document.getElementById('descrip').value;
-    const pasos = document.getElementById('pasosa').value;
-    const subirf = document.getElementById('subirf').value;
-    const tiempoe = document.getElementById('tiempoe').value;
+    const nombreElement = document.getElementById('nomb');
+    const descripcionElement = document.getElementById('descrip');
+    const pasosElement = document.getElementById('pasosa');
+    const subirfElement = document.getElementById('subirf');
+    const tiempoeElement = document.getElementById('tiempoe');
+
+    // Verifica que los elementos existan antes de intentar acceder a sus propiedades
+    if (!nombreElement || !descripcionElement || !pasosElement || !subirfElement || !tiempoeElement) {
+        console.error("Error al obtener valores de los campos originales. Alguno de los elementos no existe.");
+        return;
+    }
+
+    const nombre = nombreElement.value;
+    const descripcion = descripcionElement.value;
+    const pasos = pasosElement.value;
+    const subirf = subirfElement.value;
+    const tiempoe = tiempoeElement.value;
 
     // Crea un array para almacenar los datos de los nuevos ingredientes
     const nuevosIngredientes = [];
 
     // Itera sobre los nuevos conjuntos de campos generados dinámicamente
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
-    ingredientesContainers.forEach(container => {
+    ingredientesContainers.forEach((container, index) => {
+        const ingredienteElement = container.querySelector('[name="ingredientes"]');
+        const cantidadElement = container.querySelector(`[id^="txtCantidad_${index}"]`);
+        const unidadElement = container.querySelector(`[id^="txtUnidad_${index}"]`);
+
+        // Verifica que los elementos existan antes de intentar acceder a sus propiedades
+        if (!ingredienteElement || !cantidadElement || !unidadElement) {
+            console.error("Error al obtener valores de los campos de ingredientes dinámicos. Alguno de los elementos no existe.");
+            return;
+        }
+
         const ingrediente = {
-            nombre: container.querySelector('[name="ingredientes"]').value,
+            nombre: ingredienteElement.value,
         };
         nuevosIngredientes.push(ingrediente);
     });
@@ -199,15 +221,19 @@ function guardar() {
         tiempo_estimado: tiempoe,
         ingredientes: nuevosIngredientes, // No es necesario convertir a cadena JSON
     })
-    .then(res => {
-        mostrar();
-        alert("Receta publicada CORRECTAMENTE");
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+        .then(res => {
+            mostrar();
+            alert("Receta publicada CORRECTAMENTE");
+            console.log(res);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
+
+guardar();
+
+
 
 
 

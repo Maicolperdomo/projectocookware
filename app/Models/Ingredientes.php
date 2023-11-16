@@ -11,24 +11,30 @@ class Ingredientes extends Model
 
     protected $fillable = [
         'nombre',
+        'receta_id', // La llave foránea
+        'cantidad_id',
+        'unidad_id',
     ];
 
-    // Relación Many-to-One con Recetas
+    protected $hidden = [
+        'updated_at'
+    ];
+
     public function receta()
     {
         return $this->belongsTo(Recetas::class);
     }
 
-    // Relación One-to-One con Cantidades
     public function cantidad()
     {
-        return $this->hasOne(Cantidad::class);
+        return $this->belongsTo(Cantidad::class);
     }
 
-    // Relación One-to-One con Unidades
     public function unidad()
     {
-        return $this->hasOne(Unidad::class);
+        return $this->belongsTo(Unidad::class);
     }
 }
+
+
 

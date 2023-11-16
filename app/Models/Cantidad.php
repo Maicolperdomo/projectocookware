@@ -11,15 +11,24 @@ class Cantidad extends Model
 
     protected $fillable = [
         'numero',
-        // ... otros campos ...
+        'unidad_id',
     ];
 
-    // Relación inversa, pertenece a un ingrediente
-    public function ingrediente()
+    protected $hidden = [
+        'updated_at'
+    ];
+
+    public function ingredientes()
     {
-        return $this->belongsTo(Ingredientes::class);
+        return $this->hasMany(Ingredientes::class);
+    }
+
+    public function unidad()
+    {
+        return $this->belongsTo(Unidad::class);
     }
 }
+
 
 
 

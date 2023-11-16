@@ -18,23 +18,19 @@ class Recetas extends Model
         'tiempo_estimado',
     ];
 
-    protected $hidden = [
-        'updated_at'
-    ];
-
-    // Relación con la tabla de ingredientes (uno a muchos)
+    // Relación One-to-Many con Ingredientes
     public function ingredientes()
     {
         return $this->hasMany(Ingredientes::class);
     }
 
-    // Relación con la tabla de cantidades (uno a muchos)
+    // Relación One-to-Many con Cantidades
     public function cantidades()
     {
         return $this->hasMany(Cantidad::class);
     }
 
-    // Relación con la tabla de unidades (uno a muchos)
+    // Relación One-to-Many con Unidades
     public function unidades()
     {
         return $this->hasMany(Unidad::class);

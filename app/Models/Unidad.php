@@ -11,14 +11,23 @@ class Unidad extends Model
 
     protected $fillable = [
         'nombre',
-        // ... otros campos ...
     ];
 
-    // Relación inversa, pertenece a un ingrediente
-    public function ingrediente()
+    protected $hidden = [
+        'updated_at'
+    ];
+
+    public function cantidades()
     {
-        return $this->belongsTo(Ingredientes::class);
+        return $this->hasMany(Cantidad::class);
+    }
+
+    public function ingredientes()
+    {
+        return $this->hasMany(Ingredientes::class);
     }
 }
+
+
 
 

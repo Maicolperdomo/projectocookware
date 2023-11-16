@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cantidad;
 use App\Models\Recetas;
+use App\Models\Unidad;
 use Illuminate\Http\Request;
 use App\Models\Ingredientes;
 use Illuminate\Support\Facades\DB;
@@ -30,35 +32,34 @@ class RecetasController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Asegúrate de tener todos los datos necesarios, ajusta según tu estructura de datos
-    $datosReceta = [
-        'nombre' => $request->input('nombre'),
-        'descripcion' => $request->input('descripcion'),
-        'pasos' => $request->input('pasos'),
-        'foto' => $request->input('foto'),
-        'nivel_id' => $request->input('nivel_id'),
-        'tiempo_estimado' => $request->input('tiempo_estimado'),
-    ];
+    {
+        $datosReceta = [
+            'nombre' => $request->input('nombre'),
+            'descripcion' => $request->input('descripcion'),
+            'pasos' => $request->input('pasos'),
+            'foto' => $request->input('foto'),
+            'nivel_id' => $request->input('nivel_id'),
+            'tiempo_estimado' => $request->input('tiempo_estimado'),
+        ];
 
-    // Inserta la receta en la tabla 'recetas'
-    $receta = Recetas::create($datosReceta);
+        $receta = Recetas::create($datosReceta);
 
-    // Decodifica el campo 'ingredientes' como un array antes de insertarlo en la base de datos
-    $ingredientes = $request->input('ingredientes');
+        $ingredientes = $request->input('ingredientes');
 
-    // Asocia los ingredientes a la receta recién creada
-    foreach ($ingredientes as $ingrediente) {
-        $receta->ingredientes()->create([
-            'nombre' => $ingrediente['nombre'],
-        ]);
+        foreach ($ingredientes as $ingrediente) {
+            $nuevoIngrediente = new Ingredientes([
+                'nombre' => $ingrediente['nombre'],
+            ]);
+
+            $nuevoIngrediente->receta()->associate($receta);
+            $nuevoIngrediente->cantidad()->associate(Cantidad::find($ingrediente['cantidad_id']));
+            $nuevoIngrediente->unidad()->associate(Unidad::find($ingrediente['unidad_id']));
+
+            $nuevoIngrediente->save();
+        }
+
+        return response()->json(['id' => $receta->id], 201);
     }
-
-    // Puedes devolver una respuesta adecuada, por ejemplo, el ID de la receta creada
-    return response()->json(['id' => $receta->id], 201);
-}
-
-
 
 
     /**
