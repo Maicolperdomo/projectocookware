@@ -12,22 +12,8 @@ class Unidad extends Model
     protected $fillable = [
         'nombre',
     ];
-
-    protected $hidden = [
-        'updated_at'
-    ];
-
-    public function cantidades()
-    {
-        return $this->hasMany(Cantidad::class);
-    }
-
-    public function ingredientes()
-    {
-        return $this->hasMany(Ingredientes::class);
-    }
+    
 }
-
 
 
 

@@ -1,57 +1,4 @@
 function mostrar() {
-    /*axios.get("/receta")
-        .then(res => {
-            console.log(res)
-            rec = "";
-            res.data.forEach((element, index) => {
-                rec += `
-        <div>
-                <h3>${element.nombre}</h3>
-            </div>
-            <div>
-                <h3>Descripcion</h3>
-                <p>${element.descripcion}</p>
-            </div>
-            <div>
-                <h3>Ingredientes</h3>
-                <ul><li>${element.ingredientes}</li></ul>
-            </div>
-            <div>
-            <div>
-                <h3>Ingredientes</h3>
-                <ul><li>${element.cantidad}</li></ul>
-            </div>
-            <div>
-                <h3>Unidad</h3>
-                <p>${element.unidad}</p>
-            </div>
-            <div>
-                <h3>Pasos</h3>
-                <p>${element.pasos}</p>
-            </div>
-            <div>
-                <h3>Foto</h3>
-                <p>${element.foto}</p>
-            </div>
-            <div>
-                <h3>Nivel</h3>
-                <p>${element.nivel}</p>
-            </div>
-            <div>
-                <h3>Tiempo Estimado</h3>
-                <p>${element.tiempo_estimado}</p>
-            </div>
-            <div>
-                <h3>Fecha de publicacion</h3>
-                <p>${element.created_at}</p>
-            </div>`
-            });
-            document.getElementById("tablaReceta").innerHTML = rec;
-        })
-        .catch(err => {
-            console.error(err);
-        })*/
-
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -137,7 +84,7 @@ function agregarIngrediente() {
             <div class="me-2">
                 <label class="form-label">Ingredientes</label>
                 <div>
-                    <input type="text" name="ingredientes" class="form-control"
+                    <input type="text" id="ingredientes" class="form-control"
                         aria-label="Text input with dropdown button" placeholder="Ingrediente">
                 </div>
             </div>
@@ -195,7 +142,7 @@ function guardar() {
     // Itera sobre los nuevos conjuntos de campos generados dinámicamente
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
     ingredientesContainers.forEach((container, index) => {
-        const ingredienteElement = container.querySelector('[name="ingredientes"]');
+        const ingredienteElement = container.querySelector('[id^="ingredientes"]');
         const cantidadElement = container.querySelector(`[id^="txtCantidad_${index}"]`);
         const unidadElement = container.querySelector(`[id^="txtUnidad_${index}"]`);
 
@@ -205,11 +152,22 @@ function guardar() {
             return;
         }
 
-        const ingrediente = {
-            nombre: ingredienteElement.value,
-        };
-        nuevosIngredientes.push(ingrediente);
+        const ingrediente = ingredienteElement.value;
+        const cantidad = cantidadElement.value;
+        const unidad = unidadElement.value;
+
+        // Agrega los datos al array
+        nuevosIngredientes.push({
+            ingrediente: ingrediente,
+            cantidad: cantidad,
+            unidad: unidad
+        });
     });
+
+    // Separa los datos en arrays separados
+    const ingredientes = nuevosIngredientes.map(item => item.ingrediente);
+    const cantidades = nuevosIngredientes.map(item => item.cantidad);
+    const unidades = nuevosIngredientes.map(item => item.unidad);
 
     // Realiza la solicitud POST con todos los datos
     axios.post("/visper", {
@@ -219,7 +177,10 @@ function guardar() {
         foto: subirf,
         nivel_id: txtNivel.value,
         tiempo_estimado: tiempoe,
-        ingredientes: nuevosIngredientes, // No es necesario convertir a cadena JSON
+        ingredientes: JSON.stringify(ingredientes), // Convertir a cadena JSON
+        cantidades: JSON.stringify(cantidades), // Convertir a cadena JSON
+        unidades: JSON.stringify(unidades), // Convertir a cadena JSON
+        // También podrías necesitar enviar txtCantidad y txtUnidad si los necesitas en tu backend
     })
         .then(res => {
             mostrar();
@@ -231,7 +192,8 @@ function guardar() {
         });
 }
 
-guardar();
+
+
 
 
 

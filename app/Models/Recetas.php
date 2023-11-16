@@ -12,27 +12,18 @@ class Recetas extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'ingredientes',
+        'cantidad_id',
+        'unidad_id',
         'pasos',
         'foto',
         'nivel_id',
         'tiempo_estimado',
     ];
 
-    // Relación One-to-Many con Ingredientes
-    public function ingredientes()
-    {
-        return $this->hasMany(Ingredientes::class);
-    }
-
-    // Relación One-to-Many con Cantidades
-    public function cantidades()
-    {
-        return $this->hasMany(Cantidad::class);
-    }
-
-    // Relación One-to-Many con Unidades
-    public function unidades()
-    {
-        return $this->hasMany(Unidad::class);
-    }
+    protected $hidden =
+    [
+    'created_at',
+    'updated_ap'
+    ];
 }

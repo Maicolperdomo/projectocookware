@@ -20,7 +20,6 @@ class RecetasController extends Controller
         ->join('unidads', 'recetas.unidad_id', '=', 'unidads.id')
         ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
         ->join('cantidads', 'recetas.cantidad_id', '=', 'cantidads.id')
-
         ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel', 'cantidads.numero as numero')
         ->get(); 
         
@@ -33,32 +32,7 @@ class RecetasController extends Controller
      */
     public function store(Request $request)
     {
-        $datosReceta = [
-            'nombre' => $request->input('nombre'),
-            'descripcion' => $request->input('descripcion'),
-            'pasos' => $request->input('pasos'),
-            'foto' => $request->input('foto'),
-            'nivel_id' => $request->input('nivel_id'),
-            'tiempo_estimado' => $request->input('tiempo_estimado'),
-        ];
-
-        $receta = Recetas::create($datosReceta);
-
-        $ingredientes = $request->input('ingredientes');
-
-        foreach ($ingredientes as $ingrediente) {
-            $nuevoIngrediente = new Ingredientes([
-                'nombre' => $ingrediente['nombre'],
-            ]);
-
-            $nuevoIngrediente->receta()->associate($receta);
-            $nuevoIngrediente->cantidad()->associate(Cantidad::find($ingrediente['cantidad_id']));
-            $nuevoIngrediente->unidad()->associate(Unidad::find($ingrediente['unidad_id']));
-
-            $nuevoIngrediente->save();
-        }
-
-        return response()->json(['id' => $receta->id], 201);
+        Recetas::create($request->all());
     }
 
 

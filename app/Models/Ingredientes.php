@@ -11,29 +11,7 @@ class Ingredientes extends Model
 
     protected $fillable = [
         'nombre',
-        'receta_id', // La llave foránea
-        'cantidad_id',
-        'unidad_id',
     ];
-
-    protected $hidden = [
-        'updated_at'
-    ];
-
-    public function receta()
-    {
-        return $this->belongsTo(Recetas::class);
-    }
-
-    public function cantidad()
-    {
-        return $this->belongsTo(Cantidad::class);
-    }
-
-    public function unidad()
-    {
-        return $this->belongsTo(Unidad::class);
-    }
 }
 
 
