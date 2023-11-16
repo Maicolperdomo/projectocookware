@@ -70,6 +70,7 @@ function mostrar() {
         .catch(err => {
             console.error(err);
         })
+        
 }
 
 mostrar();
@@ -90,7 +91,7 @@ function guardar() {
     ingredientesContainers.forEach(container => {
         const ingrediente = {
             nombre: container.querySelector('[name="ingredientes"]').value,
-            cantidad: container.querySelector('[name="cantidad"]').value,
+            cantidad: container.querySelector('[id^="txtCantidad_"]').value,
             unidad_id: container.querySelector('[id^="txtUnidad_"]').value,
         };
         nuevosIngredientes.push(ingrediente);
@@ -142,10 +143,37 @@ document.addEventListener('DOMContentLoaded', function () {
     actualizarUnidades('txtUnidad');
 });
 
+function actualizarCantidad(selectIdC) {
+    axios.get("/cantidad")
+    .then(res => {
+        console.log(res)
+        const select = document.getElementById(selectIdC);
+        const cantidades = res.data;
+
+        select.innerHTML = `<option selected disabled>Seleccionar</option>`;
+
+        cantidades.forEach(cant => {
+            const option = document.createElement('option');
+            option.value = cant.id;
+            option.text = cant.numero;
+            select.appendChild(option);
+        })
+    })
+        .catch(err => {
+            console.error("Error al actualizar cantidades:", err);
+            // Aquí podrías manejar el error de una manera más amigable para el usuario
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    actualizarCantidad('txtCantidad');
+});
+
 function agregarIngrediente() {
     // Crea un nuevo conjunto de campos
     var nuevoIngrediente = document.createElement('div');
     var nuevoIdSelect = 'txtUnidad_' + Date.now();  // Genera un ID único
+    var nuevoIdCantidad = 'txtCantidad_' + Date.now();
     nuevoIngrediente.innerHTML = `
         <div class="col-12 d-flex justify-content-evenly">
             <div class="me-2">
@@ -156,10 +184,11 @@ function agregarIngrediente() {
                 </div>
             </div>
             <div class="me-2">
-                <label class="form-label">Cantidad</label>
+                <label class="form-label" for="${nuevoIdCantidad}">Cantidad:</label>
                 <div>
-                    <input type="number" name="cantidad" class="form-control"
-                        aria-label="Text input with dropdown button" placeholder="cantidad">
+                <select id="${nuevoIdCantidad}" class="form-control">
+                <option selected disabled>Seleccionar</option>
+            </select>
                 </div>
             </div>
             <div>
@@ -175,11 +204,11 @@ function agregarIngrediente() {
 
     // Agrega el nuevo conjunto de campos al contenedor
     document.getElementById('ingredientesContainer').appendChild(nuevoIngrediente);
-
     console.log("Agregando ingrediente...");
 
     // Llama a la función para actualizar las unidades después de un breve retraso
     setTimeout(() => {
+        actualizarCantidad(nuevoIdCantidad);
         actualizarUnidades(nuevoIdSelect);
     }, 100);
 }

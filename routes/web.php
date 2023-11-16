@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RecetasController;
 use App\Http\Controllers\NivelesController;
 use App\Http\Controllers\UnidadController;
+use App\Http\Controllers\CantidadController;
 use App\Http\Controllers\VisitarPerController;
 use App\Http\Controllers\VisitarRecController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,8 @@ Route::resource('/receta', RecetasController::class)->only(['index','store','upd
 Route::resource('/nivel', NivelesController::class)->only(['index','store','update','destroy']);
 
 Route::resource('/unidad', UnidadController::class)->only(['index','store','update','destroy']);
+
+Route::resource('/cantidad', CantidadController::class)->only(['index','store','update','destroy']);
 
 Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
 

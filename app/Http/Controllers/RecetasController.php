@@ -16,7 +16,9 @@ class RecetasController extends Controller
         $recetas = DB::table('recetas')
         ->join('unidads', 'recetas.unidad_id', '=', 'unidads.id')
         ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
-        ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel')
+        ->join('cantidad', 'recetas.cantidad_id', '=', 'cantidad.id')
+
+        ->select('recetas.*', 'unidads.nombre as unidad', 'niveles.nivel as nivel', 'cantidad.numero as numero')
         ->get(); 
         
         return response()->json($recetas);
