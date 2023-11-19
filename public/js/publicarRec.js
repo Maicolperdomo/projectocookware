@@ -1,4 +1,20 @@
 function mostrar() {
+    axios.get("/receta")
+        .then(res => {
+            console.log(res)
+            rec = "";
+            res.data.forEach((element, index) => {
+                rec += `
+            <div class="card-body">
+                <h5 class="card-title">${element.nombre}</h5>
+                <p class="card-text">${element.descripcion}</p>
+            </div>`
+            });
+            document.getElementById("tablaReceta").innerHTML = rec;
+        })
+        .catch(err => {
+            console.error(err);
+        })
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -79,12 +95,13 @@ function agregarIngrediente() {
     var nuevoIngrediente = document.createElement('div');
     var nuevoIdSelect = 'txtUnidad_' + Date.now();  // Genera un ID único
     var nuevoIdCantidad = 'txtCantidad_' + Date.now();
+    var nuevoIdIngrediente = 'ingredientes_' + Date.now();
     nuevoIngrediente.innerHTML = `
         <div class="col-12 d-flex justify-content-evenly">
             <div class="me-2">
                 <label class="form-label">Ingredientes</label>
                 <div>
-                    <input type="text" id="ingredientes" class="form-control"
+                    <input type="text" id="${nuevoIdIngrediente}" class="form-control"
                         aria-label="Text input with dropdown button" placeholder="Ingrediente">
                 </div>
             </div>
@@ -116,6 +133,19 @@ function agregarIngrediente() {
     actualizarUnidades(nuevoIdSelect);
 }
 
+function limpiarCampos() {
+    // Restablece los valores de los campos originales
+    document.getElementById('nomb').value = '';
+    document.getElementById('descrip').value = '';
+    document.getElementById('pasosa').value = '';
+    document.getElementById('subirf').value = '';
+    document.getElementById('tiempoe').value = '';
+
+    // Elimina los campos dinámicos
+    const contenedorIngredientes = document.getElementById('ingredientesContainer');
+    contenedorIngredientes.innerHTML = '';
+}
+
 function guardar() {
     // Obtén la referencia a los campos originales
     const nombreElement = document.getElementById('nomb');
@@ -141,10 +171,10 @@ function guardar() {
 
     // Itera sobre los nuevos conjuntos de campos generados dinámicamente
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
-    ingredientesContainers.forEach((container, index) => {
+    ingredientesContainers.forEach((container) => {
         const ingredienteElement = container.querySelector('[id^="ingredientes"]');
-        const cantidadElement = container.querySelector(`[id^="txtCantidad_${index}"]`);
-        const unidadElement = container.querySelector(`[id^="txtUnidad_${index}"]`);
+        const cantidadElement = container.querySelector('[id^="txtCantidad"]');
+        const unidadElement = container.querySelector('[id^="txtUnidad"]');
 
         // Verifica que los elementos existan antes de intentar acceder a sus propiedades
         if (!ingredienteElement || !cantidadElement || !unidadElement) {
@@ -152,22 +182,14 @@ function guardar() {
             return;
         }
 
-        const ingrediente = ingredienteElement.value;
-        const cantidad = cantidadElement.value;
-        const unidad = unidadElement.value;
+        const ingrediente = {
+            nombre: ingredienteElement.value,
+            cantidad: cantidadElement.value,
+            unidad: unidadElement.value,
+        };
 
-        // Agrega los datos al array
-        nuevosIngredientes.push({
-            ingrediente: ingrediente,
-            cantidad: cantidad,
-            unidad: unidad
-        });
+        nuevosIngredientes.push(ingrediente);
     });
-
-    // Separa los datos en arrays separados
-    const ingredientes = nuevosIngredientes.map(item => item.ingrediente);
-    const cantidades = nuevosIngredientes.map(item => item.cantidad);
-    const unidades = nuevosIngredientes.map(item => item.unidad);
 
     // Realiza la solicitud POST con todos los datos
     axios.post("/visper", {
@@ -177,20 +199,23 @@ function guardar() {
         foto: subirf,
         nivel_id: txtNivel.value,
         tiempo_estimado: tiempoe,
-        ingredientes: JSON.stringify(ingredientes), // Convertir a cadena JSON
-        cantidades: JSON.stringify(cantidades), // Convertir a cadena JSON
-        unidades: JSON.stringify(unidades), // Convertir a cadena JSON
-        // También podrías necesitar enviar txtCantidad y txtUnidad si los necesitas en tu backend
+        ingredientes: JSON.stringify(nuevosIngredientes),
     })
-        .then(res => {
+    .then(res => {
             mostrar();
             alert("Receta publicada CORRECTAMENTE");
             console.log(res);
+            // Limpia los campos después de guardar
+            limpiarCampos();
         })
         .catch(err => {
             console.error(err);
         });
 }
+
+
+
+
 
 
 

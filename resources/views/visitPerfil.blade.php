@@ -74,16 +74,15 @@
                 </div>
                 <div class="col-9 right my-3" style="background-color: #c0dd8d">
                     <div>
-                        <div class="row d-flex justify-content-around mt-4">
+                        <div class="row d-flex justify-content-around mt-4" id="contenedorRecetas">
                             <div class="card" style="width: 18rem;">
-                                <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
+                                <!--<div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
                                         width="200" height="200"></div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nombre Receta</h5>
                                     <p class="card-text">Descrpción</p>
-                                </div>
+                                </div>!-->
                                 <div class="card-body d-flex justify-content-center">
-                                    <!--<a href="visitarPerfil" class="card-link">Visitar Perfil</a>!-->
                                     <a href="visrec" class="card-link">Visitar Receta</a>
                                 </div>
                             </div>
