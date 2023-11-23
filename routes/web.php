@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\visitarPerfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,5 @@ Route::post('forgotpassword',[LoginController::class, 'forgot_password']);
 
 Route::get('reset/{token}',[LoginController::class, 'reset']);
 Route::post('reset/{token}',[LoginController::class, 'post_reset']);
+
+Route::get('/visitarPerfil', [visitarPerfilController::class, 'index']);
