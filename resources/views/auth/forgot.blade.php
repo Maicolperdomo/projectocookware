@@ -20,13 +20,13 @@
                         <div class="card-body">
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">RECUPERAR CONTRASEÑA</h5>
-                                <p class="text-center small">escriba su correo</p>
+                                <p class="text-center small">Digite su correo electronico</p>
                             </div>
                           <!--  @include('layouts.messages')-->
                             <form class="row g-3" action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="col-12">
-                                    <label for="email" class="form-label">correo</label>
+                                    <label for="email" class="form-label">Correo Electronico</label>
                                     <input type="email" name="email" class="form-control" id="txtCorreo" required>
                                 </div>
                                 <div class="col-12">
