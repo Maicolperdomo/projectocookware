@@ -12,14 +12,14 @@
 
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid" style="background-color: #c0dd8d;">
 
     <form class="d-flex justify-content-end" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 25%;">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <div class="row">
-        <div class="col-3" style="height: 606px; background-color:#c0dd8d;">
+    <div class="row" style=" background-color:#c0dd8d;">
+        <div class="col-3" style="height: 606px;">
             <img src="../image/logo.png" alt="Logo" width="300" height="100">
             <div class="d-flex justify-content-center">
                 <img src="../image/61205.png" alt="..." style="width: 200px">
@@ -39,8 +39,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-9 right my-3" style="background-color: white">
-            <div class="justify-content-around " style="background-color: #dc3545">
+        <div class="col-9 right my-3" style="background-color: green">
+            
                 <div class="feed-tip-ficha-horizontal">
                     <!-- <div class="card" style="width: 18rem;">
                        <div class="d-flex justify-content-center">
@@ -70,7 +70,7 @@
                 </div>
                 
                 <br>
-                <div class="row d-flex justify-content-around col-12 bg-white  " style="border-radius: 30px">
+                <div class="row d-flex justify-content-around col-12 bg-white " style="border-radius: 30px">
                     <div class="col-md-2 col-2  ">
                         <img src="../image/R.jpeg" width="200" height="200" alt="...">
                     </div>
@@ -81,19 +81,20 @@
                     </div>
                 </div>
                 <br>
-                <div class="row g-0 bg-light position-relative">
-                    <div class="col-md-6 mb-md-0 ">
+                <div class="row d-flex justify-content-around col-12 bg-white"  style="border-radius: 30px">
+                    <div class="col-md-2 col-2 ">
                         <img src="../image/sushi.jpeg" width="200" height="200" alt="...">
                     </div>
-                    <div class="col-md-6 p-4 ps-md-0">
+                    <div class="col-md-6 p-4 ">
                         <h5 class="mt-0">SUSHI</h5>
                         <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
                         <a href="visitarReceta">Visitar Receta</a>
                     </div>
                 </div>
-            </div>
+          
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
             </script>
+        </div>
 </body>
 
 </html>
