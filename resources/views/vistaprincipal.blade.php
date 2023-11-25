@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Hola vista verRecetas</h1> 
-   
+    <div class="col-3" style="background-color: green;"></div>
 </body>
 </html>
