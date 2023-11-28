@@ -23,7 +23,7 @@
                     <div>
                         <form class="d-flex justify-content-center" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                                style="width: 55%;">
+                                style="width: 80%;">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>

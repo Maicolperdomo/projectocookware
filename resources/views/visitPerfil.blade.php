@@ -25,7 +25,7 @@
             <div class="col-8 d-flex justify-content-around">
                 <div>
                     <form class="d-flex justify-content-center" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 55%;">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 80%;">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="col-9 right my-3" style="background-color: #c0dd8d" id="tablaReceta">
-               <!-- <div>
+            <!-- <div>
                     <div class="row d-flex justify-content-around col-12 bg-white " style="border-radius: 30px">
                         <div class="col-md-2 col-2  ">
                             <img src="../image/R.jpeg" width="200" height="200" alt="...">
@@ -78,10 +78,9 @@
                             <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
                             <a href="visrec" class="card-link">Visitar Receta</a>
                         </div>
-
                     </div>
-                </div>
-            </div>-->
+                </div>-->
+            </div>
         </div>
     </div>
     <!-- Modal -->
