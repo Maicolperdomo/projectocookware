@@ -5,20 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class publicarReceta extends Model
+class Recetas extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'tituloReceta',
+        'nombre',
         'descripcion',
         'ingredientes',
-        'pasoPaso',
-        'tiempo'
+        'cantidad_id',
+        'unidad_id',
+        'pasos',
+        'foto',
+        'nivel_id',
+        'tiempo_estimado',
     ];
 
-    protected $hidden = [
-        'created_at',
-        'updated_at',
+    protected $hidden =
+    [
+    'created_at',
+    'updated_ap'
     ];
-
 }

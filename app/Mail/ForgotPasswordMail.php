@@ -38,7 +38,7 @@ public $user;
     public function content(): Content
     {
         return new Content(
-            markdown: 'reset',
+            markdown: 'emails.forgot',
             with:[
                 'user'=> $this->user,
             ],

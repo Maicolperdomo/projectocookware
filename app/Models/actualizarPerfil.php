@@ -16,6 +16,7 @@ class actualizarPerfil extends Model
     'lastname',
     'nickname',
     'email',
+
 ];
 
     protected $hidden = [
