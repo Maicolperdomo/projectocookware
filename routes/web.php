@@ -46,6 +46,10 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'edit']);
+//Route::get('/actualizarPerfil',[ActualizarPerfilController::class, 'mostrarPerfil']);
+
+//Route::get('/actualizarPerfil/{id}', [ActualizarPerfilController::class, 'mostrarPerfil'])->name('perfil.mostrar');
+
 
 Route::get('forgotpassword',[LoginController::class, 'forgot']);
 

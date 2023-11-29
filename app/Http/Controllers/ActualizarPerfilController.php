@@ -11,11 +11,22 @@ use Illuminate\Support\Facades\DB;
 
 class ActualizarPerfilController extends Controller
 {
-    public function edit(User $user){
+ //public function mostrarPerfil($id)
+    //{
+      //   Recuperar el usuario por su ID
+       // $user = User::findOrFail($id);
+
+       // return view('updatePerfil', compact('usuario'));
+    //} 
+    public function edit(Request $request)
+    {
+        
         return view('updatePerfil');
-    }
+    } 
+
     public function NewPassword(){
         return view('updatePerfil');
     }
-
 }
+
+
