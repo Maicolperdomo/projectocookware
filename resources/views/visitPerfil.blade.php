@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="my-3">
-                        <div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
+                        <div class="d-flex justify-content-center"><img {{ auth()->user()->foto }} alt="..."
                                 width="200" height="200"></div>
                         <div class="d-flex justify-content-center">
                             <h5 class="card-title">@ {{ auth()->user()->nickname }}</h5>

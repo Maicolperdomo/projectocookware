@@ -16,13 +16,13 @@
 <body class="container-fluid" style="background-color: #c0dd8d;">
     <div class="row">
         <div class="col-5 d-flex justify-content-end">
-            <div class="col-11 d-flex justify-content-center align-items-center my-5"
+            <div class="col-11 d-flex justify-content-center align-items-center my-3"
                 style="background: white; border-radius: 30px 30px 30px 30px;">
-                <form action="/register" method="POST">
+                <form action="/register" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <div>
-                            <h2 class="text-center">REGISTRARSE</h2>
+                            <h3 class="text-center">REGISTRARSE</h3>
                         </div>
                         @include('layouts.messages')
                         <div class="input-group flex-nowrap">
@@ -61,7 +61,16 @@
                                 aria-label="nickname" aria-describedby="addon-wrapping" name="password_confirmation">
                         </div>
                         <br>
-                        <div class="row">
+                        <div>
+                            <span class="input-group-text">Foto Perfil</span>
+                            <input type="file" name="foto" accept="image/*">
+                            <br>
+                            @error('foto')
+                                <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <br>
+                        <div class="row mt-2">
                             <input type="submit" class="btn btn-success" value="Registrarse">
                         </div>
                     </div>

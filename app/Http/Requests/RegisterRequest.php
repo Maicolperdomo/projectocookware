@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\File;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterRequest extends FormRequest
 {
@@ -28,6 +31,8 @@ class RegisterRequest extends FormRequest
             'email' => 'required|unique:users,email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
+            'foto'  => 'required|image|max:2048',
         ];
     }
+    
 }
