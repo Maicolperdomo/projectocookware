@@ -1,5 +1,8 @@
 // Función para mostrar la información de las recetas en la vista
 function informacionReceta(recetas) {
+    axios.get("/receta")
+    .then(res => {
+        console.log(res)
     var rece = "";
     recetas.forEach((element, index) => {
         rece += `
@@ -11,6 +14,7 @@ function informacionReceta(recetas) {
 
     // Actualiza el contenido de un elemento HTML con el id "tablaReceta"
     document.getElementById("tablaReceta").innerHTML = rece;
+});
 }
 
 // Función para obtener y mostrar las recetas
