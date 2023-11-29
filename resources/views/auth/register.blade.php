@@ -33,7 +33,7 @@
                         <br>
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text" id="txtNombre">Apellido</span>
-                            <input type="text" class="form-control" placeholder="Nombre" aria-label="nickname"
+                            <input type="text" class="form-control" placeholder="Apellido" aria-label="nickname"
                                 aria-describedby="addon-wrapping" name="lastname">
                         </div>
                         <br>

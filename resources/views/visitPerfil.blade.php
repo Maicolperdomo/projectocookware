@@ -68,20 +68,21 @@
                 </div>
             </div>
             <div class="col-9 right my-3" style="background-color: #c0dd8d" id="tablaReceta">
-            <!-- <div>
-                    <div class="row d-flex justify-content-around col-12 bg-white " style="border-radius: 30px">
+                <div>
+                    <div class="row d-flex justify-content-around col-12 bg-white " style="border-radius: 30px" id="tablaReceta">
                         <div class="col-md-2 col-2  ">
                             <img src="../image/R.jpeg" width="200" height="200" alt="...">
                         </div>
                         <div class="col-md-6 p-4 ">
-                            <h5 class="mt-0"></h5>
+                            <h5 class="mt-0">Nommb</h5>
                             <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
                             <a href="visrec" class="card-link">Visitar Receta</a>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
