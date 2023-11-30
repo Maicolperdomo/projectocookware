@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
 {
@@ -20,10 +22,25 @@ class VisitarPerController extends Controller
      */
 
 // Controlador en Laravel
-public function store(Request $request)
+public function store(RecetaRequest $request)
 {
-   Recetas::create($request->all());
+    // Validar y crear la receta
+    $receta = Recetas::create($request->validated());
+
+    // Obtener la foto del request y almacenarla
+    if ($request->hasFile('subirf')) {
+        $fotoRect = $request->file('subirf')->store('public/fotoReceta');
+        $fotor = Storage::url($fotoRect);
+
+        // Actualizar la foto de la receta
+        $receta->update([
+            'foto' => $fotor,
+        ]);
+    }
+
+    return redirect('/visper');
 }
+
 
     /**
      * Update the specified resource in storage.

@@ -50,41 +50,41 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    <div class="my-3">
-                        <div class="d-flex justify-content-center"><img {{ auth()->user()->foto }} alt="..."
-                                width="200" height="200"></div>
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title">@ {{ auth()->user()->nickname }}</h5>
-                        </div>
-                        <ul class="text-left">
-                            <li class="list-group-item">Cantidad de Recetas: </li>
-                            <li class="list-group-item">Seguidores: </li>
-                            <li class="list-group-item">Calificacion: </li>
-                        </ul>
-                        <div class="d-flex justify-content-around">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
-                                Publicar Receta
-                            </button>
-                        </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="my-3">
+                    <div class="d-flex justify-content-center"><img src="{{ asset(auth()->user()->foto) }}"
+                            alt="Foto Perfil" width="200" height="200" style="border-radius: 50%"></div>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title">{{ '@' . auth()->user()->nickname }}</h5>
+                    </div>
+                    <ul class="text-left">
+                        <li class="list-group-item">Cantidad de Recetas: </li>
+                        <li class="list-group-item">Seguidores: </li>
+                        <li class="list-group-item">Calificacion: </li>
+                    </ul>
+                    <div class="d-flex justify-content-around">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Publicar Receta
+                        </button>
                     </div>
                 </div>
-                <div class="col-9 right my-3" style="background-color: #c0dd8d">
-                    <div>
-                        <div class="row d-flex justify-content-around mt-4" id="contenedorRecetas">
-                            <div class="card" style="width: 18rem;">
-                                <!--<div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
-                                        width="200" height="200"></div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Nombre Receta</h5>
-                                    <p class="card-text">Descrpción</p>
-                                </div>!-->
-                                <div class="card-body d-flex justify-content-center">
-                                    <a href="visrec" class="card-link">Visitar Receta</a>
-                                </div>
+            </div>
+            <div class="col-9 right my-3" style="background-color: #c0dd8d">
+                <div>
+                    <div class="row d-flex justify-content-around mt-4" id="contenedorRecetas">
+                        <div class="card" style="width: 18rem;">
+                            <!--<div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
+                                            width="200" height="200"></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nombre Receta</h5>
+                                        <p class="card-text">Descrpción</p>
+                                    </div>!-->
+                            <div class="card-body d-flex justify-content-center">
+                                <a href="visrec" class="card-link">Visitar Receta</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
-                                <input type="file" name="file" class="form-control" id="subirf">
+                                <input type="file" name="subirf" accept="image/*" class="form-control" id="subirf">
                             </div>
                             <div class="mb-3">
                                 <label for="txtNivel">Nivel:</label>

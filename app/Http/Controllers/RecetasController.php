@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cantidad;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
-use App\Models\Unidad;
 use Illuminate\Http\Request;
-use App\Models\Ingredientes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class RecetasController extends Controller
 {
@@ -34,6 +34,7 @@ class RecetasController extends Controller
     {
         Recetas::create($request->all());
     }
+
 
 
     /**

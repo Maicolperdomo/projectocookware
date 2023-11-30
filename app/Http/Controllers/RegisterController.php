@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Models\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
@@ -31,10 +29,17 @@ class RegisterController extends Controller
     }
     
     public function register(RegisterRequest $request){
+
         $user = User::create($request->validated());
-        $fotosPf =  $request->file('foto')->store('public/fotoPerfil'); //1-nombre del imput 2-nombre de la carpeta
-        $url = Storage::url($fotosPf);
-        
+        // el la variable $fotosPf se me guarda la url
+        $fotosPf = $request->file('foto')->store('public/fotoPerfil'); //1-nombre del imput 2-nombre de la carpeta
+        //me cambia la ruta
+        $foto = Storage::url($fotosPf);
+
+        $user->update([
+            'foto' => $foto,
+        ]);
+
         return redirect('/login')->with('success', 'Usuario registrado CORRECTAMENTE');
     }
 
