@@ -169,3 +169,19 @@
   background-color: #f8d64e; /* Color for selected stars */
 }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ratingInputs = document.querySelectorAll('.rating input[type="radio"]');
+    let selectedRating = 0;
+
+    // Escucha eventos de cambio en los inputs de radio
+    ratingInputs.forEach(function (input) {
+      input.addEventListener("change", function () {
+        selectedRating = this.value;
+        console.log("Puntuación seleccionada: " + selectedRating);
+
+        // Puedes realizar otras acciones aquí, como enviar la puntuación al servidor, etc.
+      });
+    });
+  });
+</script>
