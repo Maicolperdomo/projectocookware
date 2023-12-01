@@ -1,20 +1,23 @@
 function mostrar() {
-    axios.get("/visper")
+    axios.get("/recetas")
     .then(res => {
-        console.log(res)
+        console.log(res);
         let rec = "";
-        
-        res.data.forEach((recetas, index) => {
+
+        res.data.forEach((element, index) => {
+ // La URL ya es una cadena, no necesitas JSON.parse
+            const fotoUrl = element.foto.length > 0 ? element.foto[0] : '';
+
             rec += `
-                <div class="card mb-3 mx-3 shadow">
-                    <div class="d-flex justify-content-center">
-                        <img src="${recetas.foto}" alt="Receta Imagen" width="200" height="200">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">${recetas.nombre}</h5>
-                        <p class="card-text">${recetas.descripcion}</p>
-                    </div>
-                </div>`;
+            <div class="card mb-3 mx-3 mt-4" style="width: 18rem;">
+                <div class="d-flex justify-content-center">
+                    <img src="${fotoUrl}" alt="Receta Imagen" width="200" height="200">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${element.nombre}</h5>
+                    <p class="card-text">${element.descripcion}</p>
+                </div>
+            </div>`;
         });
 
         document.getElementById("tablaReceta").innerHTML = rec;
@@ -22,6 +25,7 @@ function mostrar() {
     .catch(err => {
         console.error(err);
     });
+
     axios.get("/nivel")
         .then(res => {
             console.log(res)

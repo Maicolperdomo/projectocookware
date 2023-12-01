@@ -73,22 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9 right my-3" style="background-color: #c0dd8d">
-                <div>
-                    <div class="row d-flex justify-content-around mt-4" id="tablaReceta">
-                        <div class="card" style="width: 18rem;">
-                            <!--<div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
-                                            width="200" height="200"></div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Nombre Receta</h5>
-                                        <p class="card-text">Descrpción</p>
-                                    </div>!-->
-                            <div class="card-body d-flex justify-content-center">
-                                <a href="visrec" class="card-link">Visitar Receta</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-9 right my-3 d-flex justify-content-around" style="background-color: #c0dd8d" id="tablaReceta">
             </div>
         </div>
         <!-- Modal -->
@@ -126,7 +111,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="subirf" class="form-label">Sube una foto</label>
-                                <input type="file" name="subirf[]" multiple accept="image/*" class="form-control" id="subirf">
+                                <input type="file" name="subirf[]" multiple accept="image/*" class="form-control"
+                                    id="subirf">
                             </div>
                             <div class="mb-3">
                                 <label for="txtNivel">Nivel:</label>
@@ -144,7 +130,8 @@
                     <div class="modal-footer">
                         <div>
                             <!-- Cambia el tipo de botón a "button" para evitar enviar el formulario directamente -->
-                            <button type="submit" class="btn btn-success" id="btnPublicarReceta" onclick="guardar()">Publicar
+                            <button type="submit" class="btn btn-success" id="btnPublicarReceta"
+                                onclick="guardar()">Publicar
                                 Receta</button>
                         </div>
                     </div>

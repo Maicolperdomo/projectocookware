@@ -55,6 +55,25 @@ $receta->save();
     return redirect('/visper');
 }
 
+// VisitarPerController.php
+/*public function obtenerRecetas()
+{
+    $recetas = Recetas::all();
+    return response()->json($recetas);
+}*/
+
+// VisitarPerController.php
+public function obtenerRecetas()
+{
+    $recetas = Recetas::all();
+    foreach ($recetas as $receta) {
+        // Concatenar la URL base con la ruta de la imagen
+        $receta->foto = asset('storage/' . $receta->foto);
+    }
+    return response()->json($recetas);
+}
+
+
     /**
      * Update the specified resource in storage.
      */
