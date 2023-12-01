@@ -46,7 +46,9 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'edit']);
-//Route::get('/actualizarPerfil',[ActualizarPerfilController::class, 'mostrarPerfil']);
+
+Route::put('/actualizarPerfil',[ActualizarPerfilController::class, 'update']);
+//Route::post('/actualizarPerfil', 'ActualizarPerfilController@update');
 
 //Route::get('/actualizarPerfil/{id}', [ActualizarPerfilController::class, 'mostrarPerfil'])->name('perfil.mostrar');
 

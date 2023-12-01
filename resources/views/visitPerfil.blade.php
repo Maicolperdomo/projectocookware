@@ -16,6 +16,7 @@
 
 @auth
 
+
 <body class="container-fluid">
     <div class="row bg-white">
         <div class="col-12 d-flex align-items-center">
@@ -75,7 +76,7 @@
                     <div class="col-md-6 p-4 ">
                         <h5 class="mt-0">POSTRE</h5>
                         <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
-                        <a href="visitReceta">Visitar Receta</a>
+                        <a href="visrec" class="card-link">Visitar Receta</a>
                     </div>
                 </div>
             </div>
