@@ -75,7 +75,7 @@
             </div>
             <div class="col-9 right my-3" style="background-color: #c0dd8d">
                 <div>
-                    <div class="row d-flex justify-content-around mt-4" id="contenedorRecetas">
+                    <div class="row d-flex justify-content-around mt-4" id="tablaReceta">
                         <div class="card" style="width: 18rem;">
                             <!--<div class="d-flex justify-content-center"><img src="../image/61205.png" alt="..."
                                             width="200" height="200"></div>
@@ -101,7 +101,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="visper" enctype="multipart/form-data">
+                        <form method="POST" action="visper" enctype="multipart/form-data" id="miFormularioId">
                             @csrf
                             <div>
                                 <label for="nomb" class="form-label">Nombre Receta</label>
@@ -144,7 +144,7 @@
                     <div class="modal-footer">
                         <div>
                             <!-- Cambia el tipo de botón a "button" para evitar enviar el formulario directamente -->
-                            <button type="submit" class="btn btn-success" id="btnPublicarReceta">Publicar
+                            <button type="submit" class="btn btn-success" id="btnPublicarReceta" onclick="guardar()">Publicar
                                 Receta</button>
                         </div>
                     </div>

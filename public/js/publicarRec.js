@@ -1,20 +1,27 @@
 function mostrar() {
-    axios.get("/receta")
-        .then(res => {
-            console.log(res)
-            rec = "";
-            res.data.forEach((element, index) => {
-                rec += `
-            <div class="card-body">
-                <h5 class="card-title">${element.nombre}</h5>
-                <p class="card-text">${element.descripcion}</p>
-            </div>`
-            });
-            document.getElementById("tablaReceta").innerHTML = rec;
-        })
-        .catch(err => {
-            console.error(err);
-        })
+    axios.get("/visper")
+    .then(res => {
+        console.log(res)
+        let rec = "";
+        
+        res.data.forEach((recetas, index) => {
+            rec += `
+                <div class="card mb-3 mx-3 shadow">
+                    <div class="d-flex justify-content-center">
+                        <img src="${recetas.foto}" alt="Receta Imagen" width="200" height="200">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${recetas.nombre}</h5>
+                        <p class="card-text">${recetas.descripcion}</p>
+                    </div>
+                </div>`;
+        });
+
+        document.getElementById("tablaReceta").innerHTML = rec;
+    })
+    .catch(err => {
+        console.error(err);
+    });
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -147,8 +154,9 @@ function limpiarCampos() {
 }
 
 function guardar() {
+    const formulario = document.getElementById('miFormularioId');
     // Obtén la referencia a los campos originales
-    const formData = new FormData();
+    const formData = new FormData(formulario);
     const files = document.getElementById("subirf").files;
 
     if (files.length > 0) {

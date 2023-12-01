@@ -38,7 +38,7 @@ if (!is_null($imagenes) && is_array($imagenes)) {
 }
 
 // Crear el producto con los datos del formulario y las imágenes almacenadas
-$producto = Recetas::create([
+$receta = Recetas::create([
     'nombre' => $request->nombre,
     'descripcion' => $request->descripcion,
     'ingredientes' => $request->ingredientes,
@@ -50,11 +50,10 @@ $producto = Recetas::create([
     'tiempo_estimado' => $request->tiempo_estimado,   
 ]);
 
-$producto->save();
+$receta->save();
 
     return redirect('/visper');
 }
-
 
     /**
      * Update the specified resource in storage.
