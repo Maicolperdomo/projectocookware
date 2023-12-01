@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" 
+    integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
     <title>detalle de Receta</title>
 </head>
 
@@ -22,19 +28,19 @@
                 <div class="row">
                     <div class="col">
                         <h5>Calificación</h5>
-                        <div class="rating">
-                            <input type="radio" id="star5" name="rating" value="5" />
-                            <label for="star5"></label>
-                            <input type="radio" id="star4" name="rating" value="4" />
-                            <label for="star4"></label>
-                            <input type="radio" id="star3" name="rating" value="3" />
-                            <label for="star3"></label>
-                            <input type="radio" id="star2" name="rating" value="2" />
-                            <label for="star2"></label>
-                            <input type="radio" id="star1" name="rating" value="1" />
-                            <label for="star1"></label>
-                        </div>
-
+                    </div>
+                    <div class="star-rating">
+  <input type="radio" id="star0"  class="fa far-star" data-index="0">
+  <label for="star0"></label>
+  <input type="radio" id="star1" class="fa far-star" data-index="1">
+  <label for="star1"></label>
+  <input type="radio" id="star2" class="fa far-star" data-index="2">
+  <label for="star2"></label>
+  <input type="radio" id="star3"  class="fa far-star" data-index="3">
+  <label for="star3"></label>
+  <input type="radio" id="star4"  class="fa far-star" data-index="4">
+  <label for="star4"></label>
+</div>
                     </div>
 
                 </div>
@@ -137,51 +143,115 @@
 </body>
 
 </html>
+<script>
+    var ratedIndex = -1, uID =0;
+
+    $(document).ready(function(){
+        resetStarColors();
+
+        if(localStorage.getItem('ratedIndex') !=null){
+         setStars(parseInt(localStorage.getItem('ratedIndex')));
+         uID = localStorage.getItem('uID');
+    }
+$('.fa-star').on('click',function(){
+    ratedIndex = parseInt($(this).data('index'));
+    localStorage.setItem('ratedIndex', ratedIndex);
+    saveToTheDB();
+});
+$('.fa-star').mousemove(function(){
+    resetStarColors();
+    var currentIndex = parseInt($(this).data('index'));
+    setStars(currentIndex);
+});
+$('.fa-star').mouseleave(function(){
+    resetStarColors();
+
+       if(ratedIndex !=-1)
+        setStars(ratedIndex)
+});
+
+    });
+    function saveToTheDB(){
+        $.ajax({
+            url: "visitReceta.blade.php",
+            method : "POST",
+            dataType: 'json',
+            data: {
+                save: 1,
+                uID: uID,
+                ratedIndex: ratedIndex
+            }, success: function(r){
+              uID: r.uid;
+              localStorage.setItem('uID', 'uID');
+            }
+        })
+    }
+    function setStars(max){
+        for (var i=0; i<= max; i++ )
+        $('.fa-star:eq('+i+')').css('color', 'green');
+    }
+    function resetStarColors(){
+        $('.fa-star').css('color', 'black');
+    }
+</script>
+<?php
+
+$conn = new mysqli('localhost', 'root', '', 'proyectococina');
+    if(isset($_POST['save'])){
+    $uID = $conn->real_escape_string($_POST['uID']);
+    $ratedIndex =$conn-> real_escape_string($_POST['ratedIndex']);
+    $ratedIndex++;
+   
+    if($uID){
+        $conn->query(query: "INSERT TO stars (ratedIndex) VALUES('$ratedIndex')");
+        $sql = $conn->query("SELECT id FROM stars ORDER BY id DESC LIMIT 1");
+        $uData = $sql->fetch_assoc();
+        $uID = $uData['id'];
+    }else
+    $conn->query(query:"UPDATE stars SET ratedIndex='$ratedIndex' WHERE id ='$uID'");
+    exit(json_encode(array('id'=>$uID)));
+}
+/**$sql=$conn->query(query:"SELECT id FROM stars");
+$numR = $sql->num_rows;
+
+$sql = $conn->query(query:"SELECT SUM(rateIndex) AS total FROM stars");
+$rData = $sql->fetch_array();
+$total = $rData['total'];
+
+$avg= $otal / $numR;/** */
+
+?>
 <style>
-.rating {
-  display: inline-block;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
 }
 
-.rating input {
+.star-rating {
+  font-size: 0;
+}
+
+.star-rating input {
   display: none;
 }
 
-.rating label {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  margin: 0 2px;
-  background-color: #ccc;
-  border-radius: 50%;
+.star-rating label {
   display: inline-block;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ccc;
 }
 
-.rating label:before {
-  content: '\2605'; /* Unicode character for a star */
-  font-size: 20px;
-  color: #fff;
+.star-rating label:before {
+  content: '\2605'; /* Código de estrella en unicode */
   display: block;
-  text-align: center;
-  line-height: 30px;
 }
 
-.rating input:checked ~ label {
-  background-color: #f8d64e; /* Color for selected stars */
+.star-rating input:checked ~ label {
+  color: #ffd700; /* Color de estrella seleccionada */
 }
 </style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const ratingInputs = document.querySelectorAll('.rating input[type="radio"]');
-    let selectedRating = 0;
-
-    // Escucha eventos de cambio en los inputs de radio
-    ratingInputs.forEach(function (input) {
-      input.addEventListener("change", function () {
-        selectedRating = this.value;
-        console.log("Puntuación seleccionada: " + selectedRating);
-
-        // Puedes realizar otras acciones aquí, como enviar la puntuación al servidor, etc.
-      });
-    });
-  });
-</script>
