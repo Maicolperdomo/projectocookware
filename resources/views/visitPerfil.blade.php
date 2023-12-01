@@ -101,15 +101,15 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="miFormulario" enctype="multipart/form-data">
+                        <form method="POST" action="visper" enctype="multipart/form-data">
                             @csrf
                             <div>
-                                <label for="formGroupExampleInput" class="form-label">Nombre Receta</label>
+                                <label for="nomb" class="form-label">Nombre Receta</label>
                                 <input type="text" name="nombre" class="form-control" id="nomb"
                                     placeholder="Cómo se llama tu receta?">
                             </div>
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Descripción</label>
+                                <label for="descrip" class="form-label">Descripción</label>
                                 <input type="text" name="descripcion" class="form-control"
                                     placeholder="Describe tu receta brevemente" id="descrip">
                             </div>
@@ -120,13 +120,13 @@
                                     Ingrediente</button>
                             </div>
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Pasos a Seguir</label>
+                                <label for="pasosa" class="form-label">Pasos a Seguir</label>
                                 <input type="text" name="pasos" class="form-control" id="pasosa"
                                     placeholder="Se coherente en tu paso a paso">
                             </div>
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Sube una foto</label>
-                                <input type="file" name="subirf" accept="image/*" class="form-control" id="subirf">
+                                <label for="subirf" class="form-label">Sube una foto</label>
+                                <input type="file" name="subirf[]" multiple accept="image/*" class="form-control" id="subirf">
                             </div>
                             <div class="mb-3">
                                 <label for="txtNivel">Nivel:</label>
@@ -135,7 +135,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="formGroupExampleInput" class="form-label">Tiempo estimado</label>
+                                <label for="tiempoe" class="form-label">Tiempo estimado</label>
                                 <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe"
                                     placeholder="Cuánto dura tu preparación?">
                             </div>
@@ -144,7 +144,7 @@
                     <div class="modal-footer">
                         <div>
                             <!-- Cambia el tipo de botón a "button" para evitar enviar el formulario directamente -->
-                            <button type="button" class="btn btn-success" id="btnPublicarReceta">Publicar
+                            <button type="submit" class="btn btn-success" id="btnPublicarReceta">Publicar
                                 Receta</button>
                         </div>
                     </div>

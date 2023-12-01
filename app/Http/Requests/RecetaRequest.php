@@ -28,7 +28,7 @@ class RecetaRequest extends FormRequest
             'cantidad_id',
             'unidad_id',
             'pasos' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'required|image|max:2048',
             'nivel_id',
             'tiempo_estimado' => 'required',
         ];
