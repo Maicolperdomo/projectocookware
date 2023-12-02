@@ -5,22 +5,28 @@ function mostrar() {
             let rec = "";
 
             res.data.forEach((element, index) => {
-                rec += `<div class="card" style="width: 18rem;">`;
+                rec += `<div class="card mx-3 my-3" style="width: 18rem;">`;
+                console.log(element.foto)
                 if (element.foto) {
                     try {
                         const imagenesArray = JSON.parse(element.foto);
 
                         if (imagenesArray.length > 0) {
-                            rec += `<img src="${imagenesArray[0]}" alt="Receta Imagen" width="200" height="200">`;
-                        }
+                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 150px; height: 150px;">`;
+                        } 
                     } catch (error) {
-                        console.error(err);
+                        console.error(
+                            "Error al parsear las rutas de las imágenes:",
+                            error
+                        );
+                        rec += `Error al cargar imágenes`;
                     }
                 }
-                `<div class="card-body">
-                    <h5 class="card-title">${element.nombre}</h5>
-                    <p class="card-text">${element.descripcion}</p>
-                </div>`
+                rec += `<div class="card-body">
+                            <h5 class="card-title">${element.nombre}</h5>
+                            <p class="card-text">${element.descripcion}</p>
+                            <a href="#" class="btn btn-primary">Ver Receta</a>
+                        </div>`
                 rec += `</div>`;
             });
 
@@ -169,7 +175,7 @@ function guardar() {
 
     if (files.length > 0) {
         for (let i = 0; i < files.length; i++) {
-            formData.append("foto[]", files[i]);
+            formData.append("foto", files[i]);
         }
     }
 

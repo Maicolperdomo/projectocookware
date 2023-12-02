@@ -112,7 +112,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="subirf" class="form-label fw-bolder">Sube una foto</label>
-                                <input type="file" name="subirf[]" multiple accept="image/*" class="form-control"
+                                <input type="file" name="subirf" multiple accept="image/*" class="form-control"
                                     id="subirf">
                             </div>
                             <div class="mb-3 fw-bolder">
@@ -132,8 +132,7 @@
                         <div>
                             <!-- Cambia el tipo de botón a "button" para evitar enviar el formulario directamente -->
                             <button type="submit" class="btn fw-bolder" id="btnPublicarReceta"
-                                 style="background-color: #eb4e3d">Publicar
-                                Receta</button>
+                                 style="background-color: #eb4e3d" onclick="guardar()">Publicar Receta</button>
                         </div>
                     </div>
                 </div>

@@ -25,17 +25,8 @@ class VisitarPerController extends Controller
 // Controlador en Laravel
 public function store(Request $request)
 {
-// Almacenar las imágenes en el sistema de archivos y obtener las rutas
-$uploadedFiles = [];
-
-// Verificar si $request->file('imagenes') no es null y es un array antes de intentar recorrerlo
-$imagenes = $request->file('subirf');
-if (!is_null($imagenes) && is_array($imagenes)) {
-    foreach ($imagenes as $imagen) {
-        $rutaImagen = $imagen->store('public/fotoReceta');
-        $uploadedFiles[] = Storage::url($rutaImagen);
-    }
-}
+    $fotosPf = $request->file('subirf')->store('public/fotoReceta');
+    $uploadedFiles = Storage::url($fotosPf);
 
 // Crear el producto con los datos del formulario y las imágenes almacenadas
 $receta = Recetas::create([
@@ -45,7 +36,7 @@ $receta = Recetas::create([
     'cantidad_id' => $request->cantidad_id,
     'unidad_id' => $request->unidad_id,
     'pasos' => $request->pasos,
-    'foto' => json_encode($uploadedFiles),
+    'foto' => $uploadedFiles,
     'nivel_id' => $request->nivel_id,
     'tiempo_estimado' => $request->tiempo_estimado,   
 ]);
