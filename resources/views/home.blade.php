@@ -13,8 +13,8 @@
 
 @auth
 
-    <body class="container-fluid" style="background-color: #c0dd8d">
-        <div class="row bg-white">
+    <body class="container-fluid" style="background-color: #76cc68">
+        <div class="row" style="background-color: #f6f9fa">
             <div class="col-12 d-flex align-items-center">
                 <div class="col-4">
                     <img src="../image/logo.png" alt="Logo" width="300" height="100">

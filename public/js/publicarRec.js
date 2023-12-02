@@ -1,30 +1,34 @@
 function mostrar() {
     axios.get("/recetas")
-    .then(res => {
-        console.log(res);
-        let rec = "";
+        .then(res => {
+            console.log(res);
+            let rec = "";
 
-        res.data.forEach((element, index) => {
- // La URL ya es una cadena, no necesitas JSON.parse
-            const fotoUrl = element.foto.length > 0 ? element.foto[0] : '';
+            res.data.forEach((element, index) => {
+                rec += `<div class="card" style="width: 18rem;">`;
+                if (element.foto) {
+                    try {
+                        const imagenesArray = JSON.parse(element.foto);
 
-            rec += `
-            <div class="card mb-3 mx-3 mt-4" style="width: 18rem;">
-                <div class="d-flex justify-content-center">
-                    <img src="${fotoUrl}" alt="Receta Imagen" width="200" height="200">
-                </div>
-                <div class="card-body">
+                        if (imagenesArray.length > 0) {
+                            rec += `<img src="${imagenesArray[0]}" alt="Receta Imagen" width="200" height="200">`;
+                        }
+                    } catch (error) {
+                        console.error(err);
+                    }
+                }
+                `<div class="card-body">
                     <h5 class="card-title">${element.nombre}</h5>
                     <p class="card-text">${element.descripcion}</p>
-                </div>
-            </div>`;
-        });
+                </div>`
+                rec += `</div>`;
+            });
 
-        document.getElementById("tablaReceta").innerHTML = rec;
-    })
-    .catch(err => {
-        console.error(err);
-    });
+            document.getElementById("tablaReceta").innerHTML = rec;
+        })
+        .catch(err => {
+            console.error(err);
+        });
 
     axios.get("/nivel")
         .then(res => {
@@ -202,7 +206,7 @@ function guardar() {
     formData.append('ingredientes', JSON.stringify(nuevosIngredientes));
 
     // Realiza la solicitud POST con todos los datos
-    axios.post("/visper",formData,{})
+    axios.post("/visper", formData, {})
         .then(res => {
             mostrar();
             alert("Receta publicada CORRECTAMENTE");
@@ -214,20 +218,3 @@ function guardar() {
             console.error(err);
         });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

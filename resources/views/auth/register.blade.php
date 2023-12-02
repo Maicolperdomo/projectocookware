@@ -13,11 +13,11 @@
 
 </head>
 
-<body class="container-fluid" style="background-color: #c0dd8d;">
+<body class="container-fluid" style="background-color: #52ba66;">
     <div class="row">
         <div class="col-5 d-flex justify-content-end">
             <div class="col-11 d-flex justify-content-center align-items-center my-3"
-                style="background: white; border-radius: 30px 30px 30px 30px;">
+                style="background: #f6f9fa; border-radius: 30px 30px 30px 30px;">
                 <form action="/register" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
