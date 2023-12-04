@@ -24,6 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'foto',
+        'reset_password_token',
+        'reset_password_token_expires_at',
     ];
 
     /**

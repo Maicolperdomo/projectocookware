@@ -6,8 +6,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RecetasController;
 use App\Http\Controllers\NivelesController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UnidadController;
 use App\Http\Controllers\CantidadController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\VisitarPerController;
 use App\Http\Controllers\VisitarRecController;
 use App\Http\Controllers\IngredientesController;
@@ -35,6 +37,14 @@ Route::get('/register', function () {
 Route::get('/register', [RegisterController::class, 'show']);
 
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::resource('/forgot', ForgotPasswordController::class)->only(['index','store','update','destroy']);
+
+Route::post('/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
+
+Route::get('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('reset-password');;
+
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']);
 
 Route::get('/login', [LoginController::class, 'show']);
 
