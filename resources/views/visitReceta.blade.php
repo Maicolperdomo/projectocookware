@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+  <!--  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>detalle de Receta</title>
 </head>
@@ -26,18 +27,13 @@
                     <div class="col">
                         <h5>Calificación</h5>
                     </div>
-                    <div class="star-rating">
-                        <input type="radio" id="star0"name="rating" class="fa far-star" data-index="0">
-                        <label for="star0"></label>
-                        <input type="radio" id="star1" name="rating" class="fa far-star" data-index="1">
-                        <label for="star1"></label>
-                        <input type="radio" id="star2"  name="rating"class="fa far-star" data-index="2">
-                        <label for="star2"></label>
-                        <input type="radio" id="star3" name="rating" class="fa far-star" data-index="3">
-                        <label for="star3"></label>
-                        <input type="radio" id="star4"  name="rating"class="fa far-star" data-index="4">
-                        <label for="star4"></label>
-
+                    </div>
+                    <div >
+                        <i class="fa fa-star fa 2x" data-index="0"></i>
+                        <i class="fa fa-star fa 2x" data-index="1"></i>
+                        <i class="fa fa-star fa 2x" data-index="2"></i>
+                        <i class="fa fa-star fa 2x" data-index="3"></i>
+                        <i class="fa fa-star fa 2x" data-index="4"></i>
                     </div>
                 </div>
 
@@ -142,9 +138,9 @@
 
 </html>
 <script>
-    var ratedIndex = -1,
-        uID = 0;
-
+    var ratedIndex = -1;
+    uID =0
+        
     $(document).ready(function() {
         resetStarColors();
 
@@ -173,7 +169,7 @@
 
     function saveToTheDB() {
         $.ajax({
-            url: "visitReceta.blade.php",
+            url: "/",
             method: "POST",
             dataType: 'json',
             data: {
@@ -183,14 +179,23 @@
             },
             success: function(r) {
                 uID: r.uid;
-                localStorage.setItem('uID', 'uID');
+                localStorage.setItem('uID', uID);
+                // Muestra el mensaje de alerta
+                showAlert("La calificación ha sido enviada con éxito!");
+            },
+            error: function() {
+                // Muestra un mensaje de alerta en caso de error
+                showAlert("Error al enviar la calificación. Inténtalo de nuevo.");
             }
         })
     }
-
+    function showAlert(message) {
+        // Muestra un mensaje de alerta
+        alert(message);
+    }
     function setStars(max) {
         for (var i = 0; i <= max; i++)
-            $('.fa-star:eq(' + i + ')').css('color', 'green');
+            $('.fa-star:eq(' + i + ')').css('color', 'yellow');
     }
 
     function resetStarColors() {
@@ -221,42 +226,6 @@ $sql = $conn->query(query: "SELECT SUM(rateIndex) AS total FROM stars");
 $rData = $sql->fetch_array();
 $total = $rData['total'];
 
-$avg = $total / $numR;
+//$avg = $total / $numR;
 
 ?>
-<style>
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f4f4f4;
-    }
-
-    .star-rating {
-        font-size: 0;
-    }
-
-    .star-rating input {
-        display: none;
-    }
-
-    .star-rating label {
-        display: inline-block;
-        cursor: pointer;
-        font-size: 2rem;
-        color: #ccc;
-    }
-
-    .star-rating label:before {
-        content: '\2605';
-        /* Código de estrella en unicode */
-        display: block;
-    }
-
-    .star-rating input:checked~label {
-        color: #ffd700;
-        /* Color de estrella seleccionada */
-    }
-</style>
