@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search=$request->get('search');
-        $user=User::where('recetas', 'like', '%'.$search. '%');
-        return view('visitPerfil', compact('search'));
+        return view('visitPerfil');
     }
 
     /**
@@ -25,8 +25,45 @@ class VisitarPerController extends Controller
 // Controlador en Laravel
 public function store(Request $request)
 {
-   Recetas::create($request->all());
+    $fotosPf = $request->file('subirf')->store('public/fotoReceta');
+    $uploadedFiles = Storage::url($fotosPf);
+
+// Crear el producto con los datos del formulario y las imágenes almacenadas
+$receta = Recetas::create([
+    'nombre' => $request->nombre,
+    'descripcion' => $request->descripcion,
+    'ingredientes' => $request->ingredientes,
+    'cantidad_id' => $request->cantidad_id,
+    'unidad_id' => $request->unidad_id,
+    'pasos' => $request->pasos,
+    'foto' => $uploadedFiles,
+    'nivel_id' => $request->nivel_id,
+    'tiempo_estimado' => $request->tiempo_estimado,   
+]);
+
+$receta->save();
+
+    return redirect('/visper');
 }
+
+// VisitarPerController.php
+/*public function obtenerRecetas()
+{
+    $recetas = Recetas::all();
+    return response()->json($recetas);
+}*/
+
+// VisitarPerController.php
+public function obtenerRecetas()
+{
+    $recetas = Recetas::all();
+    foreach ($recetas as $receta) {
+        // Concatenar la URL base con la ruta de la imagen
+        $receta->foto = asset('storage/' . $receta->foto);
+    }
+    return response()->json($recetas);
+}
+
 
     /**
      * Update the specified resource in storage.
