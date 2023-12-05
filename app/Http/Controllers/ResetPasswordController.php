@@ -18,7 +18,7 @@ class ResetPasswordController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'token' => 'required|string',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|min:8',
         ]);
 
         $user = User::where('email', $request->email)
@@ -27,7 +27,7 @@ class ResetPasswordController extends Controller
             ->first();
 
         if (!$user) {
-            return response()->json(['message' => 'Token de restablecimiento de contraseña no válido o expirado.'], 400);
+            return redirect()->to('/login')->withErrors('Token de restablecimiento de contraseña no válido o expirado.');
         }
 
         // Actualizar la contraseña y limpiar el token
@@ -36,5 +36,7 @@ class ResetPasswordController extends Controller
             'reset_password_token' => null,
             'reset_password_token_expires_at' => null,
         ]);
+
+        return redirect('/login')->with('success', 'Contrasena ACTUALIZADA.');
     }
 }

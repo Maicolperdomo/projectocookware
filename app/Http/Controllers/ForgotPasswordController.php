@@ -38,7 +38,8 @@ class ForgotPasswordController extends Controller
         // Enviar correo electrónico con el enlace de restablecimiento
         Mail::to($user->email)->send(new ResetPasswordMail($user));
 
-        return redirect('/login')->with('message', 'Se ha enviado un enlace de restablecimiento de contraseña por correo electrónico.');
+        return redirect('/login')->with('success', 'Revisa tu Correo.');
+
     }
 
     /**
