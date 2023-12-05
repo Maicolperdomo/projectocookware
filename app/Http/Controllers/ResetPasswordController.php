@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
+    public function index()
+    {
+        return view('auth.reset');
+    }
+
     public function resetPassword(Request $request)
     {
         $request->validate([
@@ -32,6 +37,6 @@ class ResetPasswordController extends Controller
             'reset_password_token_expires_at' => null,
         ]);
 
-        return response()->json(['message' => 'Contraseña restablecida correctamente.']);
+        return redirect('/login')->with('message', 'Contraseña restablecida correctamente.');
     }
 }
