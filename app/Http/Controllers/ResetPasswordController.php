@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
-    public function index($token)
+    public function index($token, $email)
 {
-    return view('auth.reset', ['token' => $token]);
+    return view('auth.reset', ['token' => $token, 'email' => $email]);
 }
 
     public function resetPassword(Request $request)
@@ -32,7 +32,7 @@ class ResetPasswordController extends Controller
 
         // Actualizar la contraseña y limpiar el token
         $user->update([
-            'password' => Hash::make($request->password),
+            'password' => ($request->password),
             'reset_password_token' => null,
             'reset_password_token_expires_at' => null,
         ]);

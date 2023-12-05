@@ -18,13 +18,13 @@
                     </div><!--img-->
                     <div class="card mb-3">
                         <div class="card-body">
-                            <div class="pt-4 pb-2">
+                            <div class="pt-2 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">RECUPERAR CONTRASEÑA</h5>
                                 <p class="text-center small">Digite su correo electrónico</p>
                             </div>
-                          <!--  @include('layouts.messages')-->
+                          @include('layouts.messages')
                           <form class="row g-3" action="{{ url('/forgot') }}" method="post">
-                                {{ csrf_field() }}
+                                @csrf
                                 <div class="col-12">
                                     <label for="email" class="form-label">Correo Electrónico</label>
                                     <input type="email" name="email" class="form-control" id="txtCorreo" required>

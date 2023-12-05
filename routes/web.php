@@ -42,7 +42,7 @@ Route::resource('/forgot', ForgotPasswordController::class)->only(['index','stor
 
 Route::post('/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
 
-Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('reset-password');
+Route::get('/reset-password/{token}/{email}', [ResetPasswordController::class, 'index'])->name('reset-password');
 
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']);
 
