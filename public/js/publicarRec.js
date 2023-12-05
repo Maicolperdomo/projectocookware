@@ -9,10 +9,10 @@ function mostrar() {
                 console.log(element.foto)
                 if (element.foto) {
                     try {
-                        const imagenesArray = JSON.parse(element.foto);
+                        const imagenesArray = element.foto;
 
                         if (imagenesArray.length > 0) {
-                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 150px; height: 150px;">`;
+                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 250px; height: 200px;">`;
                         } 
                     } catch (error) {
                         console.error(
