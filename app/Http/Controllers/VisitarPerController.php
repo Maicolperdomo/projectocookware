@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recetas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class VisitarPerController extends Controller
@@ -10,9 +11,11 @@ class VisitarPerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('visitPerfil');
+        $search=$request->get('search');
+        $user=User::where('recetas', 'like', '%'.$search. '%');
+        return view('visitPerfil', compact('search'));
     }
 
     /**

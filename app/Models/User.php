@@ -23,6 +23,9 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'foto',
+        'reset_password_token',
+        'reset_password_token_expires_at',
     ];
 
     /**
@@ -44,8 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
+    public function setPasswordAttribute($value){
+        $this->attributes['password']= bcrypt($value);
     }
 }

@@ -1,20 +1,41 @@
 function mostrar() {
-    axios.get("/receta")
+    axios.get("/recetas")
         .then(res => {
-            console.log(res)
-            rec = "";
+            console.log(res);
+            let rec = "";
+
             res.data.forEach((element, index) => {
-                rec += `
-            <div class="card-body">
-                <h5 class="card-title">${element.nombre}</h5>
-                <p class="card-text">${element.descripcion}</p>
-            </div>`
+                rec += `<div class="card mx-3 my-3" style="width: 18rem;">`;
+                console.log(element.foto)
+                if (element.foto) {
+                    try {
+                        const imagenesArray = JSON.parse(element.foto);
+
+                        if (imagenesArray.length > 0) {
+                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 150px; height: 150px;">`;
+                        } 
+                    } catch (error) {
+                        console.error(
+                            "Error al parsear las rutas de las imágenes:",
+                            error
+                        );
+                        rec += `Error al cargar imágenes`;
+                    }
+                }
+                rec += `<div class="card-body">
+                            <h5 class="card-title">${element.nombre}</h5>
+                            <p class="card-text">${element.descripcion}</p>
+                            <a href="#" class="btn btn-primary">Ver Receta</a>
+                        </div>`
+                rec += `</div>`;
             });
+
             document.getElementById("tablaReceta").innerHTML = rec;
         })
         .catch(err => {
             console.error(err);
-        })
+        });
+
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -147,36 +168,33 @@ function limpiarCampos() {
 }
 
 function guardar() {
+    const formulario = document.getElementById('miFormularioId');
     // Obtén la referencia a los campos originales
-    const nombreElement = document.getElementById('nomb');
-    const descripcionElement = document.getElementById('descrip');
-    const pasosElement = document.getElementById('pasosa');
-    const subirfElement = document.getElementById('subirf');
-    const tiempoeElement = document.getElementById('tiempoe');
+    const formData = new FormData(formulario);
+    const files = document.getElementById("subirf").files;
 
-    // Verifica que los elementos existan antes de intentar acceder a sus propiedades
-    if (!nombreElement || !descripcionElement || !pasosElement || !subirfElement || !tiempoeElement) {
-        console.error("Error al obtener valores de los campos originales. Alguno de los elementos no existe.");
-        return;
+    if (files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData.append("foto", files[i]);
+        }
     }
 
-    const nombre = nombreElement.value;
-    const descripcion = descripcionElement.value;
-    const pasos = pasosElement.value;
-    const subirf = subirfElement.value;
-    const tiempoe = tiempoeElement.value;
+    // Crea un objeto FormData para manejar la carga del archivo
+    formData.append('nombre', nomb.value);
+    formData.append('descripcion', descrip.value);
+    formData.append('pasos', pasosa.value);
+    formData.append('nivel_id', txtNivel.value);
+    formData.append('tiempo_estimado', tiempoe.value);
 
-    // Crea un array para almacenar los datos de los nuevos ingredientes
+    // Agrega los datos de los nuevos ingredientes
     const nuevosIngredientes = [];
 
-    // Itera sobre los nuevos conjuntos de campos generados dinámicamente
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
     ingredientesContainers.forEach((container) => {
         const ingredienteElement = container.querySelector('[id^="ingredientes"]');
         const cantidadElement = container.querySelector('[id^="txtCantidad"]');
         const unidadElement = container.querySelector('[id^="txtUnidad"]');
 
-        // Verifica que los elementos existan antes de intentar acceder a sus propiedades
         if (!ingredienteElement || !cantidadElement || !unidadElement) {
             console.error("Error al obtener valores de los campos de ingredientes dinámicos. Alguno de los elementos no existe.");
             return;
@@ -191,16 +209,10 @@ function guardar() {
         nuevosIngredientes.push(ingrediente);
     });
 
+    formData.append('ingredientes', JSON.stringify(nuevosIngredientes));
+
     // Realiza la solicitud POST con todos los datos
-    axios.post("/visper", {
-        nombre: nombre,
-        descripcion: descripcion,
-        pasos: pasos,
-        foto: subirf,
-        nivel_id: txtNivel.value,
-        tiempo_estimado: tiempoe,
-        ingredientes: JSON.stringify(nuevosIngredientes),
-    })
+    axios.post("/visper", formData, {})
         .then(res => {
             mostrar();
             alert("Receta publicada CORRECTAMENTE");
@@ -212,4 +224,3 @@ function guardar() {
             console.error(err);
         });
 }
-
