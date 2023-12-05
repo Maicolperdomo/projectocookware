@@ -5,14 +5,13 @@ function mostrar() {
             let rec = "";
 
             res.data.forEach((element, index) => {
-                rec += `<div class="card mx-3 my-3" style="width: 18rem;">`;
+                rec += `<div class="card mx-3 my-3 d-flex align-items-center" style="width: 18rem;">`;
                 console.log(element.foto)
                 if (element.foto) {
                     try {
-                        const imagenesArray = element.foto;
 
-                        if (imagenesArray.length > 0) {
-                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 250px; height: 200px;">`;
+                        if (element.foto) {
+                            rec += `<img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;">`;
                         } 
                     } catch (error) {
                         console.error(
