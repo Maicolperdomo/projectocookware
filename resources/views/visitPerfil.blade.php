@@ -22,7 +22,7 @@
         <div class="row" style="background-color: #f6f9fa">
             <div class="col-12 d-flex align-items-center">
                 <div class="col-4">
-                    <img src="../image/logo.png" alt="Logo" width="300" height="100">
+                    <a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a> 
                 </div>
                 <div class="col-8 d-flex justify-content-around">
                     <div>
@@ -138,6 +138,10 @@
                 </div>
             </div>
         </div>
+        <script>
+            // Imprime el ID del usuario en la consola del navegador
+            console.log("ID del usuario autenticado:", {{ $userId }});
+        </script>
     </body>
 
 @endauth

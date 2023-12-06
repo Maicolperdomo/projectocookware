@@ -11,7 +11,7 @@ function mostrar() {
                     try {
 
                         if (element.foto) {
-                            rec += `<img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;">`;
+                            rec += `<a href="#"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
                         } 
                     } catch (error) {
                         console.error(
@@ -24,7 +24,6 @@ function mostrar() {
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text">${element.descripcion}</p>
-                            <a href="#" class="btn btn-primary">Ver Receta</a>
                         </div>`
                 rec += `</div>`;
             });

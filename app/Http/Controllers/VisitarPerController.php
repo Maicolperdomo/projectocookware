@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
@@ -44,6 +45,11 @@ $receta = Recetas::create([
 $receta->save();
 
     return redirect('/visper');
+}
+
+public function usuarioAutenticado(){
+    $userId = Auth::id();
+    return view('visitPerfil', ['userId' => $userId]);
 }
 
 // VisitarPerController.php

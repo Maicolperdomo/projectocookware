@@ -52,6 +52,8 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
+Route::get('/visper', [VisitarPerController::class, 'usuarioAutenticado']);
+
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('/receta', RecetasController::class)->only(['index','store','update','destroy']);
