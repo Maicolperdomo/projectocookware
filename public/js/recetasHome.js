@@ -23,7 +23,7 @@ function mostrar() {
                 }
                 rece += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
-                            <p class="card-text">${element.descripcion}</p>
+                            <p class="card-text" id="nivell">${element.nivel}</p>
                         </div>`
                 rece += `</div>`;
             });

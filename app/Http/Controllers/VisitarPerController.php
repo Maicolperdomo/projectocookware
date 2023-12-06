@@ -7,6 +7,7 @@ use App\Models\Recetas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
@@ -17,8 +18,9 @@ class VisitarPerController extends Controller
     public function index()
     {
         $userId = Auth::id();
-    return view('visitPerfil', ['userId' => $userId]);
+        return view('visitPerfil', ['userId' => $userId]);
         //return view('visitPerfil');
+
     }
 
     /**
@@ -54,16 +56,24 @@ $receta->save();
 public function obtenerRecetas()
 {
     $recetas = Recetas::all();
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get(); 
+    
     return response()->json($recetas);
 }
 
 // VisitarPerController.php
 public function obtenerRecetasU($id)
 {
-    $user = User::findOrFail($id); // Asegúrate de manejar el caso en que el usuario no se encuentre
-    $recetas = $user->recetas;
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->where('recetas.user_id', $id) // Filtra por el ID del usuario
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get();
 
-    return response()->json($recetas);
+return response()->json($recetas);
 }
 
 

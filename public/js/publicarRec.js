@@ -30,7 +30,7 @@ function mostrar(userId) {
                 }
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
-                            <p class="card-text">${element.descripcion}</p>
+                            <p class="card-text">${element.nivel}</p>
                         </div>`
                 rec += `</div>`;
             });
