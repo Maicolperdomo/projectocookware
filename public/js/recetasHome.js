@@ -34,6 +34,24 @@ function mostrar() {
             console.error(err);
         });
 
+        axios.get("/nivel")
+        .then(res => {
+            console.log(res)
+            const select = document.getElementById('txtNivel');
+            const niveles = res.data;
+
+            select.innerHTML = `<option selected disabled>Filtrar</option>`;
+
+            niveles.forEach(niv => {
+                const option = document.createElement('option');
+                option.value = niv.id;
+                option.text = niv.nivel;
+                select.appendChild(option);
+            })
+        })
+        .catch(err => {
+            console.error(err);
+        })
 }
 
 mostrar();
