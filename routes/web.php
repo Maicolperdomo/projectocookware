@@ -52,7 +52,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/visper', [VisitarPerController::class, 'usuarioAutenticado']);
+Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 

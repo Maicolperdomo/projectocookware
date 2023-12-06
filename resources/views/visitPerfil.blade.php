@@ -90,6 +90,9 @@
                         <form method="POST" action="visper" enctype="multipart/form-data" id="miFormularioId">
                             @csrf
                             <div>
+                                <input type="text" name="id" class="form-control" id="iduser" value="{{auth()->user()->id}}" disabled>
+                            </div>
+                            <div>
                                 <label for="nomb" class="form-label fw-bolder">Nombre Receta</label>
                                 <input type="text" name="nombre" class="form-control" id="nomb"
                                     placeholder="Cómo se llama tu receta?">
@@ -138,10 +141,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            // Imprime el ID del usuario en la consola del navegador
-            console.log("ID del usuario autenticado:", {{ $userId }});
-        </script>
     </body>
 
 @endauth

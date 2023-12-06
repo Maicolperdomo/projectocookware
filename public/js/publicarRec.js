@@ -1,5 +1,12 @@
-function mostrar() {
-    axios.get("/recetas")
+document.addEventListener('DOMContentLoaded', function() {
+    // La página se ha cargado completamente, ahora puedes acceder al elemento
+    var userId = document.getElementById('iduser').value;
+    console.log(userId);
+    mostrar(userId)
+});
+
+function mostrar(userId) {
+    axios.get(`/recetausuario/${userId}`)
         .then(res => {
             console.log(res);
             let rec = "";
@@ -54,8 +61,6 @@ function mostrar() {
         })
 
 }
-
-mostrar();
 
 function actualizarUnidades(selectId) {
     axios.get("/unidad")

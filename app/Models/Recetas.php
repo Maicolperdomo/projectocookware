@@ -11,6 +11,7 @@ class Recetas extends Model
 
     protected $fillable = [
         'nombre',
+        'user_id',
         'descripcion',
         'ingredientes',
         'cantidad_id',
@@ -26,4 +27,9 @@ class Recetas extends Model
     'created_at',
     'updated_ap'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
