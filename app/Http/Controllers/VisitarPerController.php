@@ -31,7 +31,7 @@ public function store(Request $request)
 
 // Crear el producto con los datos del formulario y las imágenes almacenadas
 $receta = Recetas::create([
-    'user_id' => $request->id,
+    'user_id' => $request->user_id,
     'nombre' => $request->nombre,
     'descripcion' => $request->descripcion,
     'ingredientes' => $request->ingredientes,
@@ -60,14 +60,6 @@ public function obtenerRecetas()
     return response()->json($recetas);
 }
 
-public function show(Request $request)
-{
-        $info=Recetas::findOrFail($request->visper);
-    
-        return view('visitReceta', ['info' => $info]);
-        /*dd($info);*/
-}
-
 // VisitarPerController.php
 public function obtenerRecetasU($id)
 {
@@ -78,6 +70,14 @@ public function obtenerRecetasU($id)
     ->get();
 
 return response()->json($recetas);
+}
+
+public function show(Request $request)
+{
+        $info=Recetas::findOrFail($request->visper);
+    
+        return view('visitReceta', ['info' => $info]);
+        /*dd($info);*/
 }
 
 

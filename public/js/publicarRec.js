@@ -184,6 +184,7 @@ function guardar() {
 
     // Crea un objeto FormData para manejar la carga del archivo
     formData.append('nombre', nomb.value);
+    formData.append('user_id', iduser.value);
     formData.append('descripcion', descrip.value);
     formData.append('pasos', pasosa.value);
     formData.append('nivel_id', txtNivel.value);
