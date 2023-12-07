@@ -27,6 +27,15 @@ class RecetasController extends Controller
 
     }
 
+    public function obtenerRecetasPorNivel($nivelId)
+{
+    $recetas = Recetas::where('nivel_id', $nivelId)
+        ->with('nivel') // Esto asume que hay una relación en el modelo Recetas llamada 'nivel'
+        ->get();
+
+    return response()->json($recetas);
+}
+
     /**
      * Store a newly created resource in storage.
      */

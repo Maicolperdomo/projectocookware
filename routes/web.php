@@ -61,6 +61,8 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('/receta', RecetasController::class)->only(['index','store','update','destroy']);
 
+Route::get('/recetas/por-nivel/{nivelId}', [RecetasController::class, 'obtenerRecetasPorNivel']);
+
 Route::resource('/nivel', NivelesController::class)->only(['index','store','update','destroy']);
 
 Route::resource('/unidad', UnidadController::class)->only(['index','store','update','destroy']);

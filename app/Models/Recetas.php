@@ -38,4 +38,9 @@ class Recetas extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function nivel()
+    {
+        return $this->belongsTo(Niveles::class, 'nivel_id');
+    }
 }
