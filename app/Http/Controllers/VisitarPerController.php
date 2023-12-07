@@ -50,11 +50,12 @@ $receta->save();
 // VisitarPerController.php
 public function obtenerRecetas()
 {
-    $recetas = Recetas::all();
     $recetas = DB::table('recetas')
-    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
-    ->select('recetas.*', 'niveles.nivel as nivel')
-    ->get(); 
+        ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+        ->select('recetas.*', 'niveles.nivel as nivel')
+        ->inRandomOrder()  // Ordena las recetas de manera aleatoria
+        ->take(20)         // Toma solo 20 recetas
+        ->get(); 
     
     return response()->json($recetas);
 }

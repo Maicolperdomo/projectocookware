@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $term = $request->input('term');
         
-        $recetas = Recetas::where('nombre', 'LIKE', '%' . $term . '%')->get(['id', 'nombre']);
+        $recetas = Recetas::where('nombre', 'LIKE', '%' . $term . '%')->get(['id', 'nombre','foto','nivel_id']);
 
         return response()->json($recetas);
     }
