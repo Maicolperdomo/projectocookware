@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get(`/recetas/por-nivel/${nivelId}`)
             .then(function (res) {
             console.log(res);
+
             let rece = "";
 
             res.data.forEach((element, index) => {

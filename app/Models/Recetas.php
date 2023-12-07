@@ -41,6 +41,6 @@ class Recetas extends Model
 
     public function nivel()
     {
-        return $this->belongsTo(Niveles::class, 'nivel_id');
+        return $this->belongsTo(Niveles::class, 'nivel_id', 'id');
     }
 }

@@ -29,10 +29,17 @@ class RecetasController extends Controller
 
     public function obtenerRecetasPorNivel($nivelId)
 {
-    $recetas = Recetas::where('nivel_id', $nivelId)
+    /*$recetas = Recetas::where('nivel_id', $nivelId)
         ->with('nivel') // Esto asume que hay una relación en el modelo Recetas llamada 'nivel'
         ->get();
 
+    return response()->json($recetas);*/
+
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->where('recetas.nivel_id', $nivelId) // Filtra por el ID del usuario
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get();
     return response()->json($recetas);
 }
 
