@@ -17,9 +17,11 @@ class VisitarPerController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        return view('visitPerfil', ['userId' => $userId]);
+        
+        $cantidadRecetas = Recetas::where('user_id', $userId)->count();
+     
+        return view('visitPerfil', ['userId' => $userId, 'cantidadRecetas' => $cantidadRecetas]);
         //return view('visitPerfil');
-
     }
 
 // Controlador en Laravel
