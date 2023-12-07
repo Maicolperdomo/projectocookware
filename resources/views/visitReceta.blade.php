@@ -20,7 +20,8 @@
         </div>
         <div class="row">
             <div class="col-4 d-flex justify-content-center" style="background-color: #76cc68">
-                <div class="mt-3  fw-bolder">
+                <div class="mt-3">
+                    <h2 class="d-flex justify-content-around fw-bolder">{{ $info->user->nickname }}</h2>
                     <div class="d-flex justify-content-around"><img src="{{ $info->foto }}" alt="Foto Receta"
                             width="300" height="300"></div>
                     <div class="d-flex justify-content-center my-2">
@@ -28,6 +29,9 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <h5 class="card-title">{{ $info->descripcion }}</h5>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <button class="btn fw-bolder" style="background-color: #eb4e3d">Visitar Perfil</button>
                     </div>
                 </div>
             </div>
@@ -51,7 +55,7 @@
                             @foreach ($ingredientesArray as $ingrediente)
                                 <tr>
                                     <td>{{ $ingrediente['nombre'] }}</td>
-                                    <td>{{ $ingrediente['unidad'] }}</td>
+                                    <td>{{ App\Models\Unidad::find($ingrediente['unidad'])->nombre ?? 'N/A' }}</td>
                                     <td>{{ $ingrediente['cantidad'] }}</td>
                                 </tr>
                             @endforeach
