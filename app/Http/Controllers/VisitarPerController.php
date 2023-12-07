@@ -80,6 +80,19 @@ public function show(Request $request)
         /*dd($info);*/
 }
 
+public function autocomplete(Request $request)
+{
+    $term = $request->input('term');
+    
+    // Obtén el ID del usuario autenticado
+    $usuarioId = Auth::id();
+
+    $recetas = Recetas::where('user_id', $usuarioId)
+        ->where('nombre', 'LIKE', '%' . $term . '%')
+        ->get(['id', 'nombre', 'foto', 'nivel_id']);
+
+    return response()->json($recetas);
+}
 
     /**
      * Update the specified resource in storage.

@@ -75,6 +75,8 @@ Route::resource('/visper', VisitarPerController::class)->only(['index','show','s
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
+Route::get('/recetas/autocomplete', [VisitarPerController::class, 'autocomplete'])->name('recetas.autocomplete');
+
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 
 Route::post('/update', [ActualizarPerfilController::class, 'update']);

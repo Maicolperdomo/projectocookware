@@ -26,10 +26,11 @@
                 </div>
                 <div class="col-8 d-flex justify-content-around">
                     <div>
-                        <form class="d-flex justify-content-center" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                                style="width: 55%;">
-                            <button class="btn fw-bolder" style="background-color: #52ba66" type="submit">Search</button>
+                        <form class="d-flex justify-content-center" role="search" id="searchForm"
+                            data-route="{{ route('recetas.autocomplete') }}">
+                            <input class="form-control me-2" type="text" id="search" name="search"
+                                aria-label="Search" autocomplete="off" style="width: 55%;">
+                            <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Search</button>
                         </form>
                     </div>
                     <div>
@@ -74,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9 right d-flex flex-wrap" style="background-color: #76cc68" id="tablaReceta">
+            <div class="col-9 right d-flex flex-wrap" style="background-color: #76cc68" id="searchResults">
             </div>
         </div>
         <!-- Modal -->
