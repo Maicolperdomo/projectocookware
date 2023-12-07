@@ -20,33 +20,23 @@
             </div>
             <div class="col-8 d-flex justify-content-around">
                 <div>
-                    <form action="{{ route('buscarRecetas') }}" method="GET" class="d-flex justify-content-center" role="search">
+                    <form action="/filterByNivel" method="GET" class="d-flex justify-content-center" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 55%;" name="nombre">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    @if (isset($recetas))
-                    @if (count($recetas) > 0)
-                    <h2>Resultados de la búsqueda para "{{ $busqueda }}"</h2>
-                    <ul>
-                        @foreach ($recetas as $receta)
-                        <li>{{ $receta->nombre }}</li>
-                        @endforeach
-                    </ul>
-                    @else
-                    <p>No se encontraron recetas para "{{ $busqueda }}"</p>
-                    @endif
-                    @endif
-                </div>
-                <div>
-                    <!--- <select id="txtNivel" class="form-control w-auto">
-                            <option selected disabled>Filtrar</option>
-                        </select>-->
-                    <form action="{{ route('filterByNivel') }}" method="GET" class="d-flex justify-content-center">
-                        <select id="txtNivel"  name="nivel" class="form-control w-auto">
-                        <option selected disabled>Filtrar</option>
+                    @if (isset($niveles))
+                    <form id="filterForm" class="d-flex justify-content-center">
+                        @csrf
+                        <select name="nivel" id="txtNivel" class="form-control w-auto">
+                            <option selected disabled>Filtrar por Nivel</option>
+                            @foreach ($niveles as $nivel)
+                            <option value="{{ $nivel->id }}">{{ $nivel->nivel }}</option>
+                            @endforeach
                         </select>
+                        <button type="button" onclick="filterByNivel()" class="btn btn-primary">Filtrar</button>
                     </form>
                 </div>
+
                 <div>
                     <div class="btn-group dropup" role="group">
                         <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,11 +54,34 @@
     </header>
     <div class="col-12 d-flex flex-wrap justify-content-around" id="tablaReceta">
     </div>
+    @endif
     <div class="col-12 d-flex justify-content-center my-3">
         <button class="btn btn-primary">Actualizar</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function filterByNivel() {
+        var nivelId = document.getElementById('txtNivel').value;
+
+        axios.get(`/filterByNivel?nivel=${nivelId}`)
+            .then(function (response) {
+                // Manejar la respuesta y mostrar los resultados en #tablaReceta
+                var resultadosHtml = '<h2>Resultados del nivel con ID: ' + nivelId + '</h2>';
+                resultadosHtml += '<ul>';
+                response.data.recetas.forEach(function (receta) {
+                    resultadosHtml += '<li>' + receta.nombre + '</li>';
+                });
+                resultadosHtml += '</ul>';
+
+                document.getElementById('tablaReceta').innerHTML = resultadosHtml;
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+</script>
 </body>
 
 @endauth

@@ -22,7 +22,7 @@ class VisitarRecController extends Controller
     {
         //
     }
-
+   
     /**
      * Update the specified resource in storage.
      */
@@ -38,16 +38,21 @@ class VisitarRecController extends Controller
     {
         //
     }
-    // app/Http/Controllers/VisitarRecController.php
+// VisitarRecController.php
 
-
-public function like(Recetas $receta)
+public function like(Request $request, string $id)
 {
-    $receta = Recetas::findOrFail($receta);
-    $receta->likes++;
-    $receta->save();
+    $receta = Recetas::findOrFail($id);
 
-    return redirect()->back();
+    // Verificar si el usuario ya ha dado like
+    if (!$receta->likes->contains('user_id', auth()->id())) {
+        // Incrementar el contador de likes en la receta
+        $receta->likes()->create(['user_id' => auth()->id()]);
+        $receta->increment('likes');
+    }
+
+    // Puedes redirigir a la misma página o a otra después de dar like
+    return redirect('/home')->back()->with('success', 'Receta Liked!');
 }
 
 }

@@ -18,6 +18,7 @@ class Recetas extends Model
         'unidad_id',
         'pasos',
         'foto',
+        'likes',
         'nivel_id',
         'tiempo_estimado',
     ];
@@ -27,4 +28,17 @@ class Recetas extends Model
     'created_at',
     'updated_ap'
     ];
+
+    public function nivel()
+{
+    return $this->belongsTo(Niveles::class, 'nivel_id');
+}
+// Recetas.php
+
+public function likes()
+{
+    return $this->hasMany(Like::class);
+}
+
+
 }

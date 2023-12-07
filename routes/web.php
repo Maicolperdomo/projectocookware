@@ -54,7 +54,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/buscar-recetas', [HomeController::class, 'buscarRecetas'])->name('buscarRecetas');
+Route::get('/filterByNivel', [HomeController::class, 'filterByNivel'])->name('filterByNivel');
 
 Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
 
@@ -81,5 +81,4 @@ Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 Route::post('/update', [ActualizarPerfilController::class, 'update']);
 
 Route::get('/filterByNivel', [HomeController::class, 'filterByNivel'])->name('filterByNivel');
-
-
+Route::post('/receta/{id}/like', [VisitarRecController::class, 'like'])->name('receta.like');

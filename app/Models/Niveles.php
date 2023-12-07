@@ -12,4 +12,10 @@ class Niveles extends Model
     protected $fillable = [
         'nivel',
     ];
+
+    public function recetas()
+{
+    return $this->hasMany(Recetas::class, 'nivel_id');
+}
+
 }

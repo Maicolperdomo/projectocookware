@@ -18,7 +18,10 @@ class VisitarPerController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        return view('visitPerfil', ['userId' => $userId]);
+        
+        $cantidadRecetas = Recetas::where('user_id', $userId)->count();
+     
+        return view('visitPerfil', ['userId' => $userId, 'cantidadRecetas' => $cantidadRecetas]);
         //return view('visitPerfil');
 
     }
@@ -72,13 +75,6 @@ public function obtenerRecetasU($id)
 return response()->json($recetas);
 }
 
-public function show(Request $request)
-{
-        $info=Recetas::findOrFail($request->visper);
-    
-        return view('visitReceta', ['info' => $info]);
-        /*dd($info);*/
-}
 
 
     /**
@@ -96,4 +92,5 @@ public function show(Request $request)
     {
         Recetas::findOrFail($recetas->id)->delete();
     }
+    
 }
