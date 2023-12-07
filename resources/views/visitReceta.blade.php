@@ -30,9 +30,11 @@
                     <div class="d-flex justify-content-center">
                         <h5 class="card-title">{{ $info->descripcion }}</h5>
                     </div>
-                    <div class="d-flex justify-content-center my-3">
-                        <button class="btn fw-bolder" style="background-color: #eb4e3d">Visitar Perfil</button>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title">{{ $info->user_id }}</h5>
                     </div>
+                    <a href="{{ route('visitarPerfil', ['userId' => $info->user_id]) }}">Visitar Perfil</a>
+                  
                 </div>
             </div>
             <div class="col-8" style="background-color: #f6f9fa">
