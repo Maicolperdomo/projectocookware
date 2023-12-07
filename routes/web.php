@@ -68,8 +68,7 @@ Route::resource('/cantidad', CantidadController::class)->only(['index','store','
 
 Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
 
-Route::resource('/visper', VisitarPerController::class)->only(['index','store','update','destroy']);
+Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update','destroy']);
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
-Route::get('/contar-recetas', [VisitarPerController::class, 'contarRecetas']);

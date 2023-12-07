@@ -10,6 +10,7 @@ class Recetas extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nombre',
         'user_id',
         'descripcion',
@@ -27,6 +28,11 @@ class Recetas extends Model
     'created_at',
     'updated_ap'
     ];
+
+    public function unidad()
+    {
+        return $this->belongsTo(Unidad::class, 'unidad_id');
+    }
 
     public function user()
     {

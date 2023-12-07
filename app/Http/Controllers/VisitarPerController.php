@@ -23,10 +23,6 @@ class VisitarPerController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-
 // Controlador en Laravel
 public function store(Request $request)
 {
@@ -62,6 +58,14 @@ public function obtenerRecetas()
     ->get(); 
     
     return response()->json($recetas);
+}
+
+public function show(Request $request)
+{
+        $info=Recetas::findOrFail($request->visper);
+    
+        return view('visitReceta', ['info' => $info]);
+        /*dd($info);*/
 }
 
 // VisitarPerController.php

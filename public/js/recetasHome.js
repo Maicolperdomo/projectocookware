@@ -6,12 +6,11 @@ function mostrar() {
 
             res.data.forEach((element, index) => {
                 rece += `<div class="card mx-3 my-3 d-flex align-items-center" style="width: 18rem;">`;
-                console.log(element.foto)
                 if (element.foto) {
                     try {
 
                         if (element.foto) {
-                            rece += `<a href="#"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
+                            rece += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
                         } 
                     } catch (error) {
                         console.error(
@@ -23,7 +22,7 @@ function mostrar() {
                 }
                 rece += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
-                            <p class="card-text" id="nivell">${element.nivel}</p>
+                            <p class="card-text" id="nivell">Dificultad: ${element.nivel}</p>
                         </div>`
                 rece += `</div>`;
             });
