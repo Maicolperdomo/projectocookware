@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
@@ -15,12 +17,11 @@ class VisitarPerController extends Controller
      */
     public function index()
     {
-        return view('visitPerfil');
-    }
+        $userId = Auth::id();
+        return view('visitPerfil', ['userId' => $userId]);
+        //return view('visitPerfil');
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    }
 
 // Controlador en Laravel
 public function store(Request $request)
@@ -30,6 +31,7 @@ public function store(Request $request)
 
 // Crear el producto con los datos del formulario y las imágenes almacenadas
 $receta = Recetas::create([
+    'user_id' => $request->user_id,
     'nombre' => $request->nombre,
     'descripcion' => $request->descripcion,
     'ingredientes' => $request->ingredientes,
@@ -47,21 +49,35 @@ $receta->save();
 }
 
 // VisitarPerController.php
-/*public function obtenerRecetas()
-{
-    $recetas = Recetas::all();
-    return response()->json($recetas);
-}*/
-
-// VisitarPerController.php
 public function obtenerRecetas()
 {
     $recetas = Recetas::all();
-    foreach ($recetas as $receta) {
-        // Concatenar la URL base con la ruta de la imagen
-        $receta->foto = asset('storage/' . $receta->foto);
-    }
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get(); 
+    
     return response()->json($recetas);
+}
+
+// VisitarPerController.php
+public function obtenerRecetasU($id)
+{
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->where('recetas.user_id', $id) // Filtra por el ID del usuario
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get();
+
+return response()->json($recetas);
+}
+
+public function show(Request $request)
+{
+        $info=Recetas::findOrFail($request->visper);
+    
+        return view('visitReceta', ['info' => $info]);
+        /*dd($info);*/
 }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recetas;
 use Illuminate\Http\Request;
 
 class VisitarRecController extends Controller
@@ -37,4 +38,16 @@ class VisitarRecController extends Controller
     {
         //
     }
+    // app/Http/Controllers/VisitarRecController.php
+
+
+public function like(Recetas $receta)
+{
+    $receta = Recetas::findOrFail($receta);
+    $receta->likes++;
+    $receta->save();
+
+    return redirect()->back();
+}
+
 }

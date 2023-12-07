@@ -1,18 +1,24 @@
-function mostrar() {
-    axios.get("/recetas")
+document.addEventListener('DOMContentLoaded', function() {
+    // La página se ha cargado completamente, ahora puedes acceder al elemento
+    var userId = document.getElementById('iduser').value;
+    console.log(userId);
+    mostrar(userId)
+});
+
+function mostrar(userId) {
+    axios.get(`/recetausuario/${userId}`)
         .then(res => {
             console.log(res);
             let rec = "";
 
             res.data.forEach((element, index) => {
-                rec += `<div class="card mx-3 my-3" style="width: 18rem;">`;
+                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
                 console.log(element.foto)
                 if (element.foto) {
                     try {
-                        const imagenesArray = JSON.parse(element.foto);
 
-                        if (imagenesArray.length > 0) {
-                            rec += `<img src="${imagenesArray[0]}" alt="Foto Receta" style="width: 150px; height: 150px;">`;
+                        if (element.foto) {
+                            rec += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
                         } 
                     } catch (error) {
                         console.error(
@@ -24,8 +30,7 @@ function mostrar() {
                 }
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
-                            <p class="card-text">${element.descripcion}</p>
-                            <a href="#" class="btn btn-primary">Ver Receta</a>
+                            <p class="card-text">Dificultad: ${element.nivel}</p>
                         </div>`
                 rec += `</div>`;
             });
@@ -56,8 +61,6 @@ function mostrar() {
         })
 
 }
-
-mostrar();
 
 function actualizarUnidades(selectId) {
     axios.get("/unidad")
@@ -181,6 +184,7 @@ function guardar() {
 
     // Crea un objeto FormData para manejar la carga del archivo
     formData.append('nombre', nomb.value);
+    formData.append('user_id', iduser.value);
     formData.append('descripcion', descrip.value);
     formData.append('pasos', pasosa.value);
     formData.append('nivel_id', txtNivel.value);

@@ -22,15 +22,15 @@
         <div class="row" style="background-color: #f6f9fa">
             <div class="col-12 d-flex align-items-center">
                 <div class="col-4">
-                    <img src="../image/logo.png" alt="Logo" width="300" height="100">
+                    <a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a> 
                 </div>
                 <div class="col-8 d-flex justify-content-around">
                     <div>
                         <form class="d-flex justify-content-center" role="search">
-                        <input class="form-control me-2" type="text" id="search" name="search"  aria-label="Search" autocomplete="off" style="width: 55%;">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                style="width: 55%;">
                             <button class="btn fw-bolder" style="background-color: #52ba66" type="submit">Search</button>
                         </form>
-                       
                     </div>
                     <div>
                         <select id="Nivel" class="form-control w-auto fw-bolder">
@@ -52,8 +52,6 @@
                 </div>
             </div>
         </div>
-        <!-- Botón de like -->
-
         <div class="row">
             <div class="col-3" style="background-color: #f6f9fa">
                 <div class="my-3  fw-bolder">
@@ -91,6 +89,9 @@
                     <div class="modal-body">
                         <form method="POST" action="visper" enctype="multipart/form-data" id="miFormularioId">
                             @csrf
+                            <div>
+                                <input type="hidden" name="id" class="form-control" id="iduser" value="{{auth()->user()->id}}" disabled>
+                            </div>
                             <div>
                                 <label for="nomb" class="form-label fw-bolder">Nombre Receta</label>
                                 <input type="text" name="nombre" class="form-control" id="nomb"
@@ -149,31 +150,3 @@
 @endguest
 
 </html>
-
-<!--<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Autocompletado utilizando jQuery UI
-        $("#search").autocomplete({
-            source: function (request, response) {
-                // Hacer una solicitud AJAX para obtener las sugerencias de recetas
-                $.ajax({
-                    url: "{{ route('recetas.autocomplete') }}",
-                    dataType: 'json',
-                    data: {
-                        term: request.term
-                    },
-                    success: function (data) {
-                        response(data);
-                    }
-                });
-            },
-            minLength: 2, // Número mínimo de caracteres antes de realizar la búsqueda
-            select: function (event, ui) {
-                // Redirigir a la página de detalles de la receta seleccionada
-                window.location.href = "{{ url('/receta/') }}/" + ui.item.id;
-            }
-        });
-    });
-</script>-->
-
