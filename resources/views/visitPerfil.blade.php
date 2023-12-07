@@ -62,7 +62,7 @@
                         <h5 class="card-title fw-bolder">{{ '@' . auth()->user()->nickname }}</h5>
                     </div>
                     <ul class="text-left">
-                        <li class="list-group-item" id="cantidadRecetas">Cantidad de Recetas: </li>
+                        <li class="list-group-item" id="cantidadRecetas">Cantidad de Recetas: {{ $cantidadRecetas }}</li>
                         <li class="list-group-item">Likes: </li>
                     </ul>
                     <div class="d-flex justify-content-around">
