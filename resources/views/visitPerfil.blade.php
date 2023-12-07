@@ -27,7 +27,7 @@
                 <div class="col-8 d-flex justify-content-around">
                     <div>
                         <form class="d-flex justify-content-center" role="search" id="searchForm"
-                            data-route="{{ route('recetas.autocomplete') }}">
+                            data-route="{{ route('recetas.auto') }}">
                             <input class="form-control me-2" type="text" id="search" name="search"
                                 aria-label="Search" autocomplete="off" style="width: 55%;">
                             <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Search</button>
@@ -63,8 +63,7 @@
                     </div>
                     <ul class="text-left">
                         <li class="list-group-item" id="cantidadRecetas">Cantidad de Recetas: {{ $cantidadRecetas }}</li>
-                        <li class="list-group-item">Seguidores: </li>
-                        <li class="list-group-item">Calificacion: </li>
+                        <li class="list-group-item">Likes: </li>
                     </ul>
                     <div class="d-flex justify-content-around">
                         <!-- Button trigger modal -->

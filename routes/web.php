@@ -77,6 +77,8 @@ Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
 Route::get('/recetas/autocomplete', [VisitarPerController::class, 'autocomplete'])->name('recetas.autocomplete');
 
+Route::get('/recetas/autocompleteu', [VisitarPerController::class, 'autocompleteU'])->name('recetas.auto');
+
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 
 Route::post('/update', [ActualizarPerfilController::class, 'update']);

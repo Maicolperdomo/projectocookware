@@ -22,7 +22,7 @@ class VisitarPerController extends Controller
      
         return view('visitPerfil', ['userId' => $userId, 'cantidadRecetas' => $cantidadRecetas]);
         //return view('visitPerfil');
-    }
+}
 
 // Controlador en Laravel
 public function store(Request $request)
@@ -83,6 +83,15 @@ public function show(Request $request)
 }
 
 public function autocomplete(Request $request)
+    {
+        $term = $request->input('term');
+        
+        $recetas = Recetas::where('nombre', 'LIKE', '%' . $term . '%')->get(['id', 'nombre','foto','nivel_id']);
+
+        return response()->json($recetas);
+    }
+
+    public function autocompleteU(Request $request)
 {
     $term = $request->input('term');
     

@@ -250,32 +250,32 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get(autocompleteUrl, { params: { term: term } })
         .then(function (res) {
             console.log(res);
-            let rece = "";
+            let rec = "";
 
             res.data.forEach((element, index) => {
-                rece += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
+                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
                 if (element.foto) {
                     try {
 
                         if (element.foto) {
-                            rece += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
+                            rec += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
                         }
                     } catch (error) {
                         console.error(
                             "Error al parsear las rutas de las imágenes:",
                             error
                         );
-                        rece += `Error al cargar imágenes`;
+                        rec += `Error al cargar imágenes`;
                     }
                 }
-                rece += `<div class="card-body">
+                rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text" id="nivell">Dificultad: ${element.nivel}</p>
                         </div>`
-                rece += `</div>`;
+                rec += `</div>`;
             });
 
-            document.getElementById("searchResults").innerHTML = rece;
+            document.getElementById("searchResults").innerHTML = rec;
         })
         .catch(err => {
             console.error(err);
