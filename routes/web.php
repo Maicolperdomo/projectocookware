@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActualizarPerfilController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -52,6 +53,8 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
+Route::get('/recetas/autocomplete', [HomeController::class, 'autocomplete'])->name('recetas.autocomplete');
+
 Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
@@ -72,3 +75,6 @@ Route::resource('/visper', VisitarPerController::class)->only(['index','show','s
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
+Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
+
+Route::post('/update', [ActualizarPerfilController::class, 'update']);

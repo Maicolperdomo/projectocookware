@@ -21,34 +21,34 @@
                 </div>
                 <div class="col-8 d-flex justify-content-around">
                     <div>
-                        <form class="d-flex justify-content-center" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                                style="width: 55%;">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        <form class="d-flex justify-content-center" role="search" id="searchForm" data-route="{{ route('recetas.autocomplete') }}">
+                            <input class="form-control me-2" type="text" id="search" name="search" aria-label="Search" autocomplete="off" style="width: 55%;">
+                            <button class="btn fw-bolder" style="background-color: #52ba66" type="submit">Search</button>
                         </form>
                     </div>
                     <div>
-                        <select id="txtNivel" class="form-control w-auto">
-                            <option selected disabled>Filtrar</option>
-                        </select>
-                    </div>
-                    <div>
-                        <div class="btn-group dropup" role="group">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                {{ auth()->user()->nickname }}
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="visper">Ir a Perfil</a></li>
-                                <li><a class="dropdown-item" href="actualizarPerfil">Actualizar Perfil</a></li>
-                                <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
-                            </ul>
+                        <div>
+                            <select id="txtNivel" class="form-control w-auto">
+                                <option selected disabled>Filtrar</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="btn-group dropup" role="group">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    {{ auth()->user()->nickname }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="visper">Ir a Perfil</a></li>
+                                    <li><a class="dropdown-item" href="/actualizarPerfil">Actualizar Perfil</a></li>
+                                    <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </header>
-        <div class="col-12 d-flex flex-wrap justify-content-around" id="tablaReceta" >
+        <div class="col-12 d-flex flex-wrap justify-content-around" id="searchResults">
         </div>
         <div class="col-12 d-flex justify-content-center my-3">
             <button class="btn btn-primary">Actualizar</button>
