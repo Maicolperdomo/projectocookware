@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/tZ1a9Ybqduq5xasuv+jhG2Aqz0E4fB6/z13sM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/publicarRec.js"></script>
 
@@ -64,7 +67,7 @@
                 <div class="d-flex justify-content-around">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn fw-bolder" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #eb4e3d">
-                        Publicar Receta
+                      Publicar Receta
                     </button>
                 </div>
             </div>
@@ -73,8 +76,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">   
+    <div class="modal-dialog">
             <div class="modal-content" style="background-color: #f6f9fa">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5 fw-bolder" id="staticBackdropLabel">ESCRIBE AQUÍ TU RECETA</h1>
@@ -129,6 +132,7 @@
             </div>
         </div>
     </div>
+    </form>
 </body>
 
 @endauth
@@ -138,4 +142,7 @@
 @endguest
 
 </html>
+
+
+
 

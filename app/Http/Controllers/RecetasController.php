@@ -47,8 +47,4 @@ class RecetasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recetas $recetas)
-    {
-        Recetas::findOrFail($recetas->id)->delete();
-    }
 }

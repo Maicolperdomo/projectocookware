@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class VisitarPerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function index()
     {
         $userId = Auth::id();
@@ -52,14 +50,14 @@ $receta->save();
 }
 
 // VisitarPerController.php
-public function obtenerRecetas()
+public function obtenerRecetas($id)
 {
     $recetas = Recetas::all();
     $recetas = DB::table('recetas')
     ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
     ->select('recetas.*', 'niveles.nivel as nivel')
     ->get(); 
-    
+    $recetas = Recetas::find($id);
     return response()->json($recetas);
 }
 
@@ -75,22 +73,27 @@ public function obtenerRecetasU($id)
 return response()->json($recetas);
 }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Recetas $recetas)
     {
         Recetas::findOrFail($request->id)->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Recetas $recetas)
+    public function eliminarReceta($id)
     {
-        Recetas::findOrFail($recetas->id)->delete();
-    }
-    
+        $receta = Recetas::find($id);
+        if ($receta) {
+            $receta->delete();
+            return redirect('/visper');
+        } 
+
 }
+public function editarReceta($id)
+{
+    $receta = Recetas::find($id);
+
+    return view('/visper', ['receta' => $receta]);
+}
+}
+
+    
+

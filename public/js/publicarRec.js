@@ -3,7 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var userId = document.getElementById('iduser').value;
     console.log(userId);
     mostrar(userId)
+   // editarReceta(recetaId);
 });
+function eliminarReceta(recetaId) {
+    axios.delete(`/eliminarReceta/${recetaId}`)
+        .then(res => {
+            console.log(res);
+            mostrar(userId);
+            //alert("Receta eliminada correctamente");
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 
 function mostrar(userId) {
     axios.get(`/recetausuario/${userId}`)
@@ -12,7 +24,7 @@ function mostrar(userId) {
             let rec = "";
 
             res.data.forEach((element, index) => {
-                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
+                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 350px">`;
                 console.log(element.foto)
                 if (element.foto) {
                     try {
@@ -31,8 +43,11 @@ function mostrar(userId) {
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text">Dificultad: ${element.nivel}</p>
+                            <button class="btn btn-danger" onclick="eliminarReceta(${element.id})">Eliminar</button>
+                            <button class="btn btn-primary" onclick="editarReceta(${element.id})">Editar</button>
                         </div>`
                 rec += `</div>`;
+               
             });
 
             document.getElementById("tablaReceta").innerHTML = rec;
@@ -40,7 +55,7 @@ function mostrar(userId) {
         .catch(err => {
             console.error(err);
         });
-
+        
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -60,6 +75,24 @@ function mostrar(userId) {
             console.error(err);
         })
 
+}
+function editarReceta(recetaId) {
+    axios.get(`/receta/${recetaId}`)
+        .then(res => {
+            const receta = res.data;
+            // Llena el formulario con los datos de la receta
+            document.getElementById("iduser").value = receta.id_usuario;
+            document.getElementById("nomb").value = receta.nombre;
+            document.getElementById("descrip").value = receta.descripcion;
+
+            // Llena otros campos según sea necesario
+
+            // Abre el modal de edición
+            $('#staticBackdrop').modal('show');
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
 
 function actualizarUnidades(selectId) {
@@ -227,4 +260,6 @@ function guardar() {
         .catch(err => {
             console.error(err);
         });
+   
 }
+
