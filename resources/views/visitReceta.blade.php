@@ -21,7 +21,8 @@
         <div class="row">
             <div class="col-4 d-flex justify-content-center" style="background-color: #76cc68">
                 <div class="mt-3">
-                    <h2 class="d-flex justify-content-around fw-bolder">{{ $info->user->nickname }}</h2>
+                    <h3 class="d-flex justify-content-around fw-bolder">{{ $info->user->name }} {{ $info->user->lastname }}</h3>
+                    <h4 class="d-flex justify-content-around fw-bolder">{{ $info->user->nickname }}</h4>
                     <div class="d-flex justify-content-around"><img src="{{ $info->foto }}" alt="Foto Receta"
                             width="300" height="300"></div>
                     <div class="d-flex justify-content-center my-2">
@@ -49,16 +50,16 @@
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Unidad</th>
                                 <th scope="col">Cantidad</th>
+                                <th scope="col">Unidad</th>                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($ingredientesArray as $ingrediente)
                                 <tr>
                                     <td>{{ $ingrediente['nombre'] }}</td>
-                                    <td>{{ App\Models\Unidad::find($ingrediente['unidad'])->nombre ?? 'N/A' }}</td>
                                     <td>{{ $ingrediente['cantidad'] }}</td>
+                                    <td>{{ App\Models\Unidad::find($ingrediente['unidad'])->nombre ?? 'N/A' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -71,7 +72,7 @@
                 <div class="row">
                     <div class="col-6">
                         <h5 class="d-flex justify-content-center">Nivel de Dificultad</h4>
-                            <p class="d-flex justify-content-center">{{ $info->nivel_id }}</p>
+                            <p class="d-flex justify-content-center">{{ App\Models\Niveles::find($info['nivel_id'])->nivel ?? 'N/A' }}</p>
                     </div>
                     <div class="col-6">
                         <h5 class="d-flex justify-content-center">Tiempo estimado</h4>

@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     mostrar(userId)
 });
 
+function eliminarReceta(recetaId) {
+    axios.delete(`/eliminarReceta/ ${recetaId}`)
+        .then(res => {
+            console.log(res);
+            mostrar(userId);
+            //alert("Receta eliminada correctamente");
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
+
 function mostrar(userId) {
     axios.get(`/recetausuario/${userId}`)
         .then(res => {
@@ -12,7 +24,7 @@ function mostrar(userId) {
             let rec = "";
 
             res.data.forEach((element, index) => {
-                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
+                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 350px">`;
                 console.log(element.foto)
                 if (element.foto) {
                     try {
@@ -31,6 +43,7 @@ function mostrar(userId) {
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text">Dificultad: ${element.nivel}</p>
+                            <button class="btn btn-danger" onclick="eliminarReceta(${element.id})">Eliminar</button>
                         </div>`
                 rec += `</div>`;
             });
@@ -130,11 +143,10 @@ function agregarIngrediente() {
                 </div>
             </div>
             <div class="me-2">
-                <label class="form-label" for="${nuevoIdCantidad}">Cantidad:</label>
+                <label class="form-label">Cantidad:</label>
                 <div>
-                    <select id="${nuevoIdCantidad}" class="form-control">
-                        <option selected disabled>Seleccionar</option>
-                    </select>
+                <input type="number" id="${nuevoIdCantidad}" class="form-control"
+                aria-label="Text input with dropdown button" placeholder="Ingrediente">
                 </div>
             </div>
             <div>
