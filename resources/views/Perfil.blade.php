@@ -11,22 +11,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="../js/recetasPerfil.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @font-face {
+            font-family: crema;
+            src: url(font/CourierPrime-Regular.ttf);
+        }
+    </style>
 </head>
 
 @auth
 
     <body class="container-fluid colorletra">
-        <div class="row" style="background-color: #f6f9fa">
-            <div class="col-12 d-flex align-items-center">
-                <div class="col-4">
-                    <a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a> 
+        <div class="row">
+            <div class="col-9" style="background-color: #76cc68">
+                <div class="text-center">
+                    <h1 class="display-4">Mis Recetas</h1>
+                </div>
+                <div class="d-flex flex-wrap" id="searchResults">
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-9 right d-flex flex-wrap" style="background-color: #76cc68" id="searchResults">
-            </div>
             <div class="col-3 bg-light p-3">
+                <a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a>
+                <input type="hidden" id="iduser" value="{{ $usuario->id }}">
                 <div class="my-3 text-center fw-bolder">
                     <!-- Imprime la foto -->
                     <div class="d-flex justify-content-center">

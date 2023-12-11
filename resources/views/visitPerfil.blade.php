@@ -13,7 +13,13 @@
     </script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/publicarRec.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @font-face {
+            font-family: crema;
+            src: url(font/CourierPrime-Regular.ttf);
+        }
+    </style>
 </head>
 
 @auth
@@ -61,10 +67,13 @@
                     <div class="d-flex justify-content-center">
                         <h5 class="card-title fw-bolder">{{ '@' . auth()->user()->nickname }}</h5>
                     </div>
-                    <ul class="text-left">
-                        <li class="list-group-item" id="cantidadRecetas">Cantidad de Recetas: {{ $cantidadRecetas }}</li>
-                        <li class="list-group-item">Likes: </li>
+                    <br>
+                    <ul class="list-group text-center">
+                        <li class="list-group-item">Cantidad de Recetas</li>
+                        <li class="list-group-item">{{ $cantidadRecetas }}</li>
+                        <!-- Puedes agregar más información aquí según tus necesidades -->
                     </ul>
+                    <br>
                     <div class="d-flex justify-content-around">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn fw-bolder" data-bs-toggle="modal"

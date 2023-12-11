@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOKWARE/Home</title>
+    <title>COOKWARE</title>
     <link rel="shortcut icon" href="../image/logosmall.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/recetasHome.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @font-face {
+            font-family: crema;
+            src: url(font/CourierPrime-Regular.ttf);
+        }
+    </style>
 </head>
 
 @auth
@@ -37,7 +44,8 @@
                     </div>
                     <div>
                         <div class="btn-group dropup" role="group">
-                            <button type="button" class="btn fw-bolder" style="background-color: #eb4e3d" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn fw-bolder" style="background-color: #eb4e3d"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ auth()->user()->nickname }}
                             </button>
                             <ul class="dropdown-menu">

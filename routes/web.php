@@ -57,6 +57,8 @@ Route::get('/recetas/autocomplete', [HomeController::class, 'autocomplete'])->na
 
 Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
 
+Route::get('/recetas/usuario/{id}', [VisitarRecController::class, 'obtenerRecetasUsuario']);
+
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('/receta', RecetasController::class)->only(['index','store','update','destroy']);
@@ -80,8 +82,6 @@ Route::delete('/eliminarRecetaUsuario/{recetaId}', [VisitarPerController::class,
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
 Route::get('/recetas/autocomplete', [VisitarPerController::class, 'autocomplete'])->name('recetas.autocomplete');
-
-//Route::delete('/eliminarReceta/{id}', [VisitarPerController::class, 'eliminarReceta']);
 
 Route::get('/recetas/autocompleteu', [VisitarPerController::class, 'autocompleteU'])->name('recetas.auto');
 
