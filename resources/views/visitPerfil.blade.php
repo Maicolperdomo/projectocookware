@@ -9,10 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/tZ1a9Ybqduq5xasuv+jhG2Aqz0E4fB6/z13sM=" crossorigin="anonymous"></script>
+   
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="js/publicarRec.js"></script>
 
 </head>
@@ -84,7 +85,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="visper" enctype="multipart/form-data" id="miFormularioId">
+                    <form method="POST" action="/editar" enctype="multipart/form-data" id="miFormularioId">
                         @csrf
                         <div>
                             <input type="hidden" name="id" class="form-control" id="iduser" value="{{auth()->user()->id}}" disabled>
@@ -95,7 +96,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="descrip" class="form-label fw-bolder">Descripción</label>
-                            <input type="text" name="descripcion" class="form-control" placeholder="Describe tu receta brevemente" id="descrip">
+                            <input type="text" name="descripcion"  class="form-control" placeholder="Describe tu receta brevemente" id="descrip">
                         </div>
                         <div id="ingredientesContainer">
                         </div>
@@ -105,11 +106,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="pasosa" class="form-label fw-bolder">Pasos a Seguir</label>
-                            <input type="text" name="pasos" class="form-control" id="pasosa" placeholder="Se coherente en tu paso a paso">
+                            <input type="text" name="pasos"  class="form-control" id="pasosa" placeholder="Se coherente en tu paso a paso">
                         </div>
                         <div class="mb-3">
                             <label for="subirf" class="form-label fw-bolder">Sube una foto</label>
-                            <input type="file" name="subirf" multiple accept="image/*" class="form-control" id="subirf">
+                            <input type="file" name="subirf"  multiple accept="image/*" class="form-control" id="subirf">
                         </div>
                         <div class="mb-3 fw-bolder">
                             <label for="txtNivel">Nivel:</label>
@@ -119,7 +120,7 @@
                         </div>
                         <div>
                             <label for="tiempoe" class="form-label fw-bolder">Tiempo estimado</label>
-                            <input type="time" name="tiempo_estimado" class="form-control" id="tiempoe" placeholder="Cuánto dura tu preparación?">
+                            <input type="time" name="tiempo_estimado"  class="form-control" id="tiempoe" placeholder="Cuánto dura tu preparación?">
                         </div>
                     </form>
                 </div>

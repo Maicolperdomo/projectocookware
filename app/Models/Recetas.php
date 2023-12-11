@@ -18,7 +18,6 @@ class Recetas extends Model
         'unidad_id',
         'pasos',
         'foto',
-        'likes',
         'nivel_id',
         'tiempo_estimado',
     ];
@@ -33,12 +32,8 @@ class Recetas extends Model
 {
     return $this->belongsTo(Niveles::class, 'nivel_id');
 }
-// Recetas.php
 
-public function likes()
-{
-    return $this->hasMany(Like::class);
-}
+
 
 
 }

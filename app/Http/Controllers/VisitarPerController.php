@@ -57,9 +57,15 @@ public function obtenerRecetas($id)
     ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
     ->select('recetas.*', 'niveles.nivel as nivel')
     ->get(); 
-    $recetas = Recetas::find($id);
-    return response()->json($recetas);
+   
 }
+public function obRecetas($id)
+{
+    $receta = Recetas::find($id);
+
+    return response()->json($receta);
+}
+
 
 // VisitarPerController.php
 public function obtenerRecetasU($id)
@@ -87,12 +93,43 @@ return response()->json($recetas);
         } 
 
 }
-public function editarReceta($id)
-{
-    $receta = Recetas::find($id);
+public function editar(Request $request)
+    {
+        $request->validate([
+            'recetaId' => 'required',
+            'nombre'=> 'required',
+            'descripcion'=> 'required',
+            'ingredientes'=> 'required',
+            'cantidad_id'=> 'required',
+            'unidad_id'=> 'required',
+            'pasos'=> 'required',
+            'foto'=> 'required',
+            'likes'=> 'required',
+            'nivel_id'=> 'required',
+            'tiempo_estimado'=> 'required',
+            // Otros campos y reglas de validación
+        ]);
+    
+        $receta = Recetas::find($request->recetaId);
+    
+        $receta->editar([
+        'recetaId' => $request->recetaId,
+        'nombre' => $request->nombre,
+        'descripcion' => $request->descripcion,
+        'ingredientes' => $request->ingrediente,
+        'cantidad_id' => $request->cantidad_id,
+        'unidad_id' => $request->unidad_id,
+        'pasos' => $request->pasos,
+        'foto' => $request->foto ,
+        'nivel_id' => $request->nivel_id,
+        'tiempo_estimado' => $request->tiempo_estimado,
+           
+        ]);
+        $receta->save();
+        return view('/visper', ['recetas' => $receta]);
+       // return redirect('/visp')->with('success', 'Receta actualizada con éxito');
+    }
 
-    return view('/visper', ['receta' => $receta]);
-}
 }
 
     

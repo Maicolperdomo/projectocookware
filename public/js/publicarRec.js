@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // La página se ha cargado completamente, ahora puedes acceder al elemento
     var userId = document.getElementById('iduser').value;
+  
     console.log(userId);
     mostrar(userId)
-   // editarReceta(recetaId);
+    editarReceta(recetaId);
 });
 function eliminarReceta(recetaId) {
     axios.delete(`/eliminarReceta/${recetaId}`)
@@ -77,18 +78,18 @@ function mostrar(userId) {
 
 }
 function editarReceta(recetaId) {
-    axios.get(`/receta/${recetaId}`)
+
+    $('#staticBackdrop').modal('show');
+    axios.get(`/obRecetas/${recetaId}`)
         .then(res => {
+            // Rellenar el formulario con los datos obtenidos
             const receta = res.data;
-            // Llena el formulario con los datos de la receta
-            document.getElementById("iduser").value = receta.id_usuario;
-            document.getElementById("nomb").value = receta.nombre;
-            document.getElementById("descrip").value = receta.descripcion;
+            document.getElementById('nombre').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('pasos').value = '';
+            document.getElementById('subirf').value = '';
+            document.getElementById('tiempoe').value = '';
 
-            // Llena otros campos según sea necesario
-
-            // Abre el modal de edición
-            $('#staticBackdrop').modal('show');
         })
         .catch(err => {
             console.error(err);

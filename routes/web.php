@@ -75,8 +75,9 @@ Route::resource('/visrec', VisitarRecController::class)->only(['index','store','
 Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update','destroy']);
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
-Route::get('/editarReceta/{id}', [VisitarPerController::class, 'editarReceta']);
-//Route::get('/obtenerReceta/{id}', [VisitarPerController::class, 'obtenerReceta']);
+Route::post('/editar', [VisitarPerController::class, 'editar']);
+Route::get('/obRecetas/{id}', [VisitarPerController::class, 'obRecetas']);
+
 Route::delete('/eliminarReceta/{id}', [VisitarPerController::class, 'eliminarReceta']);
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 
