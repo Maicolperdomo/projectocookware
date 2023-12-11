@@ -89,6 +89,4 @@ Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 
 Route::post('/update', [ActualizarPerfilController::class, 'update']);
 
-Route::get('/visitarPerfil/{userId}', [VisitarRecController::class, 'mostrarPerfil'])->name('visitarPerfil');
-
-
+Route::get('/perfil/{userId}', [VisitarRecController::class, 'mostrarPerfil'])->name('mostrarPerfil');

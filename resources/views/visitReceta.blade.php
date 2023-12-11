@@ -21,8 +21,20 @@
         <div class="row">
             <div class="col-4 d-flex justify-content-center" style="background-color: #76cc68">
                 <div class="mt-3">
-                    <h3 class="d-flex justify-content-around fw-bolder">{{ $info->user->name }} {{ $info->user->lastname }}</h3>
-                    <h4 class="d-flex justify-content-around fw-bolder">{{ $info->user->nickname }}</h4>
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center">
+                            <div class="col-4 d-flex justify-content-end">
+                                <img src="{{ $info->user->foto }}" alt="Foto perfil" width="100" height="100" style="border-radius: 50%">
+                            </div>
+                            <div class="col-8 mx-2">
+                                <div>
+                                    <h3 class="fw-bolder">{{ $info->user->name }} {{ $info->user->lastname }}</h3>
+                                    <h4 class="fw-bolder">{{ $info->user->nickname }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>                    
                     <div class="d-flex justify-content-around"><img src="{{ $info->foto }}" alt="Foto Receta"
                             width="300" height="300"></div>
                     <div class="d-flex justify-content-center my-2">
@@ -31,11 +43,12 @@
                     <div class="d-flex justify-content-center">
                         <h5 class="card-title">{{ $info->descripcion }}</h5>
                     </div>
+                    <br>
                     <div class="d-flex justify-content-center">
-                        <h5 class="card-title">{{ $info->user_id }}</h5>
+                        <a href="#" class="btn btn fw-bolder" style="background-color: #eb4e3d"
+                            data-user-id="{{ $info->user_id }}" onclick="mostrarPerfil(event)">Visitar Perfil</a>
                     </div>
-                    <a href="{{ route('visitarPerfil', ['userId' => $info->user_id]) }}">Visitar Perfil</a>
-                  
+                    <br>
                 </div>
             </div>
             <div class="col-8" style="background-color: #f6f9fa">
@@ -51,7 +64,7 @@
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Unidad</th>                                
+                                <th scope="col">Unidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,16 +85,27 @@
                 <div class="row">
                     <div class="col-6">
                         <h5 class="d-flex justify-content-center">Nivel de Dificultad</h4>
-                            <p class="d-flex justify-content-center">{{ App\Models\Niveles::find($info['nivel_id'])->nivel ?? 'N/A' }}</p>
+                            <p class="d-flex justify-content-center">
+                                {{ App\Models\Niveles::find($info['nivel_id'])->nivel ?? 'N/A' }}</p>
                     </div>
                     <div class="col-6">
                         <h5 class="d-flex justify-content-center">Tiempo estimado</h4>
                             <p class="d-flex justify-content-center">{{ $info->tiempo_estimado }}</p>
                     </div>
                 </div>
-
             </div>
         </div>
+        <script>
+            function mostrarPerfil(event) {
+                event.preventDefault();
+
+                // Obtén el user_id del atributo data
+                const userId = event.target.dataset.userId;
+
+                // Realiza una redirección a la página de perfil
+                window.location.href = `/perfil/${userId}`;
+            }
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>

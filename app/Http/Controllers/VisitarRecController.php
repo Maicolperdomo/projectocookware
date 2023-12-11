@@ -31,8 +31,11 @@ public function mostrarPerfil($userId)
     // Obtén información del usuario asociado al user_id
     $usuario = User::findOrFail($userId);
 
-    // Puedes pasar los datos del usuario a la vista
-    return view('visitPerfil', ['usuario' => $usuario]);
+    // Obtén la cantidad de recetas del usuario
+    $cantidadRecetas = Recetas::where('user_id', $userId)->count();
+
+    // Puedes pasar los datos del usuario y la cantidad de recetas a la vista perfil.blade.php
+    return view('perfil', ['usuario' => $usuario, 'cantidadRecetas' => $cantidadRecetas]);
 }
 
     /**
