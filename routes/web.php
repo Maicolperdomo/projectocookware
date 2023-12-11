@@ -73,13 +73,15 @@ Route::resource('/cantidad', CantidadController::class)->only(['index','store','
 
 Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
 
-Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update','destroy']);
+Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update']);
+
+Route::delete('/eliminarRecetaUsuario/{recetaId}', [VisitarPerController::class, 'eliminarRecetaUsuario'])->name('eliminarRecetaUsuario');
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
 
 Route::get('/recetas/autocomplete', [VisitarPerController::class, 'autocomplete'])->name('recetas.autocomplete');
 
-Route::delete('/eliminarReceta/{id}', [VisitarPerController::class, 'eliminarReceta']);
+//Route::delete('/eliminarReceta/{id}', [VisitarPerController::class, 'eliminarReceta']);
 
 Route::get('/recetas/autocompleteu', [VisitarPerController::class, 'autocompleteU'])->name('recetas.auto');
 

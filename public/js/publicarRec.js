@@ -5,17 +5,28 @@ document.addEventListener('DOMContentLoaded', function() {
     mostrar(userId)
 });
 
-function eliminarReceta(recetaId) {
-    axios.delete(`/eliminarReceta/ ${recetaId}`)
+function eliminarRecetaUsuario(recetaId) {
+    axios.delete(`/eliminarRecetaUsuario/${recetaId}`)
         .then(res => {
             console.log(res);
-            mostrar(userId);
-            //alert("Receta eliminada correctamente");
+            // Elimina el elemento de la interfaz de usuario
+            const botonEliminar = document.querySelector(`button[data-receta-id="${recetaId}"]`);
+            if (botonEliminar) {
+                const cardReceta = botonEliminar.closest('.card');
+                cardReceta.remove();
+            }
+            
+            // Actualiza la cantidad de recetas en la interfaz de usuario
+            const cantidadRecetasElement = document.getElementById('cantidadRecetas');
+            if (cantidadRecetasElement) {
+                cantidadRecetasElement.textContent = `Cantidad de Recetas: ${res.data.cantidadRecetas}`;
+            }
         })
         .catch(err => {
             console.error(err);
         });
 }
+
 
 function mostrar(userId) {
     axios.get(`/recetausuario/${userId}`)
@@ -43,7 +54,7 @@ function mostrar(userId) {
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text">Dificultad: ${element.nivel}</p>
-                            <button class="btn btn-danger" onclick="eliminarReceta(${element.id})">Eliminar</button>
+                            <button class="btn btn-danger" data-receta-id="${element.id}" onclick="eliminarRecetaUsuario(${element.id})">Eliminar</button>
                         </div>`
                 rec += `</div>`;
             });

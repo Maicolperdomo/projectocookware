@@ -105,15 +105,24 @@ public function autocomplete(Request $request)
     return response()->json($recetas);
 }
 
-public function eliminarReceta($id)
+public function eliminarRecetaUsuario($recetaId)
 {
-    $receta = Recetas::find($id);
+    $receta = Recetas::find($recetaId);
 
-    return view('/visper', ['receta' => $receta]);
+    if ($receta) {
+        $receta->delete();
+        
+        // Obtener la nueva cantidad de recetas después de la eliminación
+        $userId = Auth::id();
+        $cantidadRecetas = Recetas::where('user_id', $userId)->count();
+        
+        return response()->json(['mensaje' => 'Receta eliminada correctamente', 'cantidadRecetas' => $cantidadRecetas], 200);
+    } else {
+        return response()->json(['error' => 'Receta no encontrada'], 404);
+    }
 }
-
-    /**
-     * Update the specified resource in storage.
+    
+    /*Update the specified resource in storage.
      */
     public function update(Request $request, Recetas $recetas)
     {
@@ -123,8 +132,22 @@ public function eliminarReceta($id)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recetas $recetas)
+    public function destroy($id)
     {
-        Recetas::findOrFail($recetas->id)->delete();
+        // Buscar la receta por su ID
+        $receta = Recetas::find($id);
+
+        // Verificar si la receta existe
+        if ($receta) {
+            // Eliminar la imagen asociada al registro
+            Storage::delete($receta->foto);
+
+            // Eliminar el registro de la base de datos
+            $receta->delete();
+
+            return redirect('/visper')->with('success', 'Receta eliminada correctamente');
+        } else {
+            return redirect('/visper')->with('error', 'Receta no encontrada');
+        }
     }
 }
