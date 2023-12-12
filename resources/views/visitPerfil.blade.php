@@ -36,13 +36,8 @@
                             data-route="{{ route('recetas.auto') }}">
                             <input class="form-control me-2" type="text" id="search" name="search"
                                 aria-label="Search" autocomplete="off" style="width: 55%;">
-                            <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Search</button>
+                            <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Buscar</button>
                         </form>
-                    </div>
-                    <div>
-                        <select id="Nivel" class="form-control w-auto fw-bolder">
-                            <option selected disabled>Filtrar</option>
-                        </select>
                     </div>
                     <div>
                         <div class="btn-group dropdown" role="group">
@@ -63,7 +58,9 @@
             <div class="col-3" style="background-color: #f6f9fa">
                 <div class="my-3  fw-bolder">
                     <div class="d-flex justify-content-center"><img src="{{ asset(auth()->user()->foto) }}"
-                            alt="Foto Perfil" width="200" height="200" style="border-radius: 50%"></div>
+                            alt="Foto Perfil" width="200" height="200" style="border-radius: 50%">
+                    </div>
+                    <br>
                     <div class="d-flex justify-content-center">
                         <h5 class="card-title fw-bolder">{{ '@' . auth()->user()->nickname }}</h5>
                     </div>

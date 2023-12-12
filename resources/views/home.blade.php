@@ -32,7 +32,7 @@
                             data-route="{{ route('recetas.autocomplete') }}">
                             <input class="form-control me-2" type="text" id="search" name="search"
                                 aria-label="Search" autocomplete="off" style="width: 55%;">
-                            <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Search</button>
+                            <button class="btn fw-bolder" style="background-color: #eb4e3d" type="submit">Buscar</button>
                         </form>
                     </div>
                     <div>
@@ -55,8 +55,17 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3" style="background-color: #76cc68"></div>
+                    <div class="col-6 d-flex justify-content-center" style="background-color: #f6f9fa">
+                        <h2>¿Qué cocinaré esta semana?</h2>
+                    </div>
+                    <div class="col-3" style="background-color: #76cc68"></div>
+                </div>
+            </div>
         </header>
         <div class="col-12 d-flex flex-wrap justify-content-around" id="searchResults">
         </div>

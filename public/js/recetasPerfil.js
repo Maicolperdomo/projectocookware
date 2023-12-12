@@ -18,7 +18,7 @@ function mostrar(userId) {
                     try {
 
                         if (element.foto) {
-                            rec += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
+                            rec += `<a href="${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
                         } 
                     } catch (error) {
                         console.error(

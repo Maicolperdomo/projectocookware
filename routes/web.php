@@ -57,7 +57,7 @@ Route::get('/recetas/autocomplete', [HomeController::class, 'autocomplete'])->na
 
 Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
 
-Route::get('/recetas/usuario/{id}', [VisitarRecController::class, 'obtenerRecetasUsuario']);
+Route::get('perfil/{userId}', [VisitarRecController::class, 'obtenerRecetasUsuario']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
@@ -74,6 +74,8 @@ Route::resource('/ingredientes', IngredientesController::class)->only(['index','
 Route::resource('/cantidad', CantidadController::class)->only(['index','store','update','destroy']);
 
 Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
+
+Route::get('/visper/{id}', [VisitarRecController::class, 'show']);
 
 Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update']);
 

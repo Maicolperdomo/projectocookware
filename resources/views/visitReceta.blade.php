@@ -31,7 +31,8 @@
                     <div class="row">
                         <div class="col-12 d-flex align-items-center">
                             <div class="col-4 d-flex justify-content-end">
-                                <img src="{{ $info->user->foto }}" alt="Foto perfil" width="100" height="100" style="border-radius: 50%">
+                                <img src="{{ $info->user->foto }}" alt="Foto perfil" width="100" height="100"
+                                    style="border-radius: 50%">
                             </div>
                             <div class="col-8 mx-2">
                                 <div>
@@ -41,14 +42,14 @@
                             </div>
                         </div>
                     </div>
-                    <br>                    
+                    <br>
                     <div class="d-flex justify-content-around"><img src="{{ $info->foto }}" alt="Foto Receta"
                             width="300" height="300"></div>
                     <div class="d-flex justify-content-center my-2">
                         <h2 class="card-title fw-bolder">{{ $info->nombre }}</h2>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <h5 class="card-title">{{ $info->descripcion }}</h5>
+                        <h5 class="card-title" style="width: 75%; text-align: justify">{{ $info->descripcion }}</h5>
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
@@ -60,13 +61,13 @@
             </div>
             <div class="col-8" style="background-color: #f6f9fa">
                 <div class="d-flex justify-content-center my-2">
-                    <h4 class="d-flex justify-content-center">Ingredientes</h4>
+                    <h4 class="d-flex justify-content-center fw-bolder">Ingredientes</h4>
                 </div>
-                <div>
+                <div class="d-flex justify-content-center">
                     @php
                         $ingredientesArray = json_decode($info->ingredientes, true);
                     @endphp
-                    <table class="table">
+                    <table class="table" style="width: 50%">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
@@ -86,17 +87,35 @@
                     </table>
                 </div>
                 <div class="d-flex justify-content-center my-2">
-                    <h5 class="d-flex justify-content-center">Pasos</h4>
+                    <h4 class="d-flex justify-content-center fw-bolder">Pasos</h4>
                 </div>
-                <p>{{ $info->pasos }}</p>
+                <div class="d-flex justify-content-center">
+                    @php
+                        $pasosArray = json_decode($info->pasos, true);
+                    @endphp
+                    <table class="table" style="width: 80%">
+                        <thead>
+                            <tr>
+                                <th scope="col">Pasos a seguir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pasosArray as $paso)
+                                <tr>
+                                    <td>{{ $paso['paso'] }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="d-flex justify-content-center">Nivel de Dificultad</h4>
+                        <h5 class="d-flex justify-content-center fw-bolder">Nivel de Dificultad</h4>
                             <p class="d-flex justify-content-center">
                                 {{ App\Models\Niveles::find($info['nivel_id'])->nivel ?? 'N/A' }}</p>
                     </div>
                     <div class="col-6">
-                        <h5 class="d-flex justify-content-center">Tiempo estimado</h4>
+                        <h5 class="d-flex justify-content-center fw-bolder">Tiempo estimado</h4>
                             <p class="d-flex justify-content-center">{{ $info->tiempo_estimado }}</p>
                     </div>
                 </div>

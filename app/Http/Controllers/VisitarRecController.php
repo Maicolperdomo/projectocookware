@@ -19,35 +19,17 @@ class VisitarRecController extends Controller
 
     public function show(Request $request)
 {
-    $info = Recetas::findOrFail($request->visper);
+    $info = Recetas::findOrFail($request->id);
 
     // Obtén información del usuario asociado al user_id
-    $usuario = User::findOrFail($info->user_id);
 
     // Pasar $info a la vista
-    return view('tu_vista', ['info' => $info, 'usuario' => $usuario]);
+    return view('visitReceta', ['info' => $info]);
 }
 
-public function obtenerRecetasUsuario($userId)
-    {
-        try {
-            // Obtén las recetas del usuario con información de niveles
-            $recetas = DB::table('recetas')
-                ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
-                ->where('recetas.user_id', $userId)
-                ->select('recetas.*', 'niveles.nivel as nivel')
-                ->get();
-
-            return response()->json($recetas);
-        } catch (\Exception $e) {
-            // Manejar el error, redirigir o retornar una respuesta adecuada
-            return response()->json(['error' => 'Error al obtener recetas del usuario'], 500);
-        }
-    }
 
 public function mostrarPerfil($userId)
 {
-    try {
         // Obtén información del usuario asociado al user_id
         $usuario = User::findOrFail($userId);
 
@@ -63,10 +45,6 @@ public function mostrarPerfil($userId)
 
         // Puedes pasar los datos del usuario, las recetas y la cantidad de recetas a la vista perfil.blade.php
         return view('perfil', ['usuario' => $usuario, 'recetas' => $recetas, 'cantidadRecetas' => $cantidadRecetas]);
-    } catch (\Exception $e) {
-        // Manejar el error, redirigir o retornar una respuesta adecuada
-        return response()->json(['error' => 'Error al obtener información del usuario'], 500);
-    }
 }
 
 

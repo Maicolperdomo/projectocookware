@@ -19,7 +19,7 @@ function eliminarRecetaUsuario(recetaId) {
             // Actualiza la cantidad de recetas en la interfaz de usuario
             const cantidadRecetasElement = document.getElementById('cantidadRecetas');
             if (cantidadRecetasElement) {
-                cantidadRecetasElement.textContent = `Cantidad de Recetas: ${res.data.cantidadRecetas}`;
+                cantidadRecetasElement.textContent = `${res.data.cantidadRecetas}`;
             }
         })
         .catch(err => {
@@ -180,17 +180,33 @@ function agregarIngrediente() {
     actualizarUnidades(nuevoIdSelect);
 }
 
+function agregarPasos() {
+    // Crea un nuevo conjunto de campos
+    var nuevoPaso = document.createElement('div');
+    var nuevoIdSelect = 'txtPasos_' + Date.now();  // Genera un ID único
+    nuevoPaso.innerHTML = `
+        <div class="col-12 my-1">
+            <textarea type="text" id="${nuevoIdSelect}" class="form-control"
+            aria-label="Text input with dropdown button" placeholder="Paso"></textarea>
+        </div>
+    `;
+
+    // Agrega el nuevo conjunto de campos al contenedor
+    document.getElementById('pasosContainer').appendChild(nuevoPaso);
+}
+
 function limpiarCampos() {
     // Restablece los valores de los campos originales
     document.getElementById('nomb').value = '';
     document.getElementById('descrip').value = '';
-    document.getElementById('pasosa').value = '';
     document.getElementById('subirf').value = '';
     document.getElementById('tiempoe').value = '';
 
     // Elimina los campos dinámicos
     const contenedorIngredientes = document.getElementById('ingredientesContainer');
+    const contenedorPasos = document.getElementById('pasosContainer');
     contenedorIngredientes.innerHTML = '';
+    contenedorPasos.innerHTML = '';
 }
 
 function guardar() {
@@ -209,12 +225,12 @@ function guardar() {
     formData.append('nombre', nomb.value);
     formData.append('user_id', iduser.value);
     formData.append('descripcion', descrip.value);
-    formData.append('pasos', pasosa.value);
     formData.append('nivel_id', txtNivel.value);
     formData.append('tiempo_estimado', tiempoe.value);
 
     // Agrega los datos de los nuevos ingredientes
     const nuevosIngredientes = [];
+    const nuevosPasos = [];
 
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
     ingredientesContainers.forEach((container) => {
@@ -237,6 +253,24 @@ function guardar() {
     });
 
     formData.append('ingredientes', JSON.stringify(nuevosIngredientes));
+
+    const pasosContainers = document.querySelectorAll('#pasosContainer > div');
+    pasosContainers.forEach((container) => {
+        const pasoElement = container.querySelector('[id^="txtPasos"]');
+
+        if (!pasoElement) {
+            console.error("Error al obtener valores de los campos de pasos dinámicos. Algun elemento no existe.");
+            return;
+        }
+
+        const paso = {
+            paso: pasoElement.value,
+        };
+
+        nuevosPasos.push(paso);
+    });
+
+    formData.append('pasos', JSON.stringify(nuevosPasos));
 
     // Realiza la solicitud POST con todos los datos
     axios.post("/visper", formData, {})

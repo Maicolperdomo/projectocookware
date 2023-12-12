@@ -25,15 +25,13 @@
 
     <body class="container-fluid colorletra">
         <div class="row">
-            <div class="col-9" style="background-color: #76cc68">
-                <div class="text-center">
-                    <h1 class="display-4">Mis Recetas</h1>
-                </div>
-                <div class="d-flex flex-wrap" id="searchResults">
-                </div>
+            <div class="col-12 d-flex align-items-center" style="background-color: #f6f9fa">
+                    <div class="col-9 text-center"><h1 class="display-4">RECETARIO</h1></div>
+                    <div class="col-3"><a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a></div>
             </div>
-            <div class="col-3 bg-light p-3">
-                <a href="/home"><img src="../image/logo.png" alt="Logo" width="300" height="100"></a>
+            <div class="col-9 d-flex flex-wrap" id="searchResults" style="background-color: #76cc68">
+            </div>
+            <div class="col-3 right bg-light p-3">
                 <input type="hidden" id="iduser" value="{{ $usuario->id }}">
                 <div class="my-3 text-center fw-bolder">
                     <!-- Imprime la foto -->
@@ -46,6 +44,7 @@
                     <!-- Imprime el nickname -->
                     <h5 class="card-title fw-bolder">{{ '@' . $usuario->nickname }}</h5>
                     <!-- Imprime la cantidad de recetas -->
+                    <br>
                     <ul class="list-group text-center">
                         <li class="list-group-item">Cantidad de Recetas</li>
                         <li class="list-group-item">{{ $cantidadRecetas }}</li>

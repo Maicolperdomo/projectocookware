@@ -79,7 +79,6 @@ public function show(Request $request)
         $info=Recetas::findOrFail($request->visper);
     
         return view('visitReceta', ['info' => $info]);
-        /*dd($info);*/
 }
 
 public function autocomplete(Request $request)
