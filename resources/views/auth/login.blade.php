@@ -13,23 +13,23 @@
 
 </head>
 
-<body class="container-fluid" style="background-color: #c0dd8d;">
+<body class="container-fluid" style="background-color: #52ba66;">
     <div class="row">
         <div class="col-7 d-flex justify-content-center">
             <img src="../image/logoG.png" alt="" style="width: 600px;">
         </div>
         <div class="col-5 d-flex justify-content-center">
             <div class="col-10 d-flex justify-content-center my-5"
-                style="background: white; border-radius: 30px 30px 30px 30px;">
-                <div>
+                style="background: #f6f9fa; border-radius: 30px 30px 30px 30px;">
+                <div class="d-flex align-items-center">
                     <form action="/login" method="POST">
                         @csrf
                         <div>
-                            <h2 class="text-center  mt-5 mb-5">Inicio de sesion</h2>
+                            <h2 class="text-center mt-1 mb-4">Inicio de sesión</h2>
                         </div>
                         @include('layouts.messages')
                         <div class="input-group flex-nowrap">
-                            <span class="input-group-text" id="nickname">NickName</span>
+                            <span class="input-group-text" id="nickname">NickName/Correo</span>
                             <input type="text" class="form-control" placeholder="@" aria-label="nickname"
                                 aria-describedby="addon-wrapping" name="nickname">
                         </div>
@@ -40,13 +40,13 @@
                                 aria-describedby="addon-wrapping" name="password">
                         </div>
                         <div class="row mt-3">
-                            <input type="submit" class="btn btn-success" value="Iniciar Sesion">
+                            <input type="submit" class="btn btn-success" value="Iniciar Sesión">
                         </div>
                         <div class="row mt-3">
                             <a class="btn btn-danger" href="/register">Registrarse</a>
                         </div>
                         <div class="row mt-3 text-center">
-                            <a href="forgotpassword"> ¿OLVIDO SU CONTRASEÑA? </a>
+                            <a href="/forgot">¿OLVIDÓ SU CONTRASEÑA? </a>
                         </div>
                     </form>
                 </div>

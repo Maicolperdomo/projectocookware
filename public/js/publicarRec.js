@@ -1,22 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     // La página se ha cargado completamente, ahora puedes acceder al elemento
     var userId = document.getElementById('iduser').value;
-  
     console.log(userId);
     mostrar(userId)
-    editarReceta(recetaId);
 });
-function eliminarReceta(recetaId) {
-    axios.delete(`/eliminarReceta/${recetaId}`)
+
+function eliminarRecetaUsuario(recetaId) {
+    axios.delete(`/eliminarRecetaUsuario/${recetaId}`)
         .then(res => {
             console.log(res);
-            mostrar(userId);
-            //alert("Receta eliminada correctamente");
+            // Elimina el elemento de la interfaz de usuario
+            const botonEliminar = document.querySelector(`button[data-receta-id="${recetaId}"]`);
+            if (botonEliminar) {
+                const cardReceta = botonEliminar.closest('.card');
+                cardReceta.remove();
+            }
+            
+            // Actualiza la cantidad de recetas en la interfaz de usuario
+            const cantidadRecetasElement = document.getElementById('cantidadRecetas');
+            if (cantidadRecetasElement) {
+                cantidadRecetasElement.textContent = `${res.data.cantidadRecetas}`;
+            }
         })
         .catch(err => {
             console.error(err);
         });
 }
+
 
 function mostrar(userId) {
     axios.get(`/recetausuario/${userId}`)
@@ -44,19 +54,17 @@ function mostrar(userId) {
                 rec += `<div class="card-body">
                             <h5 class="card-title">${element.nombre}</h5>
                             <p class="card-text">Dificultad: ${element.nivel}</p>
-                            <button class="btn btn-danger" onclick="eliminarReceta(${element.id})">Eliminar</button>
-                            <button class="btn btn-primary" onclick="editarReceta(${element.id})">Editar</button>
+                            <button class="btn btn-danger" data-receta-id="${element.id}" onclick="eliminarRecetaUsuario(${element.id})">Eliminar</button>
                         </div>`
                 rec += `</div>`;
-               
             });
 
-            document.getElementById("tablaReceta").innerHTML = rec;
+            document.getElementById("searchResults").innerHTML = rec;
         })
         .catch(err => {
             console.error(err);
         });
-        
+
     axios.get("/nivel")
         .then(res => {
             console.log(res)
@@ -76,24 +84,6 @@ function mostrar(userId) {
             console.error(err);
         })
 
-}
-function editarReceta(recetaId) {
-
-    $('#staticBackdrop').modal('show');
-    axios.get(`/obRecetas/${recetaId}`)
-        .then(res => {
-            // Rellenar el formulario con los datos obtenidos
-            const receta = res.data;
-            document.getElementById('nombre').value = '';
-            document.getElementById('descripcion').value = '';
-            document.getElementById('pasos').value = '';
-            document.getElementById('subirf').value = '';
-            document.getElementById('tiempoe').value = '';
-
-        })
-        .catch(err => {
-            console.error(err);
-        });
 }
 
 function actualizarUnidades(selectId) {
@@ -164,11 +154,10 @@ function agregarIngrediente() {
                 </div>
             </div>
             <div class="me-2">
-                <label class="form-label" for="${nuevoIdCantidad}">Cantidad:</label>
+                <label class="form-label">Cantidad:</label>
                 <div>
-                    <select id="${nuevoIdCantidad}" class="form-control">
-                        <option selected disabled>Seleccionar</option>
-                    </select>
+                <input type="number" id="${nuevoIdCantidad}" class="form-control"
+                aria-label="Text input with dropdown button" placeholder="Ingrediente">
                 </div>
             </div>
             <div>
@@ -191,17 +180,33 @@ function agregarIngrediente() {
     actualizarUnidades(nuevoIdSelect);
 }
 
+function agregarPasos() {
+    // Crea un nuevo conjunto de campos
+    var nuevoPaso = document.createElement('div');
+    var nuevoIdSelect = 'txtPasos_' + Date.now();  // Genera un ID único
+    nuevoPaso.innerHTML = `
+        <div class="col-12 my-1">
+            <textarea type="text" id="${nuevoIdSelect}" class="form-control"
+            aria-label="Text input with dropdown button" placeholder="Paso"></textarea>
+        </div>
+    `;
+
+    // Agrega el nuevo conjunto de campos al contenedor
+    document.getElementById('pasosContainer').appendChild(nuevoPaso);
+}
+
 function limpiarCampos() {
     // Restablece los valores de los campos originales
     document.getElementById('nomb').value = '';
     document.getElementById('descrip').value = '';
-    document.getElementById('pasosa').value = '';
     document.getElementById('subirf').value = '';
     document.getElementById('tiempoe').value = '';
 
     // Elimina los campos dinámicos
     const contenedorIngredientes = document.getElementById('ingredientesContainer');
+    const contenedorPasos = document.getElementById('pasosContainer');
     contenedorIngredientes.innerHTML = '';
+    contenedorPasos.innerHTML = '';
 }
 
 function guardar() {
@@ -220,12 +225,12 @@ function guardar() {
     formData.append('nombre', nomb.value);
     formData.append('user_id', iduser.value);
     formData.append('descripcion', descrip.value);
-    formData.append('pasos', pasosa.value);
     formData.append('nivel_id', txtNivel.value);
     formData.append('tiempo_estimado', tiempoe.value);
 
     // Agrega los datos de los nuevos ingredientes
     const nuevosIngredientes = [];
+    const nuevosPasos = [];
 
     const ingredientesContainers = document.querySelectorAll('#ingredientesContainer > div');
     ingredientesContainers.forEach((container) => {
@@ -249,6 +254,24 @@ function guardar() {
 
     formData.append('ingredientes', JSON.stringify(nuevosIngredientes));
 
+    const pasosContainers = document.querySelectorAll('#pasosContainer > div');
+    pasosContainers.forEach((container) => {
+        const pasoElement = container.querySelector('[id^="txtPasos"]');
+
+        if (!pasoElement) {
+            console.error("Error al obtener valores de los campos de pasos dinámicos. Algun elemento no existe.");
+            return;
+        }
+
+        const paso = {
+            paso: pasoElement.value,
+        };
+
+        nuevosPasos.push(paso);
+    });
+
+    formData.append('pasos', JSON.stringify(nuevosPasos));
+
     // Realiza la solicitud POST con todos los datos
     axios.post("/visper", formData, {})
         .then(res => {
@@ -261,6 +284,58 @@ function guardar() {
         .catch(err => {
             console.error(err);
         });
-   
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('search');
+    const searchResults = document.getElementById('searchResults');
+
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const selectedRecipe = searchInput.value;
+
+        if (selectedRecipe) {
+            alert('Realizar búsqueda o redirigir a la página de detalles para: ' + selectedRecipe);
+        }
+    });
+
+    searchInput.addEventListener('input', function () {
+        const term = this.value;
+        const autocompleteUrl = searchForm.dataset.route;
+
+        axios.get(autocompleteUrl, { params: { term: term } })
+        .then(function (res) {
+            console.log(res);
+            let rec = "";
+
+            res.data.forEach((element, index) => {
+                rec += `<div class="card mx-2 my-3 d-flex align-items-center" style="width: 220px; height: 290px">`;
+                if (element.foto) {
+                    try {
+
+                        if (element.foto) {
+                            rec += `<a href="visper/${element.id}"><img src="${element.foto}" class="mt-2" alt="Foto Receta" style="width: 200px; height: 200px;"></a>`;
+                        }
+                    } catch (error) {
+                        console.error(
+                            "Error al parsear las rutas de las imágenes:",
+                            error
+                        );
+                        rec += `Error al cargar imágenes`;
+                    }
+                }
+                rec += `<div class="card-body">
+                            <h5 class="card-title">${element.nombre}</h5>
+                            <p class="card-text" id="nivell">Dificultad: ${element.nivel}</p>
+                        </div>`
+                rec += `</div>`;
+            });
+
+            document.getElementById("searchResults").innerHTML = rec;
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    });
+});

@@ -10,8 +10,9 @@ class Recetas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'id',
         'nombre',
+        'user_id',
         'descripcion',
         'ingredientes',
         'cantidad_id',
@@ -28,12 +29,18 @@ class Recetas extends Model
     'updated_ap'
     ];
 
+    public function unidad()
+    {
+        return $this->belongsTo(Unidad::class, 'unidad_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function nivel()
-{
-    return $this->belongsTo(Niveles::class, 'nivel_id');
-}
-
-
-
-
+    {
+        return $this->belongsTo(Niveles::class, 'nivel_id', 'id');
+    }
 }

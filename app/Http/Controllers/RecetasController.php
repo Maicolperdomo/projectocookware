@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cantidad;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RecetaRequest;
 use App\Models\Recetas;
-use App\Models\Unidad;
 use Illuminate\Http\Request;
-use App\Models\Ingredientes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class RecetasController extends Controller
 {
@@ -27,6 +27,22 @@ class RecetasController extends Controller
 
     }
 
+    public function obtenerRecetasPorNivel($nivelId)
+{
+    /*$recetas = Recetas::where('nivel_id', $nivelId)
+        ->with('nivel') // Esto asume que hay una relación en el modelo Recetas llamada 'nivel'
+        ->get();
+
+    return response()->json($recetas);*/
+
+    $recetas = DB::table('recetas')
+    ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+    ->where('recetas.nivel_id', $nivelId) // Filtra por el ID del usuario
+    ->select('recetas.*', 'niveles.nivel as nivel')
+    ->get();
+    return response()->json($recetas);
+}
+
     /**
      * Store a newly created resource in storage.
      */
@@ -34,6 +50,7 @@ class RecetasController extends Controller
     {
         Recetas::create($request->all());
     }
+
 
 
     /**
@@ -47,4 +64,8 @@ class RecetasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function destroy(Recetas $recetas)
+    {
+        Recetas::findOrFail($recetas->id)->delete();
+    }
 }

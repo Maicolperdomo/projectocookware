@@ -7,7 +7,7 @@ Hemos recibido una solicitud para restablecer la contraseña de tu cuenta.
     Restablecer Contraseña
 @endcomponent
 
-Si no has solicitado un restablecimiento de contraseña, ignora este mensage y no se requiere ninguna acción.
+Si no has solicitado un restablecimiento de contraseña, ignors este mensage y no se requiere ninguna acción.
 
 Gracias<br>
 @endcomponent

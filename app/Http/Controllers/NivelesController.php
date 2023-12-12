@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Niveles;
-use App\Models\Recetas;
 use Illuminate\Http\Request;
 
 class NivelesController extends Controller
@@ -39,5 +38,4 @@ class NivelesController extends Controller
     {
         Niveles::findOrFail($niveles->id)->delete();
     }
-   
 }

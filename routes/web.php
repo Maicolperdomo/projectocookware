@@ -14,7 +14,6 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\VisitarPerController;
 use App\Http\Controllers\VisitarRecController;
 use App\Http\Controllers\IngredientesController;
-use App\Models\Niveles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,13 +53,17 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/filterByNivel', [HomeController::class, 'filterByNivel'])->name('filterByNivel');
+Route::get('/recetas/autocomplete', [HomeController::class, 'autocomplete'])->name('recetas.autocomplete');
 
 Route::get('/recetausuario/{id}', [VisitarPerController::class, 'obtenerRecetasU']);
+
+Route::get('perfil/{userId}', [VisitarRecController::class, 'obtenerRecetasUsuario']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('/receta', RecetasController::class)->only(['index','store','update','destroy']);
+
+Route::get('/recetas/por-nivel/{nivelId}', [RecetasController::class, 'obtenerRecetasPorNivel']);
 
 Route::resource('/nivel', NivelesController::class)->only(['index','store','update','destroy']);
 
@@ -72,16 +75,20 @@ Route::resource('/cantidad', CantidadController::class)->only(['index','store','
 
 Route::resource('/visrec', VisitarRecController::class)->only(['index','store','update','destroy']);
 
-Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update','destroy']);
+Route::get('/visper/{id}', [VisitarRecController::class, 'show']);
+
+Route::resource('/visper', VisitarPerController::class)->only(['index','show','store','update']);
+
+Route::delete('/eliminarRecetaUsuario/{recetaId}', [VisitarPerController::class, 'eliminarRecetaUsuario'])->name('eliminarRecetaUsuario');
 
 Route::get('/recetas', [VisitarPerController::class, 'obtenerRecetas']);
-Route::post('/editar', [VisitarPerController::class, 'editar']);
-Route::get('/obRecetas/{id}', [VisitarPerController::class, 'obRecetas']);
 
-Route::delete('/eliminarReceta/{id}', [VisitarPerController::class, 'eliminarReceta']);
+Route::get('/recetas/autocomplete', [VisitarPerController::class, 'autocomplete'])->name('recetas.autocomplete');
+
+Route::get('/recetas/autocompleteu', [VisitarPerController::class, 'autocompleteU'])->name('recetas.auto');
+
 Route::get('/actualizarPerfil', [ActualizarPerfilController::class, 'index']);
 
 Route::post('/update', [ActualizarPerfilController::class, 'update']);
 
-Route::get('/filterByNivel', [HomeController::class, 'filterByNivel'])->name('filterByNivel');
-Route::post('/receta/{id}/like', [VisitarRecController::class, 'like'])->name('receta.like');
+Route::get('/perfil/{userId}', [VisitarRecController::class, 'mostrarPerfil'])->name('mostrarPerfil');

@@ -2,37 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Niveles;
-use App\Models\Recetas;
 use Illuminate\Http\Request;
+use App\Models\Recetas;
 
 class HomeController extends Controller
 {
-    public function index()
-{
-    $niveles = Niveles::all();
-
-    return view('home', ['niveles' => $niveles]);
-}
-
-public function filterByNivel(Request $request)
-{
-    $nivelId = $request->input('nivel');
-
-    $recetas = Recetas::where('nivel_id', $nivelId)->get();
-
-    if ($request->ajax()) {
-        return response()->json(['recetas' => $recetas]);
+    public function index(){
+        return view('home');
     }
 
-    $niveles = Niveles::all();
+    public function autocomplete(Request $request)
+    {
+        $term = $request->input('term');
+        
+        $recetas = Recetas::where('nombre', 'LIKE', '%' . $term . '%')->get(['id', 'nombre','foto','nivel_id']);
 
-    return view('home', [
-        'recetasPorNivel' => $recetas,
-        'nivelId' => $nivelId,
-        'niveles' => $niveles,
-    ]);
-}
-
-
+        return response()->json($recetas);
+    }
 }

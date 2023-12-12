@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VisitarRecController extends Controller
 {
@@ -15,6 +17,37 @@ class VisitarRecController extends Controller
         return view('visitReceta');
     }
 
+    public function show(Request $request)
+{
+    $info = Recetas::findOrFail($request->id);
+
+    // Obtén información del usuario asociado al user_id
+
+    // Pasar $info a la vista
+    return view('visitReceta', ['info' => $info]);
+}
+
+
+public function mostrarPerfil($userId)
+{
+        // Obtén información del usuario asociado al user_id
+        $usuario = User::findOrFail($userId);
+
+        // Obtén las recetas del usuario con información de niveles
+        $recetas = DB::table('recetas')
+            ->join('niveles', 'recetas.nivel_id', '=', 'niveles.id')
+            ->where('recetas.user_id', $userId)
+            ->select('recetas.*', 'niveles.nivel as nivel')
+            ->get();
+
+        // Obtén la cantidad de recetas del usuario
+        $cantidadRecetas = count($recetas);
+
+        // Puedes pasar los datos del usuario, las recetas y la cantidad de recetas a la vista perfil.blade.php
+        return view('perfil', ['usuario' => $usuario, 'recetas' => $recetas, 'cantidadRecetas' => $cantidadRecetas]);
+}
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -22,7 +55,7 @@ class VisitarRecController extends Controller
     {
         //
     }
-   
+
     /**
      * Update the specified resource in storage.
      */
@@ -38,21 +71,4 @@ class VisitarRecController extends Controller
     {
         //
     }
-// VisitarRecController.php
-
-public function like(Request $request, string $id)
-{
-    $receta = Recetas::findOrFail($id);
-
-    // Verificar si el usuario ya ha dado like
-    if (!$receta->likes->contains('user_id', auth()->id())) {
-        // Incrementar el contador de likes en la receta
-        $receta->likes()->create(['user_id' => auth()->id()]);
-        $receta->increment('likes');
-    }
-
-    // Puedes redirigir a la misma página o a otra después de dar like
-    return redirect('/home')->back()->with('success', 'Receta Liked!');
-}
-
 }
