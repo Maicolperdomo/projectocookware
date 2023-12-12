@@ -114,10 +114,10 @@
                                 <button type="button" class="btn btn-link fw-bolder" onclick="agregarIngrediente()">Agregar
                                     Ingrediente</button>
                             </div>
-                            <div class="mb-3">
-                                <label for="pasosa" class="form-label fw-bolder">Pasos a Seguir</label>
-                                <input type="text" name="pasos" class="form-control" id="pasosa"
-                                    placeholder="Se coherente en tu paso a paso">
+                            <div id="pasosContainer">
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-link fw-bolder" onclick="agregarPasos()">Agregar Paso</button>
                             </div>
                             <div class="mb-3">
                                 <label for="subirf" class="form-label fw-bolder">Sube una foto</label>
