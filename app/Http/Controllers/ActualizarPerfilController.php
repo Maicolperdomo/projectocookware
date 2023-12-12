@@ -18,6 +18,7 @@ class ActualizarPerfilController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'nickname' => 'required',
+            'foto' => 'required',
             // Otros campos y reglas de validación
         ]);
     
@@ -27,6 +28,7 @@ class ActualizarPerfilController extends Controller
             'name' => $request->name,
             'lastname' => $request->lastname,
             'nickname' => $request->nickname,
+            'foto' => $request->foto,
             // Otros campos
         ]);
     

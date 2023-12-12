@@ -15,6 +15,7 @@ class actualizarPerfil extends Model
     'name',
     'lastname',
     'nickname',
+    'foto',
     'email',
 
 ];

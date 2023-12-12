@@ -35,6 +35,10 @@
                 <label for="txtCorreo" class="form-label">Correo</label>
                 <input type="text" class="form-control" value="{{ auth()->user()->email }}" id="txtCorreo" disabled>
               </div>
+              <div>
+                <span class="input-group-text">Foto Perfil</span>
+                <input type="file" name="foto"value="{{ auth()->user()->foto }}" accept="image/*">
+              </div>
               <input type="submit" value="Actualizar Perfil">
               <div class="row mt-3 text-center">
                 <a href="forgotpassword"> ¿Desea cambiar su contraseña? </a>
